@@ -72,14 +72,14 @@ const Header: React.FC<HeaderProps> = ({
 
           {/* Навигация */}
           <nav className={styles.header__navigation}>
-            <a className={styles.header__link} href="/">Главная</a>
+            <Link className={styles.header__link} to="/">Главная</Link>
             <div 
               className={styles.header__link_menu}
               onMouseEnter={() => !isMobile && setIsNavMenuExpanded(true)}
               onMouseLeave={() => !isMobile && setIsNavMenuExpanded(false)}
             >
               <div className={styles.header__link}>
-                <a href="/catalog" className={styles.header__link_text}>Каталог</a>
+                <Link to="/catalog" className={styles.header__link_text}>Каталог</Link>
                 <div 
                   className={styles.header__link_arrow}
                   onClick={() => setIsNavMenuExpanded(!isNavMenuExpanded)}
@@ -92,19 +92,19 @@ const Header: React.FC<HeaderProps> = ({
                   <div className={`${styles.expander} ${styles.menu_expander}`}>
                     <div className={styles.menu_expander__content}>
                       {navMenuItems.map((item, index) => (
-                        <a key={index} href={item.url} className={styles.menu_expander__item}>
+                        <Link key={index} to={item.url} className={styles.menu_expander__item}>
                           {item.title}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 </div>
               )}
             </div>
-            <a className={styles.header__link} href="/delivery">Доставка и оплата</a>
-            <a className={styles.header__link} href="/fabric">Ткани</a>
-            <a className={styles.header__link} href="/about">О нас</a>
-            <a className={styles.header__link} href="/contacts">Контакты</a>
+            <Link className={styles.header__link} to="/delivery">Доставка и оплата</Link>
+            <Link className={styles.header__link} to="/fabric">Ткани</Link>
+            <Link className={styles.header__link} to="/about">О нас</Link>
+            <Link className={styles.header__link} to="/contacts">Контакты</Link>
           </nav>
 
           {/* Социальные сети */}
@@ -187,15 +187,15 @@ const Header: React.FC<HeaderProps> = ({
           <div className={styles.mobile_menu}>
             {mobileMenuItems.map((item, index) => (
               <div key={index} className={styles.mobile_menu__item}>
-                <a href={item.url} className={styles.mobile_menu__link}>
+                <Link to={item.url} className={styles.mobile_menu__link}>
                   {item.title}
-                </a>
+                </Link>
                 {item.items && (
                   <div className={styles.mobile_menu__submenu}>
                     {item.items.map((subItem, subIndex) => (
-                      <a key={subIndex} href={subItem.url} className={styles.mobile_menu__sublink}>
+                      <Link key={subIndex} to={subItem.url} className={styles.mobile_menu__sublink}>
                         {subItem.title}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}

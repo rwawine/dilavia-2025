@@ -10,6 +10,10 @@ import Contacts from './pages/Contacts/Contacts';
 import NotFound from './pages/NotFound/NotFound';
 import Favorite from './pages/Favorite/Favorite';
 import Cart from './pages/Cart/Cart';
+import Catalog from './pages/Catalog/Catalog';
+import Bed from './pages/Catalog/Bed/Bed';
+import Sofa from './pages/Catalog/Sofa/Sofa';
+import Chair from './pages/Catalog/Chair/Chair';
 
 function App() {
   return (
@@ -25,6 +29,10 @@ function App() {
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorite" element={<Favorite />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/bed" element={<Bed />} />
+            <Route path="/sofa" element={<Sofa />} />
+            <Route path="/chair" element={<Chair />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
