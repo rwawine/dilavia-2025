@@ -381,12 +381,10 @@
   
   .mat_badge_content {
     width: 18px;
-    top: 3px !important;
-    right: 20px !important;
+    top: 3px;
+    right: 20px;
     height: 18px;
     font-size: 10px;
-    top: -8px;
-    right: -8px;
   }
 }
 
@@ -451,6 +449,11 @@
   .header__expander {
     top: 60px;
     right: -16px;
+  }
+    
+  .mat_badge_content {
+    top: 3px !important;
+    right: 20px !important;
   }
 }
 
