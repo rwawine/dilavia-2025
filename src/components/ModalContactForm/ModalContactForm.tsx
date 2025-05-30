@@ -48,8 +48,10 @@ export default function ModalContactForm({ isOpen, onClose }: ModalContactFormPr
         body: JSON.stringify(formData)
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('Failed to send message')
+        throw new Error(data.error || 'Failed to send message')
       }
 
       setSuccess(true)
@@ -60,7 +62,8 @@ export default function ModalContactForm({ isOpen, onClose }: ModalContactFormPr
         message: ''
       })
     } catch (err) {
-      setError('Failed to send message. Please try again later.')
+      console.error('Error:', err)
+      setError('Не удалось отправить сообщение. Пожалуйста, попробуйте позже.')
     } finally {
       setIsLoading(false)
     }
