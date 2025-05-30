@@ -515,12 +515,14 @@
 
 .phone_expander__link {
   display: flex;
+  font-size: 14px;
   align-items: center;
+  text-align: center;
+  justify-content: center;
   margin-bottom: 8px;
 }
 
 .phone_expander__link .icon {
-  margin-right: 8px;
 }
 
 .phone_expander__link.kyivstar .icon {

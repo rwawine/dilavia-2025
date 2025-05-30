@@ -14,14 +14,14 @@ import ArrowDownIcon from './icons/ArrowDownIcon';
 interface HeaderProps {
   phones?: {
     mts?: string;
-    life?: string;
+    a1?: string;
   };
 }
 
 const Header: React.FC<HeaderProps> = ({
   phones = {
-    mts: '+38 (095) 479 69 75',
-    life: '+38 (067) 579 69 75',
+    mts: '+375 (33) 664-18-30',
+    a1: '+375 (29) 801-92-71',
   },
 }) => {
   // Состояния для выпадающих меню
@@ -127,8 +127,8 @@ const Header: React.FC<HeaderProps> = ({
             >
               <div className={styles.header__info_link}>
                 <PhoneIcon className={styles.icon} />
-                <a className={styles.header__info_title} href={`tel:${phones.life}`}>
-                  {phones.life}
+                <a className={styles.header__info_title} href={`tel:${phones.a1}`}>
+                  {phones.a1}
                 </a>
               </div>
               {isPhoneExpanded && (
@@ -136,10 +136,10 @@ const Header: React.FC<HeaderProps> = ({
                   <div className={`${styles.expander} ${styles.phone_expander}`}>
                     <div className={styles.phone_expander__links}>
                       <a className={`${styles.phone_expander__link} ${styles.mts}`} href={`tel:${phones.mts}`}>
-                        <span className={styles.icon}></span> {phones.mts}
+                        <span className={styles.icon}>МТС</span> {phones.mts}
                       </a>
-                      <a className={`${styles.phone_expander__link} ${styles.life}`} href={`tel:${phones.life}`}>
-                        <span className={styles.icon}></span> {phones.life}
+                      <a className={`${styles.phone_expander__link} ${styles.life}`} href={`tel:${phones.a1}`}>
+                        <span className={styles.icon}>А1</span> {phones.a1}
                       </a>
                     </div>
                     <div className={styles.expander__small}>Звоните нам с 08:00 до 20:00 без выходных</div>
