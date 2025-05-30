@@ -208,7 +208,7 @@ export default function Favorite() {
               {[...favoriteFabrics, ...favoriteProducts.map(product => ({ 
                 type: 'product', 
                 product 
-              }))].map((item, index) => (
+              }))].map((item) => (
                 'product' in item ? (
                   <ProductCard key={`product-${item.product.id}`} product={item.product} />
                 ) : (

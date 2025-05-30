@@ -44,25 +44,27 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [selectedDimension, setSelectedDimension] = useState<Dimension>(product.dimensions[0])
   const [selectedOption, setSelectedOption] = useState<AdditionalOption | null>(null)
   const [isInCart, setIsInCart] = useState(false)
-  const [currentConfig, setCurrentConfig] = useState('')
+  const [isFavorite, setIsFavorite] = useState(false)
   
   const navigate = useNavigate()
   const { addToCart, items } = useCartStore()
-  const { toggleFavorite, isFavorite } = useFavoritesStore()
+  const { toggleFavorite, isFavorite: favoritesStoreIsFavorite } = useFavoritesStore()
 
   // Проверяем, есть ли товар в корзине при изменении конфигурации
   useEffect(() => {
-    const config = `${product.id}-${selectedDimension.width}x${selectedDimension.length}-${selectedOption?.name || 'none'}`
-    setCurrentConfig(config)
-    
     const isProductInCart = items.some(item => 
       item.id === product.id && 
-      item.dimension?.width === selectedDimension.width &&
+      item.dimension?.width === selectedDimension.width && 
       item.dimension?.length === selectedDimension.length &&
       item.additionalOption?.name === selectedOption?.name
     )
+    
     setIsInCart(isProductInCart)
   }, [product.id, selectedDimension, selectedOption, items])
+
+  useEffect(() => {
+    setIsFavorite(favoritesStoreIsFavorite(product.id))
+  }, [favoritesStoreIsFavorite, product.id])
 
   const handleAddToCart = () => {
     if (isInCart) {
@@ -95,13 +97,13 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className={styles.imageContainer}>
         <img src={`/${product.images[0]}`} alt={product.name} className={styles.image} />
         <button 
-          className={`${styles.favoriteButton} ${isFavorite(product.id) ? styles.active : ''}`}
+          className={`${styles.favoriteButton} ${isFavorite ? styles.active : ''}`}
           onClick={() => toggleFavorite(product.id)}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
-              fill={isFavorite(product.id) ? '#FF0000' : 'none'} 
-              stroke={isFavorite(product.id) ? '#FF0000' : '#000'} 
+              fill={isFavorite ? '#FF0000' : 'none'} 
+              stroke={isFavorite ? '#FF0000' : '#000'} 
               strokeWidth="2"
             />
           </svg>

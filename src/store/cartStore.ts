@@ -1,31 +1,17 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-interface AdditionalOption {
-  name: string
-  available: boolean
-  price: number
-}
-
-interface Dimension {
-  width: number
-  length: number
-  height: number | null
-  depth: number | null
-  price: number
-  additionalOptions: AdditionalOption[]
-}
-
 interface CartItem {
   id: string
   name: string
   price: number
   quantity: number
   image: string
-  dimension?: {
+  dimension: {
     width: number
     length: number
   }
+  option?: string
   additionalOption?: {
     name: string
     price: number
@@ -59,7 +45,7 @@ export const useCartStore = create<CartStore>()(
           (i) => i.id === item.id && 
           i.dimension?.width === item.dimension?.width && 
           i.dimension?.length === item.dimension?.length &&
-          i.additionalOption?.name === item.additionalOption?.name
+          i.option === item.option
         )
 
         if (existingItem) {

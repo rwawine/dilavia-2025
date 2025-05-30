@@ -25,7 +25,7 @@ interface FabricProps {
   applications?: string[]
 }
 
-export default function FabricCard({ id, material, materialName, collection, collectionName, variantId, variant, type, applications }: FabricProps) {
+export default function FabricCard({ material, materialName, collection, collectionName, variantId, variant, type, applications }: FabricProps) {
   const navigate = useNavigate()
   const { toggleFavorite, isFavorite } = useFavoritesStore()
   const { addToCart, items } = useCartStore()
@@ -51,6 +51,7 @@ export default function FabricCard({ id, material, materialName, collection, col
       price: 0,
       quantity: 1,
       image: variant?.image || '',
+      dimension: { width: 0, length: 0 },
       configuration: {
         material: materialName,
         color: variant?.color.name || '',

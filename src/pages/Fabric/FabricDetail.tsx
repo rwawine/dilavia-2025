@@ -125,13 +125,14 @@ function FabricDetail() {
       
       addToCart({
         id: itemId,
-        name: `${selectedCollection.nameLoc} ${selectedVariantData.color.name}`, // Добавляем цвет в название
+        name: `${selectedCollection.nameLoc} ${selectedVariantData.color.name}`,
         price: 0,
         quantity: 1,
-        image: selectedVariantData.image || '',
+        image: selectedVariantData.image,
+        dimension: { width: 0, length: 0 },
         configuration: {
           material: material.nameLoc,
-          color: selectedVariantData.color.name || '',
+          color: selectedVariantData.color.name,
           style: selectedCollection.type,
           features: selectedCollection.technicalSpecifications.applicationAreas
         }

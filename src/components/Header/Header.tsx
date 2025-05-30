@@ -29,7 +29,6 @@ const Header: React.FC<HeaderProps> = ({
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isNavMenuExpanded, setIsNavMenuExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { totalItems } = useCartStore();
   const { favorites } = useFavoritesStore();
 
@@ -63,10 +62,6 @@ const Header: React.FC<HeaderProps> = ({
     { title: 'О нас', url: '/about' },
     { title: 'Контакты', url: '/contacts' },
   ];
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
   return (
     <header className={styles.header}>
