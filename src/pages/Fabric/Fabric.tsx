@@ -30,12 +30,46 @@ export default function Fabric() {
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
+        setIsLoading(true)
+        setError(null)
+        
         const response = await fetch('/data/data.json')
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        
         const data = await response.json()
-        setMaterials(data[0].materials)
+        if (!data || !Array.isArray(data) || !data[0]?.materials) {
+          throw new Error('Invalid data format')
+        }
+
+        // Проверяем структуру данных
+        const materialsData = data[0].materials
+        if (!Array.isArray(materialsData)) {
+          throw new Error('Materials data is not an array')
+        }
+
+        // Проверяем наличие необходимых полей
+        const validMaterials = materialsData.filter(material => {
+          return (
+            material.name &&
+            material.nameLoc &&
+            Array.isArray(material.collections) &&
+            material.collections.length > 0 &&
+            material.collections[0].variants &&
+            Array.isArray(material.collections[0].variants) &&
+            material.collections[0].variants.length > 0
+          )
+        })
+
+        if (validMaterials.length === 0) {
+          throw new Error('No valid materials found')
+        }
+
+        setMaterials(validMaterials)
       } catch (err) {
-        setError('Ошибка при загрузке тканей')
         console.error('Error fetching materials:', err)
+        setError('Ошибка при загрузке тканей. Пожалуйста, попробуйте позже.')
       } finally {
         setIsLoading(false)
       }
@@ -54,6 +88,10 @@ export default function Fabric() {
 
   if (error) {
     return <div className={styles.error}>{error}</div>
+  }
+
+  if (!materials || materials.length === 0) {
+    return <div className={styles.error}>Ткани не найдены</div>
   }
 
   return (
@@ -76,8 +114,14 @@ export default function Fabric() {
             <div className={styles.materialImage}>
               {material.collections[0]?.variants[0]?.image && (
                 <img 
-                  src={`/${material.collections[0].variants[0].image}`} 
-                  alt={material.nameLoc} 
+                  src={material.collections[0].variants[0].image.startsWith('/') 
+                    ? material.collections[0].variants[0].image 
+                    : `/${material.collections[0].variants[0].image}`} 
+                  alt={material.nameLoc}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.src = '/images/placeholder.png'
+                  }}
                 />
               )}
             </div>

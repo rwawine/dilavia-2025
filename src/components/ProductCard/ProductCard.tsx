@@ -95,7 +95,15 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={`/${product.images[0]}`} alt={product.name} className={styles.image} />
+        <img 
+          src={product.images[0].startsWith('/') ? product.images[0] : `/${product.images[0]}`} 
+          alt={product.name} 
+          className={styles.image}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement
+            target.src = '/images/placeholder.png'
+          }}
+        />
         <button 
           className={`${styles.favoriteButton} ${isFavorite ? styles.active : ''}`}
           onClick={() => toggleFavorite(product.id)}

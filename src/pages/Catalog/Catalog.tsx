@@ -59,12 +59,49 @@ export default function Catalog() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setIsLoading(true)
+        setError(null)
+        
         const response = await fetch('/data/data.json')
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        
         const data = await response.json()
-        setProducts(data[0].products)
+        if (!data || !Array.isArray(data) || !data[0]?.products) {
+          throw new Error('Invalid data format')
+        }
+
+        // Проверяем структуру данных
+        const products = data[0].products
+        if (!Array.isArray(products)) {
+          throw new Error('Products data is not an array')
+        }
+
+        // Проверяем наличие необходимых полей
+        const validProducts = products.filter(product => {
+          return (
+            product.id &&
+            product.name &&
+            product.slug &&
+            Array.isArray(product.images) &&
+            product.images.length > 0 &&
+            product.category &&
+            product.category.code &&
+            product.category.name &&
+            Array.isArray(product.dimensions) &&
+            product.dimensions.length > 0
+          )
+        })
+
+        if (validProducts.length === 0) {
+          throw new Error('No valid products found')
+        }
+
+        setProducts(validProducts)
       } catch (err) {
-        setError('Ошибка при загрузке товаров')
         console.error('Error fetching products:', err)
+        setError('Ошибка при загрузке товаров. Пожалуйста, попробуйте позже.')
       } finally {
         setIsLoading(false)
       }
@@ -139,30 +176,45 @@ export default function Catalog() {
 
   const filteredAndSortedProducts = products
     .filter(product => {
-      const price = product.dimensions[0].price
-      const matchesPrice = price >= priceRange.min && price <= priceRange.max
-      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category.code)
-      const matchesSubcategory = !subcategoryParam || (product.subcategory?.code === subcategoryParam)
-      return matchesPrice && matchesCategory && matchesSubcategory
+      try {
+        const price = product.dimensions[0].price
+        const matchesPrice = price >= priceRange.min && price <= priceRange.max
+        const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category.code)
+        const matchesSubcategory = !subcategoryParam || (product.subcategory?.code === subcategoryParam)
+        return matchesPrice && matchesCategory && matchesSubcategory
+      } catch (err) {
+        console.error('Error filtering product:', err)
+        return false
+      }
     })
     .sort((a, b) => {
-      switch (sortBy) {
-        case 'price-asc':
-          return a.dimensions[0].price - b.dimensions[0].price
-        case 'price-desc':
-          return b.dimensions[0].price - a.dimensions[0].price
-        default:
-          return b.popularity - a.popularity
+      try {
+        switch (sortBy) {
+          case 'price-asc':
+            return a.dimensions[0].price - b.dimensions[0].price
+          case 'price-desc':
+            return b.dimensions[0].price - a.dimensions[0].price
+          default:
+            return b.popularity - a.popularity
+        }
+      } catch (err) {
+        console.error('Error sorting products:', err)
+        return 0
       }
     })
 
   const getFilteredCount = () => {
-    return products.filter(product => {
-      const price = product.dimensions[0].price
-      const matchesPrice = price >= tempPriceRange.min && price <= tempPriceRange.max
-      const matchesCategory = tempSelectedCategories.length === 0 || tempSelectedCategories.includes(product.category.code)
-      return matchesPrice && matchesCategory
-    }).length
+    try {
+      return products.filter(product => {
+        const price = product.dimensions[0].price
+        const matchesPrice = price >= tempPriceRange.min && price <= tempPriceRange.max
+        const matchesCategory = tempSelectedCategories.length === 0 || tempSelectedCategories.includes(product.category.code)
+        return matchesPrice && matchesCategory
+      }).length
+    } catch (err) {
+      console.error('Error counting filtered products:', err)
+      return 0
+    }
   }
 
   if (isLoading) {
@@ -250,7 +302,7 @@ export default function Catalog() {
             </div>
 
             <div className={styles.drawerFooter}>
-            <button className={styles.applyButton} onClick={handleApplyFilters}>
+              <button className={styles.applyButton} onClick={handleApplyFilters}>
                 Применить ({getFilteredCount()})
               </button>
               <button className={styles.resetButton} onClick={handleResetFilters}>
