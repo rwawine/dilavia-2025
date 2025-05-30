@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({
   // Мобильное меню
   const mobileMenuItems = [
     { title: 'Главная', url: '/' },
-    { title: 'Каталог', url: '/menu', items: navMenuItems },
+    { title: 'Каталог', url: '/catalog', items: navMenuItems },
     { title: 'Доставка и оплата', url: '/delivery' },
     { title: 'Ткани', url: '/fabric' },
     { title: 'О нас', url: '/about' },
@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({
         <div className={styles.header__content}>
           {/* Логотип */}
           <div className={styles.header__logo} tabIndex={0}>
-            Dilavia
+           <Link to="/"> Dilavia</Link>
           </div>
 
           {/* Навигация */}
