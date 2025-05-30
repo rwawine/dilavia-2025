@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './SizeVisual.module.css'
+import ModalContactForm from '@/components/ModalContactForm/ModalContactForm'
 
 export default function SizeVisual() {
+    const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <section className={styles.sizeVisual}>
       <div className="container">
@@ -20,12 +22,19 @@ export default function SizeVisual() {
                 требованиям.
               </p>
             </div>
-            <a href="#" className={styles.btn}>
-                Отправить проект
-            </a>
+            <button 
+              className={styles.btn}
+              onClick={() => setIsModalOpen(true)}
+            >
+              Отправить проект
+            </button>
           </div>
         </div>
       </div>
+      <ModalContactForm 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   )
 }
