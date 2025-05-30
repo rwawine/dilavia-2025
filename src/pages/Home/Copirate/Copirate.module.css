@@ -1,0 +1,302 @@
+.copirate {
+  margin-top: 40px;
+}
+
+.collaboration {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 100px 30px 40px 30px;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #232323;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: #343434;
+  font-size: 14.88px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 40px;
+  font-weight: 600;
+  max-width: 450px;
+  line-height: 21px;
+  word-wrap: break-word;
+}
+
+.features {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  perspective: 1000px;
+}
+
+.featureWrapper {
+  height: 260px;
+  width: 100%;
+  padding: 0;
+  perspective: 1000px;
+}
+
+.feature {
+  position: relative;
+  border-radius: 24px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.featureWrapper:hover .feature {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  overflow: hidden;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.2s, opacity 0.2s !important;
+}
+
+.front {
+  background-color: #e6e4e0;
+  z-index: 2;
+}
+
+.back {
+  background-color: #232323;
+  color: #fff;
+  transform: rotateY(180deg);
+  z-index: 1;
+  padding: 25px;
+}
+
+.feature:first-child .front {
+  background-color: #232323;
+}
+
+.feature:first-child .back {
+  background-color: #232323;
+  color: #e6e4e0;
+}
+
+.btn {
+  padding: 24px 48px;
+  border-radius: 10px;
+  background-color: #232323;
+  color: #e6e4e0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background-color: #353434;
+  color: #e6e4e0;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: #232323;
+}
+
+.feature:first-child .icon {
+  color: #fff;
+}
+
+.featureTitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #232323;
+  line-height: 1.4;
+}
+
+.feature:first-child .featureTitle {
+  color: #fff;
+}
+
+.featureDescription {
+  color: #e6e4e0;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  max-width: 450px;
+  line-height: 140%;
+  word-wrap: break-word;
+}
+
+.backTitle {
+  color: #232323;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 8px;
+  max-width: 450px;
+  line-height: 21px;
+  word-wrap: break-word;
+}
+
+.feature:first-child .backTitle {
+  color: #fff;
+}
+
+/* Планшеты и маленькие десктопы */
+@media (max-width: 1200px) {
+  .content {
+    padding: 80px 25px 35px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 14px;
+    max-width: 400px;
+  }
+
+  .btn {
+    padding: 20px 40px;
+  }
+}
+
+/* Планшеты */
+@media (max-width: 992px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 60px 20px 30px;
+    gap: 30px;
+  }
+
+  .description {
+    margin-bottom: 0;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    perspective: none;
+    gap: 15px;
+  }
+
+  .featureWrapper {
+    margin-bottom: 0;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 576px) {
+  .copirate {
+    margin-top: 20px;
+  }
+
+  .content {
+    padding: 40px 15px 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    padding: 5px;
+    gap: 10px;
+  }
+
+  .featureWrapper {
+    height: 220px;
+  }
+
+  .front,
+  .back {
+    padding: 20px;
+  }
+
+  .featureTitle,
+  .backTitle {
+    font-size: 15px;
+  }
+
+  .featureDescription {
+    font-size: 13px;
+    line-height: 130%;
+  }
+
+  .btn {
+    padding: 16px 32px;
+    font-size: 13px;
+  }
+}
+
+/* Маленькие мобильные устройства */
+@media (max-width: 360px) {
+  .content {
+    padding: 30px 10px 15px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .featureWrapper {
+    height: 200px;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    font-size: 12px;
+  }
+}

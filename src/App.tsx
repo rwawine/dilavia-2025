@@ -14,6 +14,7 @@ import Catalog from './pages/Catalog/Catalog';
 import FabricDetail from './pages/Fabric/FabricDetail';
 import FabricMaterial from './pages/Fabric/FabricMaterial';
 import FabricSlug from './pages/Fabric/FabricSlug';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
+        <Footer />
       </Router>
     </HelmetProvider>
   );

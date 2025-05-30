@@ -105,13 +105,13 @@
 
 .header {
   height: 80px;
+  z-index: 100;
   position: fixed;
   left: 4px;
   right: 4px;
   top: 4px;
   margin: auto;
   max-width: 1920px;
-  z-index: 10;
 }
 
 @media (max-width: 1440.98px) {
