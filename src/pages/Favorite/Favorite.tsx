@@ -1,7 +1,11 @@
-import React from 'react'
+import styles from './Favorite.module.css'
 
-export default function Favorite() {
+function Favorite() {
   return (
-    <div>Favorite</div>
+    <div className={styles.container}>
+      <h1>Избранное</h1>
+    </div>
   )
 }
+
+export default Favorite

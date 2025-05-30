@@ -1,7 +1,11 @@
-import React from 'react'
+import styles from './Contacts.module.css'
 
-export default function Contacts() {
+function Contacts() {
   return (
-    <div>Contacts</div>
+    <div className={styles.container}>
+      <h1>Контакты</h1>
+    </div>
   )
 }
+
+export default Contacts

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 // Импорт SVG иконок
@@ -22,13 +22,12 @@ const Header: React.FC<HeaderProps> = ({
     life: '+38 (067) 579 69 75',
   },
 }) => {
-  const navigate = useNavigate()
   // Состояния для выпадающих меню
   const [isPhoneExpanded, setIsPhoneExpanded] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isNavMenuExpanded, setIsNavMenuExpanded] = useState(false);
-  const [cartItemsCount, setCartItemsCount] = useState(2); // Пример значения для корзины
-  const [favoriteItemsCount, setFavoriteItemsCount] = useState(3); // Пример значения для избранного
+  const [cartItemsCount] = useState(2); // Пример значения для корзины
+  const [favoriteItemsCount] = useState(3); // Пример значения для избранного
   const [isMobile, setIsMobile] = useState(false);
 
   // Определение мобильного устройства

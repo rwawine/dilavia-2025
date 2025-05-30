@@ -1,7 +1,11 @@
-import React from 'react'
+import styles from './Fabric.module.css'
 
-export default function Fabric() {
+function Fabric() {
   return (
-    <div>Fabric</div>
+    <div className={styles.container}>
+      <h1>Ткани</h1>
+    </div>
   )
 }
+
+export default Fabric

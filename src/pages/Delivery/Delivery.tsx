@@ -1,7 +1,11 @@
-import React from 'react'
+import styles from './Delivery.module.css'
 
-export default function Delivery() {
+function Delivery() {
   return (
-    <div>Delivery</div>
+    <div className={styles.container}>
+      <h1>Доставка и оплата</h1>
+    </div>
   )
 }
+
+export default Delivery
