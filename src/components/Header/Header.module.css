@@ -42,6 +42,22 @@
   text-transform: uppercase;
 }
 
+.mat_badge_content {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+}
+
 @media (max-width: 768.98px) {
   .login_expander__auth {
     font-size: 12px;
@@ -246,14 +262,13 @@
 .header__info_phone {
   height: 56px;
   margin-right: 16px;
-  padding: 0 16px;
   display: flex;
   align-items: center;
   position: relative;
 }
 
 .header__info_phone .icon {
-  color: var(--black);
+  color: var(--black-50);
   margin-right: 8px;
 }
 
@@ -366,28 +381,6 @@
   }
 }
 
-/* Уменьшаем размер иконок на очень маленьких экранах */
-@media (max-width: 359.98px) {
-  .header__info_cart,
-  .header__info_favorite {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .header__info_cart .icon,
-  .header__info_favorite .icon {
-    font-size: 20px;
-  }
-  
-  .mat_badge_content {
-    width: 18px;
-    top: 3px;
-    right: 20px;
-    height: 18px;
-    font-size: 10px;
-  }
-}
-
 .header__info_cart .icon,
 .header__info_favorite .icon {
   color: var(--black-50);
@@ -414,12 +407,6 @@
 }
 
 @media (max-width: 859.98px) {
-  .header__info_cart {
-    margin-right: 8px;
-  }
-}
-
-@media (max-width: 575.98px) {
   .header__info_cart {
     margin-right: 8px;
   }
@@ -747,22 +734,39 @@
   position: relative;
 }
 
-.mat_badge_content {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: var(--black);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 700;
-}
-
 .mat_badge_hidden {
   display: none;
+}
+
+
+@media (max-width: 575.98px) {
+  .header__info_cart {
+    margin-right: 24px;
+  }
+  .mat_badge_content {
+    top: 3px !important;
+    right: 40px !important;
+  }
+}
+
+/* Уменьшаем размер иконок на очень маленьких экранах */
+@media (max-width: 359.98px) {
+  .header__info_cart,
+  .header__info_favorite {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .header__info_cart .icon,
+  .header__info_favorite .icon {
+    font-size: 20px;
+  }
+  
+  .mat_badge_content {
+    width: 18px;
+    top: 5px !important;
+    right: 40px !important;
+    height: 18px;
+    font-size: 10px;
+  }
 }
