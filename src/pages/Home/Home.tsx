@@ -1,5 +1,6 @@
 import { SEO } from '../../components/SEO/SEO';
 import Hero from './Hero/Hero';
+import PopularProduct from '../../components/PopularProduct/PopularProduct';
 
 export default function Home() {
     return (
@@ -10,6 +11,7 @@ export default function Home() {
                 keywords="Dilavia, home, main page"
             />
             <Hero />
+            <PopularProduct />
         </>
     );
 }

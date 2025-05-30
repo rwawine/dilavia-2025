@@ -1,0 +1,802 @@
+[
+    {
+        "products": [
+            {
+                "id": "165",
+                "category": {
+                    "code": "sofa",
+                    "name": "Диван"
+                },
+                "subcategory": {
+                    "code": "straight-sofa",
+                    "name": "Прямой диван"
+                },
+                "name": "Прямой диван Милтон",
+                "slug": "pryamoi-divan-Milton",
+                "description": "Стильный и удобный прямой диван 'Милтон' с прочным каркасом. Идеально подходит для гостиной или зоны отдыха.",
+                "seo": {
+                    "title": "Прямой диван Милтон - купить в интернет-магазине",
+                    "metaDescription": "Купить Прямой диван 'Милтон' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+                    "keywords": [
+                        "прямой-диван",
+                        "диван для гостиной",
+                        "диван для гостей",
+                        "купить диван",
+                        "прямой диван купить",
+                        "комфортный диван",
+                        "диван в интернет-магазине",
+                        "мягкая мебель",
+                        "мебель для гостиной",
+                        "современный диван",
+                        "диван с доставкой",
+                        "недорогой диван",
+                        "стильный диван",
+                        "удобный диван",
+                        "диван со скидкой",
+                        "мебельный интернет-магазин",
+                        "заказать диван онлайн",
+                        "качественная мягкая мебель"
+                    ]
+                },
+                "images": [
+                    "images/Sofa/Straight_sofa/Milton/1.png",
+                    "images/Sofa/Straight_sofa/Milton/2.png",
+                    "images/Sofa/Straight_sofa/Milton/3.png",
+                    "images/Sofa/Straight_sofa/Milton/4.png"
+                ],
+                "price": {
+                    "current": 2750,
+                    "old": null,
+                    "discount": null
+                },
+                "availability": "Под заказ",
+                "manufacturing": "До 35 рабочих дней",
+                "popularity": 3.5,
+                "dimensions": [
+                    {
+                        "width": 1050,
+                        "length": 2200,
+                        "height": null,
+                        "depth": null,
+                        "price": 2750,
+                        "additionalOptions": []
+                    }
+                ],
+                "materials": [
+                    {
+                        "name": "Ткань",
+                        "type": "Все виды",
+                        "color": null
+                    },
+                    {
+                        "name": "Наполнитель",
+                        "type": "независимый пружинный блок и ППУ, высоко эластичный пенополиуретан средней жесткости",
+                        "color": null
+                    },
+                    {
+                        "name": "Каркас",
+                        "type": "массив, фанера",
+                        "color": null
+                    }
+                ],
+                "sleepingPlace": {
+                    "width": null,
+                    "length": null
+                },
+                "features": [
+                    "механизм раскладывания: Не раскладной"
+                ],
+                "style": "Современный",
+                "color": "Черный",
+                "maxLoad": null,
+                "country": "Беларусь",
+                "promotion": {
+                    "type": null,
+                    "text": null,
+                    "validUntil": null
+                },
+                "warranty": "18 месяцев",
+                "delivery": {
+                    "available": true,
+                    "cost": "По Республике Беларусь - бесплатно",
+                    "time": "2-5 дней"
+                },
+                "commercialOffer": "Изготавливаем диваны и кровати по индивидуальному заказу, по фото или картинке заказчика",
+                "installmentPlans": [
+                    {
+                        "bank": "Альфа-Банк",
+                        "installment": {
+                            "durationMonths": 4,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 36,
+                            "interest": "По тарифам банка"
+                        }
+                    },
+                    {
+                        "bank": "БеларусБанк",
+                        "installment": {
+                            "durationMonths": 6,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 24,
+                            "interest": "По тарифам банка"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "199",
+                "category": {
+                    "code": "armchair",
+                    "name": "Кресло"
+                },
+                "subcategory": {
+                    "code": "armchair",
+                    "name": "Кресло"
+                },
+                "name": "Кресло 1.0",
+                "slug": "kreslo-1.0",
+                "description": "Стильный и удобный Кресло '1.0' с прочным каркасом. Идеально подходит для гостиной или зоны отдыха из-за многофункциональности.",
+                "seo": {
+                    "title": "Кресло 1.0 - купить в интернет-магазине",
+                    "metaDescription": "Купить Кресло '1.0' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+                    "keywords": [
+                        "Кресло",
+                        "Кресло для гостиной",
+                        "Кресло для гостей",
+                        "купить Кресло",
+                        "Кресло купить",
+                        "комфортное Кресло",
+                        "Кресло в интернет-магазине",
+                        "мягкая мебель",
+                        "мебель для гостиной",
+                        "современное Кресло",
+                        "Кресло с доставкой",
+                        "недорогое Кресло",
+                        "стильное Кресло",
+                        "удобный Кресло",
+                        "Кресло со скидкой",
+                        "мебельный интернет-магазин",
+                        "заказать Кресло онлайн",
+                        "качественная мягкая мебель"
+                    ]
+                },
+                "images": [
+                    "images/Sofa/Armchair/Kreslo/1.png",
+                    "images/Sofa/Armchair/Kreslo/2.png",
+                    "images/Sofa/Armchair/Kreslo/3.png"
+                ],
+                "price": {
+                    "current": 1300,
+                    "old": null,
+                    "discount": null
+                },
+                "availability": "Под заказ",
+                "manufacturing": "До 35 рабочих дней",
+                "popularity": 4,
+                "dimensions": [
+                    {
+                        "width": 1050,
+                        "length": 1100,
+                        "height": null,
+                        "depth": null,
+                        "price": 1300,
+                        "additionalOptions": []
+                    }
+                ],
+                "materials": [
+                    {
+                        "name": "Ткань",
+                        "type": "Все виды",
+                        "color": null
+                    },
+                    {
+                        "name": "Наполнитель",
+                        "type": "независимый пружинный блок и ППУ, высоко эластичный пенополиуретан средней жесткости",
+                        "color": null
+                    },
+                    {
+                        "name": "Каркас",
+                        "type": "массив, фанера",
+                        "color": null
+                    }
+                ],
+                "sleepingPlace": {
+                    "width": null,
+                    "length": null
+                },
+                "features": [
+                    "механизм раскладывания: Евро-книга"
+                ],
+                "style": "Современный",
+                "color": "Белый",
+                "maxLoad": null,
+                "country": "Беларусь",
+                "promotion": {
+                    "type": null,
+                    "text": null,
+                    "validUntil": null
+                },
+                "warranty": "18 месяцев",
+                "delivery": {
+                    "available": true,
+                    "cost": "По Республике Беларусь - бесплатно",
+                    "time": "2-5 дней"
+                },
+                "commercialOffer": "Изготавливаем кресла и кровати по индивидуальному заказу, по фото или картинке заказчика",
+                "installmentPlans": [
+                    {
+                        "bank": "Альфа-Банк",
+                        "installment": {
+                            "durationMonths": 4,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 36,
+                            "interest": "По тарифам банка"
+                        }
+                    },
+                    {
+                        "bank": "БеларусБанк",
+                        "installment": {
+                            "durationMonths": 6,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 24,
+                            "interest": "По тарифам банка"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "201",
+                "category": {
+                    "code": "bed",
+                    "name": "Кровать"
+                },
+                "subcategory": {
+                    "code": "bed",
+                    "name": "Кровать"
+                },
+                "name": "Кровать 1",
+                "slug": "bed-1",
+                "description": "Стильная и удобная Кровать '1'. Идеально подходит для ежедневного отдыха.",
+                "seo": {
+                    "title": "Кровать 1 - купить в интернет-магазине",
+                    "metaDescription": "Купить Кровать '1' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+                    "keywords": [
+                        "Кровать для гостей",
+                        "купить Кровать",
+                        "Кровать купить",
+                        "комфортная Кровать",
+                        "Кровать в интернет-магазине",
+                        "мягкая мебель",
+                        "мебель для спальни",
+                        "современная Кровать",
+                        "Кровать с доставкой",
+                        "недорогая Кровать",
+                        "стильная Кровать",
+                        "удобная Кровать",
+                        "Кровать со скидкой",
+                        "мебельный интернет-магазин",
+                        "заказать Кровать онлайн",
+                        "качественная мягкая мебель"
+                    ]
+                },
+                "images": [
+                    "images/Sofa/Bed/1/1.jpg",
+                    "images/Sofa/Bed/1/2.jpg",
+                    "images/Sofa/Bed/1/3.jpg",
+                    "images/Sofa/Bed/1/4.jpg",
+                    "images/Sofa/Bed/1/5.jpg"
+                ],
+                "price": {
+                    "current": 1390,
+                    "old": null,
+                    "discount": null
+                },
+                "availability": "Под заказ",
+                "manufacturing": "До 35 рабочих дней",
+                "popularity": 4,
+                "dimensions": [
+                    {
+                        "width": 90,
+                        "length": 200,
+                        "height": null,
+                        "depth": null,
+                        "price": 1390,
+                        "additionalOptions": [
+                            {
+                                "name": "Подъемный механизм",
+                                "available": false,
+                                "price": 0
+                            },
+                            {
+                                "name": "Подъемный механизм",
+                                "available": true,
+                                "price": 120
+                            }
+                        ]
+                    },
+                    {
+                        "width": 120,
+                        "length": 200,
+                        "height": null,
+                        "depth": null,
+                        "price": 1450,
+                        "additionalOptions": [
+                            {
+                                "name": "Подъемный механизм",
+                                "available": false,
+                                "price": 0
+                            },
+                            {
+                                "name": "Подъемный механизм",
+                                "available": true,
+                                "price": 120
+                            }
+                        ]
+                    },
+                    {
+                        "width": 140,
+                        "length": 200,
+                        "height": null,
+                        "depth": null,
+                        "price": 1550,
+                        "additionalOptions": [
+                            {
+                                "name": "Подъемный механизм",
+                                "available": false,
+                                "price": 0
+                            },
+                            {
+                                "name": "Подъемный механизм",
+                                "available": true,
+                                "price": 120
+                            }
+                        ]
+                    },
+                    {
+                        "width": 160,
+                        "length": 200,
+                        "height": null,
+                        "depth": null,
+                        "price": 1650,
+                        "additionalOptions": [
+                            {
+                                "name": "Подъемный механизм",
+                                "available": false,
+                                "price": 0
+                            },
+                            {
+                                "name": "Подъемный механизм",
+                                "available": true,
+                                "price": 120
+                            }
+                        ]
+                    },
+                    {
+                        "width": 180,
+                        "length": 200,
+                        "height": null,
+                        "depth": null,
+                        "price": 1770,
+                        "additionalOptions": [
+                            {
+                                "name": "Подъемный механизм",
+                                "available": false,
+                                "price": 0
+                            },
+                            {
+                                "name": "Подъемный механизм",
+                                "available": true,
+                                "price": 120
+                            }
+                        ]
+                    },
+                    {
+                        "width": 200,
+                        "length": 200,
+                        "height": null,
+                        "depth": null,
+                        "price": 1920,
+                        "additionalOptions": [
+                            {
+                                "name": "Подъемный механизм",
+                                "available": false,
+                                "price": 0
+                            },
+                            {
+                                "name": "Подъемный механизм",
+                                "available": true,
+                                "price": 120
+                            }
+                        ]
+                    }
+                ],
+                "materials": [
+                    {
+                        "name": "Ткань",
+                        "type": "Все виды",
+                        "color": null
+                    },
+                    {
+                        "name": "Ортопедическое основание и опоры",
+                        "type": "укреплённая металлическая рамка, берёзовые ламели, опоры-металл, пластик, дерево",
+                        "color": null
+                    },
+                    {
+                        "name": "Каркас",
+                        "type": "массив, фанера, МДФ",
+                        "color": null
+                    }
+                ],
+                "sleepingPlace": {
+                    "width": null,
+                    "length": null
+                },
+                "features": [
+                    "механизм раскладывания: На выбор"
+                ],
+                "style": "Современный",
+                "color": null,
+                "maxLoad": null,
+                "country": "Беларусь",
+                "promotion": {
+                    "type": null,
+                    "text": null,
+                    "validUntil": null
+                },
+                "warranty": "18 месяцев",
+                "delivery": {
+                    "available": true,
+                    "cost": "По Республике Беларусь - бесплатно",
+                    "time": "2-5 дней"
+                },
+                "commercialOffer": "Изготавливаем кровати по индивидуальному заказу, по фото или картинке заказчика",
+                "installmentPlans": [
+                    {
+                        "bank": "Альфа-Банк",
+                        "installment": {
+                            "durationMonths": 4,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 36,
+                            "interest": "По тарифам банка"
+                        }
+                    },
+                    {
+                        "bank": "БеларусБанк",
+                        "installment": {
+                            "durationMonths": 6,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 24,
+                            "interest": "По тарифам банка"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "215",
+                "category": {
+                    "code": "kids-tables",
+                    "name": "Детская кровать"
+                },
+                "subcategory": {
+                    "code": "kids-tables",
+                    "name": "Детская кровать"
+                },
+                "name": "Детская кровать 15",
+                "slug": "kids-tables-15",
+                "description": "Стильная и удобная детская кровать '15'. Идеально подходит для ежедневного отдыха.",
+                "seo": {
+                    "title": "Детская кровать 15 - купить в интернет-магазине",
+                    "metaDescription": "Купить детская кровать '15' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+                    "keywords": [
+                        "детская кровать",
+                        "купить детскую кровать",
+                        "детская кровать купить",
+                        "комфортная детская кровать",
+                        "детская кровать в интернет-магазине",
+                        "мягкая мебель",
+                        "мебель для спальни",
+                        "современная детская кровать",
+                        "детская кровать с доставкой",
+                        "недорогая детская кровать",
+                        "стильная детская кровать",
+                        "удобная детская кровать",
+                        "детская кровать со скидкой",
+                        "мебельный интернет-магазин",
+                        "заказать детская кровать онлайн",
+                        "качественная мягкая мебель"
+                    ]
+                },
+                "images": [
+                    "images/Sofa/Kids_tables/215/1.png"
+                ],
+                "price": {
+                    "current": 1670,
+                    "old": null,
+                    "discount": null
+                },
+                "availability": "Под заказ",
+                "manufacturing": "До 35 рабочих дней",
+                "popularity": 4,
+                "dimensions": [
+                    {
+                        "width": 90,
+                        "length": 200,
+                        "height": null,
+                        "depth": null,
+                        "price": 1670,
+                        "additionalOptions": [
+                            {
+                                "name": "Подъемный механизм",
+                                "available": false,
+                                "price": 0
+                            },
+                            {
+                                "name": "Подъемный механизм",
+                                "available": true,
+                                "price": 120
+                            }
+                        ]
+                    }
+                ],
+                "materials": [
+                    {
+                        "name": "Ткань",
+                        "type": "Все виды",
+                        "color": null
+                    },
+                    {
+                        "name": "Ортопедическое основание и опоры",
+                        "type": "укреплённая металлическая рамка, берёзовые ламели, опоры-металл, пластик, дерево",
+                        "color": null
+                    },
+                    {
+                        "name": "Каркас",
+                        "type": "массив, фанера, МДФ",
+                        "color": null
+                    }
+                ],
+                "sleepingPlace": {
+                    "width": null,
+                    "length": null
+                },
+                "features": [
+                    "механизм раскладывания: На выбор"
+                ],
+                "style": "Современный",
+                "color": null,
+                "maxLoad": null,
+                "country": "Беларусь",
+                "promotion": {
+                    "type": null,
+                    "text": null,
+                    "validUntil": null
+                },
+                "warranty": "18 месяцев",
+                "delivery": {
+                    "available": true,
+                    "cost": "По Республике Беларусь - бесплатно",
+                    "time": "2-5 дней"
+                },
+                "commercialOffer": "Изготавливаем детские кровати по индивидуальному заказу, по фото или картинке заказчика",
+                "installmentPlans": [
+                    {
+                        "bank": "Альфа-Банк",
+                        "installment": {
+                            "durationMonths": 4,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 36,
+                            "interest": "По тарифам банка"
+                        }
+                    },
+                    {
+                        "bank": "БеларусБанк",
+                        "installment": {
+                            "durationMonths": 6,
+                            "interest": "0%",
+                            "additionalFees": "Нет"
+                        },
+                        "credit": {
+                            "durationMonths": 24,
+                            "interest": "По тарифам банка"
+                        }
+                    }
+                ]
+            }
+        ],
+        "materials": [
+            {
+                "name": "Boucle",
+                "nameLoc": "Букле",
+                "collections": [
+                    {
+                        "name": "Clarins",
+                        "nameLoc": "Кларинс",
+                        "filterType": "Mebeltex",
+                        "type": "Букле",
+                        "availability": "",
+                        "technicalSpecifications": {
+                            "fabricType": "Букле",
+                            "abrasionResistance": "35000",
+                            "composition": "100% Polyester",
+                            "compositionLoc": "Полиэстер - 100%",
+                            "origin": "China",
+                            "originLoc": "Китай",
+                            "collectionName": "Clarins",
+                            "applicationAreas": [
+                                "Диваны",
+                                "Кровати",
+                                "Кресла",
+                                "Стулья"
+                            ]
+                        },
+                        "careInstructions": [
+                            "Сухая уборка пылесосом с мягкой щеткой",
+                            "Бережная химчистка простыми реагентами",
+                            "Беречь от прямых солнечных лучей",
+                            "Не ближе 40-60 см от источников тепла",
+                            "Не использовать абразивные средства",
+                            "Не использовать отбеливатель"
+                        ],
+                        "variants": [
+                            {
+                                "id": 1,
+                                "color": {
+                                    "code": "Clarins_100",
+                                    "name": "Clarins_100"
+                                },
+                                "image": "images/Mebeltex/Bucle/Clarins/Clarins_100.jpeg"
+                            },
+                            {
+                                "id": 2,
+                                "color": {
+                                    "code": "Clarins_130",
+                                    "name": "Clarins_130"
+                                },
+                                "image": "images/Mebeltex/Bucle/Clarins/Clarins_130.jpeg"
+                            },
+                            {
+                                "id": 3,
+                                "color": {
+                                    "code": "Clarins_131",
+                                    "name": "Clarins_131"
+                                },
+                                "image": "images/Mebeltex/Bucle/Clarins/Clarins_131.jpeg"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Lanvin",
+                        "nameLoc": "Ланвин",
+                        "filterType": "Mebeltex",
+                        "type": "Букле",
+                        "availability": "",
+                        "technicalSpecifications": {
+                            "fabricType": "Букле",
+                            "abrasionResistance": "90000",
+                            "composition": "22% Polyester/Acrylic 77%/viscose 1%",
+                            "compositionLoc": "Полиэстер - 22%/Акрил - 77%/Вискоза - 1%",
+                            "origin": "Türkiye",
+                            "originLoc": "Турция",
+                            "collectionName": "Lanvin",
+                            "applicationAreas": [
+                                "Диваны",
+                                "Кровати",
+                                "Кресла",
+                                "Стулья"
+                            ]
+                        },
+                        "careInstructions": [
+                            "Сухая уборка пылесосом с мягкой щеткой",
+                            "Бережная химчистка простыми реагентами",
+                            "Беречь от прямых солнечных лучей",
+                            "Не ближе 40-60 см от источников тепла",
+                            "Не использовать абразивные средства",
+                            "Не использовать отбеливатель"
+                        ],
+                        "variants": [
+                            {
+                                "id": 1,
+                                "color": {
+                                    "code": "Lanvin_000",
+                                    "name": "Lanvin_000"
+                                },
+                                "image": "images/Mebeltex/Bucle/Lanvin/Lanvin_000.jpeg"
+                            },
+                            {
+                                "id": 2,
+                                "color": {
+                                    "code": "Lanvin_010",
+                                    "name": "Lanvin_010"
+                                },
+                                "image": "images/Mebeltex/Bucle/Lanvin/Lanvin_010.jpeg"
+                            },
+                            {
+                                "id": 3,
+                                "color": {
+                                    "code": "Lanvin_130",
+                                    "name": "Lanvin_130"
+                                },
+                                "image": "images/Mebeltex/Bucle/Lanvin/Lanvin_130.jpeg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Chenille",
+                "nameLoc": "Шенилл",
+                "collections": [
+                    {
+                        "name": "Allure",
+                        "nameLoc": "Аллюр",
+                        "filterType": "Mebeltex",
+                        "type": "Шенилл",
+                        "availability": "",
+                        "technicalSpecifications": {
+                            "fabricType": "Шенилл",
+                            "abrasionResistance": "70000",
+                            "composition": "100% Polyester",
+                            "compositionLoc": "Полиэстер - 100%",
+                            "origin": "China",
+                            "originLoc": "Китай",
+                            "collectionName": "Allure",
+                            "applicationAreas": [
+                                "Диваны",
+                                "Кровати",
+                                "Кресла",
+                                "Стулья"
+                            ]
+                        },
+                        "careInstructions": [
+                            "Сухая уборка пылесосом с мягкой щеткой",
+                            "Бережная химчистка простыми реагентами",
+                            "Беречь от прямых солнечных лучей",
+                            "Не ближе 40-60 см от источников тепла",
+                            "Не использовать абразивные средства",
+                            "Не использовать отбеливатель"
+                        ],
+                        "variants": [
+                            {
+                                "id": 1,
+                                "color": {
+                                    "code": "allure_01",
+                                    "name": "allure_01"
+                                },
+                                "image": "images/Mebeltex/Chenille/Allure/allure_01.jpg"
+                            },
+                            {
+                                "id": 2,
+                                "color": {
+                                    "code": "allure_02",
+                                    "name": "allure_02"
+                                },
+                                "image": "images/Mebeltex/Chenille/Allure/allure_02.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,355 @@
+.container {
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filterButton:hover {
+  background: #e0e0e0;
+}
+
+.filterDrawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: right 0.3s ease;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.filterDrawer.open {
+  right: 0;
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.filterTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #666;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f0f0f0;
+}
+
+.filterSection {
+  margin-bottom: 24px;
+}
+
+.filterSectionTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+  color: #666;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterOption {
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: left;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterOption:hover {
+  background: #e8e8e8;
+}
+
+.filterOption.active {
+  background: #333;
+  color: #fff;
+}
+
+.resetButton {
+  width: 100%;
+  padding: 12px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 24px;
+}
+
+.resetButton:hover {
+  background: #e0e0e0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.collectionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.collectionCard {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.collectionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.collectionImage {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  overflow: hidden;
+}
+
+.collectionImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collectionName {
+  padding: 16px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #666;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionButton:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.actionButton.active {
+  color: #ff4d4f;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+}
+
+.specLabel {
+  font-weight: 500;
+  color: #333;
+}
+
+.variants {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+}
+
+.variant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.variantImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  transition: transform 0.2s ease;
+}
+
+.variantImage:hover {
+  transform: scale(1.05);
+}
+
+.variantName {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  padding: 48px;
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 48px;
+  color: #ff0000;
+  font-size: 18px;
+}
+
+.noResults {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px;
+  font-size: 16px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+
+  .filterDrawer {
+    width: 260px;
+  }
+
+  .collectionsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .collectionName {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+.collectionsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.collectionItem {
+  padding: 16px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.collectionItem:hover {
+  background-color: #eef5ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.collectionName {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+} 

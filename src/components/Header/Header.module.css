@@ -17,7 +17,7 @@
 .header__link,
 .login_expander__auth,
 .login_expander__button {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .expander__small,
@@ -55,7 +55,7 @@
   background-color: var(--black);
   color: var(--white);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 @media (max-width: 768.98px) {
@@ -183,7 +183,7 @@
 .header__link_text {
   text-decoration: none;
   color: var(--black);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .header__link_arrow {
@@ -667,7 +667,7 @@
 .mobile_menu__link {
   display: block;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--black);
   text-decoration: none;
   padding: 8px 0;

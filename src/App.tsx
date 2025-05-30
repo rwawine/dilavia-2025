@@ -1,5 +1,5 @@
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styles from './App.module.css';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
@@ -11,14 +11,14 @@ import NotFound from './pages/NotFound/NotFound';
 import Favorite from './pages/Favorite/Favorite';
 import Cart from './pages/Cart/Cart';
 import Catalog from './pages/Catalog/Catalog';
-import Bed from './pages/Catalog/Bed/Bed';
-import Sofa from './pages/Catalog/Sofa/Sofa';
-import Chair from './pages/Catalog/Chair/Chair';
+import FabricDetail from './pages/Fabric/FabricDetail';
+import FabricMaterial from './pages/Fabric/FabricMaterial';
+import FabricSlug from './pages/Fabric/FabricSlug';
 
 function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <Router>
         <Header />
         <main className={styles.main} style={{ marginTop: '120px' }}>
           <Routes>
@@ -26,17 +26,19 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/delivery" element={<Delivery />} />
             <Route path="/fabric" element={<Fabric />} />
+            <Route path="/fabric/:materialName" element={<FabricMaterial />} />
+            <Route path="/fabric/:materialName/:collectionName" element={<FabricDetail />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/catalog" element={<Catalog />} />
-            <Route path="/bed" element={<Bed />} />
-            <Route path="/sofa" element={<Sofa />} />
-            <Route path="/chair" element={<Chair />} />
+            <Route path="/catalog/:category" element={<Catalog />} />
+            <Route path="/catalog/:category/:subcategory" element={<Catalog />} />
+            <Route path="/product/:slug" element={<FabricSlug />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-      </BrowserRouter>
+      </Router>
     </HelmetProvider>
   );
 }

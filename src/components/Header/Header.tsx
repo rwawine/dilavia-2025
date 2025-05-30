@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCartStore } from '../../store/cartStore';
+import { useFavoritesStore } from '../../store/favoritesStore';
 import styles from './Header.module.css';
 
 // Импорт SVG иконок
@@ -26,9 +28,10 @@ const Header: React.FC<HeaderProps> = ({
   const [isPhoneExpanded, setIsPhoneExpanded] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isNavMenuExpanded, setIsNavMenuExpanded] = useState(false);
-  const [cartItemsCount] = useState(2); // Пример значения для корзины
-  const [favoriteItemsCount] = useState(3); // Пример значения для избранного
   const [isMobile, setIsMobile] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { totalItems } = useCartStore();
+  const { favorites } = useFavoritesStore();
 
   // Определение мобильного устройства
   useEffect(() => {
@@ -46,9 +49,9 @@ const Header: React.FC<HeaderProps> = ({
 
   // Примерное содержимое для выпадающего меню навигации
   const navMenuItems = [
-    { title: 'Кровати', url: '/bed' },
-    { title: 'Диваны', url: '/sofa' },
-    { title: 'Кресла', url: '/chair' },
+    { title: 'Кровати', url: '/catalog/bed' },
+    { title: 'Диваны', url: '/catalog/sofa' },
+    { title: 'Кресла', url: '/catalog/armchair' },
   ];
 
   // Мобильное меню
@@ -61,13 +64,17 @@ const Header: React.FC<HeaderProps> = ({
     { title: 'Контакты', url: '/contacts' },
   ];
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
         <div className={styles.header__content}>
           {/* Логотип */}
           <div className={styles.header__logo} tabIndex={0}>
-           <Link to="/"> Dilavia</Link>
+            <Link to="/"> Dilavia</Link>
           </div>
 
           {/* Навигация */}
@@ -149,9 +156,9 @@ const Header: React.FC<HeaderProps> = ({
             {/* Избранное */}
             <div className={styles.header__info_favorite}>
               <Link to="/favorite" className={styles.header__info_link}>
-                <HeartIcon className={`${styles.icon} ${favoriteItemsCount > 0 ? styles.mat_badge : ''}`} />
-                {favoriteItemsCount > 0 && (
-                  <span className={styles.mat_badge_content}>{favoriteItemsCount}</span>
+                <HeartIcon className={`${styles.icon} ${favorites.length > 0 ? styles.mat_badge : ''}`} />
+                {favorites.length > 0 && (
+                  <span className={styles.mat_badge_content}>{favorites.length}</span>
                 )}
               </Link>
             </div>
@@ -159,9 +166,9 @@ const Header: React.FC<HeaderProps> = ({
             {/* Корзина */}
             <div className={styles.header__info_cart}>
               <Link to="/cart" className={styles.header__info_link}>
-                <CartIcon className={`${styles.icon} ${cartItemsCount > 0 ? styles.mat_badge : ''}`} />
-                {cartItemsCount > 0 && (
-                  <span className={styles.mat_badge_content}>{cartItemsCount}</span>
+                <CartIcon className={`${styles.icon} ${totalItems() > 0 ? styles.mat_badge : ''}`} />
+                {totalItems() > 0 && (
+                  <span className={styles.mat_badge_content}>{totalItems()}</span>
                 )}
               </Link>
             </div>

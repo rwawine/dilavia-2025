@@ -1,3 +1,276 @@
 .container {
-  padding: 24px 0;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.filterButton {
+  padding: 12px 24px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 16px;
+  text-align: center;
+}
+
+.filterButton:hover {
+  background: #333;
+}
+
+.sortSelect {
+  padding: 12px 24px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s;
+  font-size: 16px;
+  text-align: center;
+}
+
+.sortSelect:hover {
+  background: #eee;
+}
+
+.sortSelect:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100%;
+  background: #fff;
+  padding: 24px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.drawerHeader h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.filterSection {
+  margin-bottom: 24px;
+}
+
+.filterSection h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
+
+.priceInputs {
+  display: flex;
+  gap: 12px;
+}
+
+.priceInputs input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.priceInputs input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.drawerFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resetButton,
+.applyButton {
+  flex: 1;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.resetButton {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+.resetButton:hover {
+  background: #eee;
+}
+
+.applyButton {
+  background: #000;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.applyButton:hover {
+  background: #333;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  color: #ff4444;
+}
+
+.categoryFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.categoryLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  user-select: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  background: #f5f5f5;
+}
+
+.categoryLabel:hover {
+  background: #eee;
+}
+
+.categoryLabel input[type="checkbox"] {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid #666;
+  border-radius: 4px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.categoryLabel input[type="checkbox"]:checked {
+  background: #212121;
+  border-color: #212121;
+}
+
+.categoryLabel input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.categoryLabel input[type="checkbox"]:hover {
+  border-color: #212121;
+}
+
+.categoryLabel input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(33, 33, 33, 0.2);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .controls {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sortSelect {
+    width: 100%;
+  }
+
+  .drawer {
+    width: 100%;
+  }
 } 
