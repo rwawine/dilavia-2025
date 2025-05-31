@@ -7313,6 +7313,691 @@
             }
           }
         ]
+      },
+      {
+        "id": "216",
+        "category": {
+          "code": "bed",
+          "name": "Кровать"
+        },
+        "subcategory": {
+          "code": "kids-tables",
+          "name": "детская кровать"
+        },
+        "name": "детская кровать  16",
+        "slug": "kids-tables-16",
+        "description": "Стильная и удобная детская кровать '16'. Идеально подходит для ежедневного отдыха.",
+        "seo": {
+          "title": "детская кровать  16 - купить в интернет-магазине",
+          "meta_description": "Купить детская кровать  '16' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+          "keywords": [
+            "детская кровать",
+            "купить детскую кровать",
+            "детская кровать купить",
+            "комфортная детская кровать",
+            "детская кровать в интернет-магазине",
+            "мягкая мебель",
+            "мебель для спальни",
+            "современная детская кровать",
+            "детская кровать с доставкой",
+            "недорогая детская кровать",
+            "стильная детская кровать",
+            "удобная детская кровать",
+            "детская кровать со скидкой",
+            "мебельный интернет-магазин",
+            "заказать детская кровать онлайн",
+            "качественная мягкая мебель"
+          ]
+        },
+        "images": [
+          "images/Sofa/Kids_tables/216/1.png"
+        ],
+        "price": {
+          "current": 1670,
+          "old": null,
+          "discount": null
+        },
+        "availability": "Под заказ",
+        "manufacturing": "До 35 рабочих дней",
+        "popularity": 4
+      },
+      {
+        "kids-tables": [
+          {
+            "width": 90,
+            "length": 200,
+            "height": null,
+            "price": 1670,
+            "lifting_mechanism": [
+              {
+                "available": false,
+                "price": 0
+              },
+              {
+                "available": true,
+                "price": 120
+              }
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "name": "Ткань",
+            "localizedTitles": {
+              "ru": "Ткань"
+            },
+            "type": "Все виды",
+            "color": null
+          },
+          {
+            "name": "Ортопедическое основание",
+            "localizedTitles": {
+              "ru": "Ортопедическое основание и опоры"
+            },
+            "type": "укреплённая металлическая рамка , берёзовые ламели, опоры-металл, пластик,дерево"
+          },
+          {
+            "name": "Каркас",
+            "localizedTitles": {
+              "ru": "Каркас"
+            },
+            "type": "массив, фанера, МДФ"
+          }
+        ],
+        "sleepingPlace": {
+          "width": null,
+          "length": null
+        },
+        "features": [
+          "механизм раскладывания: На выбор"
+        ],
+        "style": "Современный",
+        "color": null,
+        "max_load": null,
+        "country": "Беларусь",
+        "promotion": {
+          "type": null,
+          "text": null,
+          "valid_until": null
+        },
+        "warranty": "18 месяцев",
+        "delivery": {
+          "available": true,
+          "cost": "По Республике Беларусь - бесплатно",
+          "time": "2-5 дней"
+        },
+        "commercial-offer": "Изготавливаем крроватьы и кровати по индивидуальному заказу, по фото или картинке заказчика",
+        "installment_plans": [
+          {
+            "bank": "Альфа-Банк",
+            "installment": {
+              "duration_months": 4,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 36,
+              "interest": "По тарифам банка"
+            }
+          },
+          {
+            "bank": "БеларусБанк",
+            "installment": {
+              "duration_months": 6,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 24,
+              "interest": "По тарифам банка"
+            }
+          }
+        ]
+      },
+      {
+        "id": "217",
+        "category": {
+          "code": "bed",
+          "name": "Кровать"
+        },
+        "name": "детская кровать  17",
+        "slug": "kids-tables-17",
+        "description": "Стильная и удобная детская кровать '17'. Идеально подходит для ежедневного отдыха.",
+        "seo": {
+          "title": "детская кровать  17 - купить в интернет-магазине",
+          "meta_description": "Купить детская кровать  '17' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+          "keywords": [
+            "детская кровать",
+            "купить детскую кровать",
+            "детская кровать купить",
+            "комфортная детская кровать",
+            "детская кровать в интернет-магазине",
+            "мягкая мебель",
+            "мебель для спальни",
+            "современная детская кровать",
+            "детская кровать с доставкой",
+            "недорогая детская кровать",
+            "стильная детская кровать",
+            "удобная детская кровать",
+            "детская кровать со скидкой",
+            "мебельный интернет-магазин",
+            "заказать детская кровать онлайн",
+            "качественная мягкая мебель"
+          ]
+        },
+        "images": [
+          "images/Sofa/Kids_tables/217/1.png",
+          "images/Sofa/Kids_tables/217/2.png"
+        ],
+        "price": {
+          "current": 1560,
+          "old": null,
+          "discount": null
+        },
+        "availability": "Под заказ",
+        "manufacturing": "До 35 рабочих дней",
+        "popularity": 4
+      },
+      {
+        "kids-tables": [
+          {
+            "width": 90,
+            "length": 200,
+            "height": null,
+            "price": 1560,
+            "lifting_mechanism": [
+              {
+                "available": false,
+                "price": 0
+              },
+              {
+                "available": true,
+                "price": 120
+              }
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "name": "Ткань",
+            "localizedTitles": {
+              "ru": "Ткань"
+            },
+            "type": "Все виды",
+            "color": null
+          },
+          {
+            "name": "Ортопедическое основание",
+            "localizedTitles": {
+              "ru": "Ортопедическое основание и опоры"
+            },
+            "type": "укреплённая металлическая рамка , берёзовые ламели, опоры-металл, пластик,дерево"
+          },
+          {
+            "name": "Каркас",
+            "localizedTitles": {
+              "ru": "Каркас"
+            },
+            "type": "массив, фанера, МДФ"
+          }
+        ],
+        "sleepingPlace": {
+          "width": null,
+          "length": null
+        },
+        "features": [
+          "механизм раскладывания: На выбор"
+        ],
+        "style": "Современный",
+        "color": null,
+        "max_load": null,
+        "country": "Беларусь",
+        "promotion": {
+          "type": null,
+          "text": null,
+          "valid_until": null
+        },
+        "warranty": "18 месяцев",
+        "delivery": {
+          "available": true,
+          "cost": "По Республике Беларусь - бесплатно",
+          "time": "2-5 дней"
+        },
+        "commercial-offer": "Изготавливаем крроватьы и кровати по индивидуальному заказу, по фото или картинке заказчика",
+        "installment_plans": [
+          {
+            "bank": "Альфа-Банк",
+            "installment": {
+              "duration_months": 4,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 36,
+              "interest": "По тарифам банка"
+            }
+          },
+          {
+            "bank": "БеларусБанк",
+            "installment": {
+              "duration_months": 6,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 24,
+              "interest": "По тарифам банка"
+            }
+          }
+        ]
+      },
+      {
+        "id": "218",
+        "category": {
+          "code": "bed",
+          "name": "Кровать"
+        },
+        "name": "детская кровать  18",
+        "slug": "kids-tables-18",
+        "description": "Стильная и удобная детская кровать '18'. Идеально подходит для ежедневного отдыха.",
+        "seo": {
+          "title": "детская кровать  18 - купить в интернет-магазине",
+          "meta_description": "Купить детская кровать  '18' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+          "keywords": [
+            "детская кровать",
+            "купить детскую кровать",
+            "детская кровать купить",
+            "комфортная детская кровать",
+            "детская кровать в интернет-магазине",
+            "мягкая мебель",
+            "мебель для спальни",
+            "современная детская кровать",
+            "детская кровать с доставкой",
+            "недорогая детская кровать",
+            "стильная детская кровать",
+            "удобная детская кровать",
+            "детская кровать со скидкой",
+            "мебельный интернет-магазин",
+            "заказать детская кровать онлайн",
+            "качественная мягкая мебель"
+          ]
+        },
+        "images": [
+          "images/Sofa/Kids_tables/218/1.png"
+        ],
+        "price": {
+          "current": 1690,
+          "old": null,
+          "discount": null
+        },
+        "availability": "Под заказ",
+        "manufacturing": "До 35 рабочих дней",
+        "popularity": 4
+      },
+      {
+        "kids-tables": [
+          {
+            "width": 90,
+            "length": 200,
+            "height": null,
+            "price": 1690,
+            "lifting_mechanism": [
+              {
+                "available": false,
+                "price": 0
+              },
+              {
+                "available": true,
+                "price": 120
+              }
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "name": "Ткань",
+            "localizedTitles": {
+              "ru": "Ткань"
+            },
+            "type": "Все виды",
+            "color": null
+          },
+          {
+            "name": "Ортопедическое основание",
+            "localizedTitles": {
+              "ru": "Ортопедическое основание и опоры"
+            },
+            "type": "укреплённая металлическая рамка , берёзовые ламели, опоры-металл, пластик,дерево"
+          },
+          {
+            "name": "Каркас",
+            "localizedTitles": {
+              "ru": "Каркас"
+            },
+            "type": "массив, фанера, МДФ"
+          }
+        ],
+        "sleepingPlace": {
+          "width": null,
+          "length": null
+        },
+        "features": [
+          "механизм раскладывания: На выбор"
+        ],
+        "style": "Современный",
+        "color": null,
+        "max_load": null,
+        "country": "Беларусь",
+        "promotion": {
+          "type": null,
+          "text": null,
+          "valid_until": null
+        },
+        "warranty": "18 месяцев",
+        "delivery": {
+          "available": true,
+          "cost": "По Республике Беларусь - бесплатно",
+          "time": "2-5 дней"
+        },
+        "commercial-offer": "Изготавливаем крроватьы и кровати по индивидуальному заказу, по фото или картинке заказчика",
+        "installment_plans": [
+          {
+            "bank": "Альфа-Банк",
+            "installment": {
+              "duration_months": 4,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 36,
+              "interest": "По тарифам банка"
+            }
+          },
+          {
+            "bank": "БеларусБанк",
+            "installment": {
+              "duration_months": 6,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 24,
+              "interest": "По тарифам банка"
+            }
+          }
+        ]
+      },
+      {
+        "id": "219",
+        "category": {
+          "code": "bed",
+          "name": "Кровать"
+        },
+        "name": "детская кровать  19",
+        "slug": "kids-tables-19",
+        "description": "Стильная и удобная детская кровать '19'. Идеально подходит для ежедневного отдыха.",
+        "seo": {
+          "title": "детская кровать  19 - купить в интернет-магазине",
+          "meta_description": "Купить детская кровать  '19' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+          "keywords": [
+            "детская кровать",
+            "купить детскую кровать",
+            "детская кровать купить",
+            "комфортная детская кровать",
+            "детская кровать в интернет-магазине",
+            "мягкая мебель",
+            "мебель для спальни",
+            "современная детская кровать",
+            "детская кровать с доставкой",
+            "недорогая детская кровать",
+            "стильная детская кровать",
+            "удобная детская кровать",
+            "детская кровать со скидкой",
+            "мебельный интернет-магазин",
+            "заказать детская кровать онлайн",
+            "качественная мягкая мебель"
+          ]
+        },
+        "images": [
+          "images/Sofa/Kids_tables/219/1.png"
+        ],
+        "price": {
+          "current": 1550,
+          "old": null,
+          "discount": null
+        },
+        "availability": "Под заказ",
+        "manufacturing": "До 35 рабочих дней",
+        "popularity": 4
+      },
+      {
+        "kids-tables": [
+          {
+            "width": 90,
+            "length": 200,
+            "height": null,
+            "price": 1550,
+            "lifting_mechanism": [
+              {
+                "available": false,
+                "price": 0
+              },
+              {
+                "available": true,
+                "price": 120
+              }
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "name": "Ткань",
+            "localizedTitles": {
+              "ru": "Ткань"
+            },
+            "type": "Все виды",
+            "color": null
+          },
+          {
+            "name": "Ортопедическое основание",
+            "localizedTitles": {
+              "ru": "Ортопедическое основание и опоры"
+            },
+            "type": "укреплённая металлическая рамка , берёзовые ламели, опоры-металл, пластик,дерево"
+          },
+          {
+            "name": "Каркас",
+            "localizedTitles": {
+              "ru": "Каркас"
+            },
+            "type": "массив, фанера, МДФ"
+          }
+        ],
+        "sleepingPlace": {
+          "width": null,
+          "length": null
+        },
+        "features": [
+          "механизм раскладывания: На выбор"
+        ],
+        "style": "Современный",
+        "color": null,
+        "max_load": null,
+        "country": "Беларусь",
+        "promotion": {
+          "type": null,
+          "text": null,
+          "valid_until": null
+        },
+        "warranty": "18 месяцев",
+        "delivery": {
+          "available": true,
+          "cost": "По Республике Беларусь - бесплатно",
+          "time": "2-5 дней"
+        },
+        "commercial-offer": "Изготавливаем крроватьы и кровати по индивидуальному заказу, по фото или картинке заказчика",
+        "installment_plans": [
+          {
+            "bank": "Альфа-Банк",
+            "installment": {
+              "duration_months": 4,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 36,
+              "interest": "По тарифам банка"
+            }
+          },
+          {
+            "bank": "БеларусБанк",
+            "installment": {
+              "duration_months": 6,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 24,
+              "interest": "По тарифам банка"
+            }
+          }
+        ]
+      },
+      {
+        "id": "220",
+        "category": {
+          "code": "bed",
+          "name": "Кровать"
+        },
+        "name": "детская кровать  20",
+        "slug": "kids-tables-20",
+        "description": "Стильная и удобная детская кровать '20'. Идеально подходит для ежедневного отдыха.",
+        "seo": {
+          "title": "детская кровать  20 - купить в интернет-магазине",
+          "meta_description": "Купить детская кровать  '20' по выгодной цене. Отличное качество, доставка по всей РБ. Оформите заказ онлайн!",
+          "keywords": [
+            "детская кровать",
+            "купить детскую кровать",
+            "детская кровать купить",
+            "комфортная детская кровать",
+            "детская кровать в интернет-магазине",
+            "мягкая мебель",
+            "мебель для спальни",
+            "современная детская кровать",
+            "детская кровать с доставкой",
+            "недорогая детская кровать",
+            "стильная детская кровать",
+            "удобная детская кровать",
+            "детская кровать со скидкой",
+            "мебельный интернет-магазин",
+            "заказать детская кровать онлайн",
+            "качественная мягкая мебель"
+          ]
+        },
+        "images": [
+          "images/Sofa/Kids_tables/220/1.png"
+        ],
+        "price": {
+          "current": 1920,
+          "old": null,
+          "discount": null
+        },
+        "availability": "Под заказ",
+        "manufacturing": "До 35 рабочих дней",
+        "popularity": 4
+      },
+      {
+        "kids-tables": [
+          {
+            "width": 90,
+            "length": 200,
+            "height": null,
+            "price": 1920,
+            "lifting_mechanism": [
+              {
+                "available": false,
+                "price": 0
+              },
+              {
+                "available": true,
+                "price": 120
+              }
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "name": "Ткань",
+            "localizedTitles": {
+              "ru": "Ткань"
+            },
+            "type": "Все виды",
+            "color": null
+          },
+          {
+            "name": "Ортопедическое основание",
+            "localizedTitles": {
+              "ru": "Ортопедическое основание и опоры"
+            },
+            "type": "укреплённая металлическая рамка , берёзовые ламели, опоры-металл, пластик,дерево"
+          },
+          {
+            "name": "Каркас",
+            "localizedTitles": {
+              "ru": "Каркас"
+            },
+            "type": "массив, фанера, МДФ"
+          }
+        ],
+        "sleepingPlace": {
+          "width": null,
+          "length": null
+        },
+        "features": [
+          "механизм раскладывания: На выбор"
+        ],
+        "style": "Современный",
+        "color": null,
+        "max_load": null,
+        "country": "Беларусь",
+        "promotion": {
+          "type": null,
+          "text": null,
+          "valid_until": null
+        },
+        "warranty": "18 месяцев",
+        "delivery": {
+          "available": true,
+          "cost": "По Республике Беларусь - бесплатно",
+          "time": "2-5 дней"
+        },
+        "commercial-offer": "Изготавливаем крроватьы и кровати по индивидуальному заказу, по фото или картинке заказчика",
+        "installment_plans": [
+          {
+            "bank": "Альфа-Банк",
+            "installment": {
+              "duration_months": 4,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 36,
+              "interest": "По тарифам банка"
+            }
+          },
+          {
+            "bank": "БеларусБанк",
+            "installment": {
+              "duration_months": 6,
+              "interest": "0%",
+              "additional_fees": "Нет"
+            },
+            "credit": {
+              "duration_months": 24,
+              "interest": "По тарифам банка"
+            }
+          }
+        ]
       }
     ],
     "materials": [
@@ -8845,14 +9530,6 @@
                 "image": "images/Belkraft/Chenille/Palermo/Palermo_212_DSC_9206.jpg"
               },
               {
-                "id": 3,
-                "color": {
-                  "code": "Sunrise_5_DSC_3917",
-                  "name": "Sunrise_5_DSC_3917"
-                },
-                "image": "images/Belkraft/Chenille/Palermo/Sunrise_5_DSC_3917.jpg"
-              },
-              {
                 "id": 4,
                 "color": {
                   "code": "Palermo_213_DSC_1101",
@@ -9002,7 +9679,7 @@
                   "code": "Glory_2DSC_7072",
                   "name": "Glory_2DSC_7072"
                 },
-                "image": "images/Belkraft/Chenille/Glory/Glory_2DSC_7072.JPG.jpg"
+                "image": "images/Belkraft/Chenille/Glory/Glory_2DSC_7072.jpg"
               },
               {
                 "id": 2,
@@ -9474,7 +10151,7 @@
                   "code": "10548676",
                   "name": "10548676"
                 },
-                "image": "images/Mebeltex/Chenille/Aphrodite/10548676.webp"
+                "image": "images/Mebeltex/Chenille/Aphrodite/10548676.jpg.webp"
               },
               {
                 "id": 2,
@@ -11678,7 +12355,7 @@
                   "code": "61594792",
                   "name": "61594792"
                 },
-                "image": "images/Mebeltex/Faux_fur/Bazel/61594792.jpg"
+                "image": "images/Mebeltex/Faux_fur/Bazel/61594792.jpg.jpg"
               },
               {
                 "id": 2,
@@ -11801,7 +12478,7 @@
         "nameLoc": "Искусственная замша",
         "collections": [
           {
-            "name": "Atmosphera ",
+            "name": "Atmosphera",
             "nameLoc": "Атмосфера",
             "filterType": "Mebeltex",
             "type": "Искусственная замша",
@@ -11969,7 +12646,7 @@
             ]
           },
           {
-            "name": "Belgium ",
+            "name": "Belgium",
             "nameLoc": "Belgium",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12097,7 +12774,7 @@
             ]
           },
           {
-            "name": "Brooklyn ",
+            "name": "Brooklyn",
             "nameLoc": "Brooklyn",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12209,7 +12886,7 @@
             ]
           },
           {
-            "name": "Calvados ",
+            "name": "Calvados",
             "nameLoc": "Calvados",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12337,7 +13014,7 @@
             ]
           },
           {
-            "name": "Kalipso ",
+            "name": "Kalipso",
             "nameLoc": "Kalipso",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12441,7 +13118,7 @@
             ]
           },
           {
-            "name": "Leatherser ",
+            "name": "Leatherser",
             "nameLoc": "Leatherser",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12617,7 +13294,7 @@
             ]
           },
           {
-            "name": "Natura ",
+            "name": "Natura",
             "nameLoc": "Natura",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12665,7 +13342,7 @@
             ]
           },
           {
-            "name": "Perfect ",
+            "name": "Perfect",
             "nameLoc": "Perfect",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12793,7 +13470,7 @@
             ]
           },
           {
-            "name": "Vertus ",
+            "name": "Vertus",
             "nameLoc": "Vertus",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -12953,7 +13630,7 @@
             ]
           },
           {
-            "name": "Western ",
+            "name": "Western",
             "nameLoc": "Western",
             "filterType": "Belkraft",
             "type": "Искусственная замша",
@@ -13049,7 +13726,7 @@
             ]
           },
           {
-            "name": "Elixir ",
+            "name": "Elixir",
             "nameLoc": "Эликсир",
             "filterType": "Mebeltex",
             "type": "Искусственная замша",
@@ -13233,7 +13910,7 @@
             ]
           },
           {
-            "name": "Maverick ",
+            "name": "Maverick",
             "nameLoc": "Маверик",
             "filterType": "Mebeltex",
             "type": "Искусственная замша",
@@ -13425,7 +14102,7 @@
             ]
           },
           {
-            "name": "Maxwell ",
+            "name": "Maxwell",
             "nameLoc": "Максвелл",
             "filterType": "Mebeltex",
             "type": "Искусственная замша",
@@ -13633,7 +14310,7 @@
             ]
           },
           {
-            "name": "Nashville ",
+            "name": "Nashville",
             "nameLoc": "Нэшвил",
             "filterType": "Mebeltex",
             "type": "Искусственная замша",
@@ -13761,7 +14438,7 @@
             ]
           },
           {
-            "name": "Sand ",
+            "name": "Sand",
             "nameLoc": "Санд",
             "filterType": "Mebeltex",
             "type": "Искусственная замша",
@@ -17619,6 +18296,54 @@
         "nameLoc": "Жаккард",
         "collections": [
           {
+            "name": "Top",
+            "nameLoc": "Top",
+            "filterType": "Mebeltex",
+            "type": "Жаккард",
+            "availability": "",
+            "technicalSpecifications": {
+              "fabricType": "Жаккард",
+              "abrasionResistance": "30000",
+              "composition": "100% Polyester",
+              "compositionLoc": "Полиэстер - 100%",
+              "origin": "China",
+              "originLoc": "Китай",
+              "collectionName": "Top ",
+              "applicationAreas": [
+                "Диваны",
+                "Кровати",
+                "Кресла",
+                "Стулья"
+              ]
+            },
+            "careInstructions": [
+              "Сухая уборка пылесосом с мягкой щеткой",
+              "Бережная химчистка простыми реагентами",
+              "Беречь от прямых солнечных лучей",
+              "Не ближе 40-60 см от источников тепла",
+              "Не использовать абразивные средства",
+              "Не использовать отбеливатель"
+            ],
+            "variants": [
+              {
+                "id": 1,
+                "color": {
+                  "code": "21977928",
+                  "name": "21977928"
+                },
+                "image": "images/Mebeltex/Jacquard/Top/21977928.jpg.webp"
+              },
+              {
+                "id": 2,
+                "color": {
+                  "code": "38980108",
+                  "name": "38980108"
+                },
+                "image": "images/Mebeltex/Jacquard/Top/38980108.jpg.webp"
+              }
+            ]
+          },
+          {
             "name": "Bristol",
             "nameLoc": "Bristol",
             "filterType": "Mebeltex",
@@ -17895,54 +18620,6 @@
                   "name": "Prestige_com_504"
                 },
                 "image": "images/Belkraft/Jacquard/Prestige/Prestige_com_504.jpg"
-              }
-            ]
-          },
-          {
-            "name": "Top ",
-            "nameLoc": "Топ",
-            "filterType": "Mebeltex",
-            "type": "Жаккард",
-            "availability": "",
-            "technicalSpecifications": {
-              "fabricType": "Жаккард",
-              "abrasionResistance": "30000",
-              "composition": "100% Polyester",
-              "compositionLoc": "Полиэстер - 100%",
-              "origin": "China",
-              "originLoc": "Китай",
-              "collectionName": "Top ",
-              "applicationAreas": [
-                "Диваны",
-                "Кровати",
-                "Кресла",
-                "Стулья"
-              ]
-            },
-            "careInstructions": [
-              "Сухая уборка пылесосом с мягкой щеткой",
-              "Бережная химчистка простыми реагентами",
-              "Беречь от прямых солнечных лучей",
-              "Не ближе 40-60 см от источников тепла",
-              "Не использовать абразивные средства",
-              "Не использовать отбеливатель"
-            ],
-            "variants": [
-              {
-                "id": 1,
-                "color": {
-                  "code": "21977928",
-                  "name": "21977928"
-                },
-                "image": "images/Mebeltex/Jacquard/Top/21977928.jpg.webp"
-              },
-              {
-                "id": 2,
-                "color": {
-                  "code": "38980108",
-                  "name": "38980108"
-                },
-                "image": "images/Mebeltex/Jacquard/Top/38980108.jpg.webp"
               }
             ]
           }
@@ -31606,7 +32283,7 @@
                   "code": "zenit_915",
                   "name": "zenit_915"
                 },
-                "image": "images/Belkraft/Microvelour/Zenit/zenit_915.jpg"
+                "image": "images/Belkraft/Microvelour/Zenit/zenit_915.png"
               }
             ]
           }
