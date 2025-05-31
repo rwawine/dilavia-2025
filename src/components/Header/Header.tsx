@@ -63,6 +63,11 @@ const Header: React.FC<HeaderProps> = ({
     { title: 'Контакты', url: '/contacts' },
   ];
 
+  const handleMobileMenuClick = () => {
+    setIsMenuExpanded(false)
+    setIsNavMenuExpanded(false)
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
@@ -189,13 +194,22 @@ const Header: React.FC<HeaderProps> = ({
           <div className={styles.mobile_menu}>
             {mobileMenuItems.map((item, index) => (
               <div key={index} className={styles.mobile_menu__item}>
-                <Link to={item.url} className={styles.mobile_menu__link}>
+                <Link 
+                  to={item.url} 
+                  className={styles.mobile_menu__link}
+                  onClick={handleMobileMenuClick}
+                >
                   {item.title}
                 </Link>
                 {item.items && (
                   <div className={styles.mobile_menu__submenu}>
                     {item.items.map((subItem, subIndex) => (
-                      <Link key={subIndex} to={subItem.url} className={styles.mobile_menu__sublink}>
+                      <Link 
+                        key={subIndex} 
+                        to={subItem.url} 
+                        className={styles.mobile_menu__sublink}
+                        onClick={handleMobileMenuClick}
+                      >
                         {subItem.title}
                       </Link>
                     ))}

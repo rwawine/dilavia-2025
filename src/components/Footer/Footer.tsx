@@ -73,10 +73,8 @@ export default function Footer() {
                         <div className={styles.block}>
                             <div className={styles.linksGroup}>
                                 <a href="/about" className={styles.link}>О нас</a>
-                                <a href="/production" className={styles.link}>О производстве</a>
-                                <a href="/designers" className={styles.link}>Дизайнерам</a>
-                                <a href="/advantages" className={styles.link}>Преимущества</a>
-                                <a href="/installment" className={styles.link}>Рассрочка</a>
+                                <a href="/delivery" className={styles.link}>Доставка</a>
+                                <a href="/contacts" className={styles.link}>Контакты</a>
                             </div>
                         </div>
                     </div>

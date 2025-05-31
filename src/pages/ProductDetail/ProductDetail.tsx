@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs } from 'swiper/modules'
+import { Helmet } from 'react-helmet-async'
 import { useCartStore } from '../../store/cartStore'
 import { useFavoritesStore } from '../../store/favoritesStore'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
@@ -25,6 +26,12 @@ interface Dimension {
     depth: number | null
     price: number
     additionalOptions: AdditionalOption[]
+}
+
+interface SeoData {
+    title: string
+    metaDescription: string
+    keywords: string[]
 }
 
 interface Product {
@@ -76,6 +83,7 @@ interface Product {
     }>
     availability: string
     manufacturing: string
+    seo: SeoData
 }
 
 export default function ProductDetail() {
@@ -176,7 +184,52 @@ export default function ProductDetail() {
     ]
 
   return (
-        <>        <Breadcrumbs items={breadcrumbs} />
+        <>
+            <Helmet>
+                <title>{product.seo.title}</title>
+                <meta name="description" content={product.seo.metaDescription} />
+                <meta name="keywords" content={product.seo.keywords.join(', ')} />
+                
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="product" />
+                <meta property="og:title" content={product.seo.title} />
+                <meta property="og:description" content={product.seo.metaDescription} />
+                <meta property="og:image" content={`/${product.images[0]}`} />
+                
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={product.seo.title} />
+                <meta name="twitter:description" content={product.seo.metaDescription} />
+                <meta name="twitter:image" content={`/${product.images[0]}`} />
+                
+                {/* Additional SEO meta tags */}
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href={`https://your-domain.com/product/${product.slug}`} />
+                
+                {/* Product structured data */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'Product',
+                        name: product.name,
+                        description: product.description,
+                        image: product.images.map(img => `https://your-domain.com/${img}`),
+                        sku: product.id,
+                        brand: {
+                            '@type': 'Brand',
+                            name: 'Your Brand Name'
+                        },
+                        offers: {
+                            '@type': 'Offer',
+                            price: selectedDimension ? selectedDimension.price + (selectedOption?.price || 0) : 0,
+                            priceCurrency: 'BYN',
+                            availability: product.availability === 'В наличии' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                            url: `https://your-domain.com/product/${product.slug}`
+                        }
+                    })}
+                </script>
+            </Helmet>
+            <Breadcrumbs items={breadcrumbs} />
             <div className={styles.container}>
                 <div className={styles.gallery}>
                     <Swiper
@@ -291,10 +344,10 @@ export default function ProductDetail() {
                             >
                                 <option value="">Выберите опцию</option>
                                 {selectedDimension.additionalOptions.map((opt) => (
-                                    <option key={opt.name} value={opt.name}>
-                                        {opt.name} (+{opt.price} BYN)
-                                    </option>
-                                ))}
+                                        <option key={opt.name} value={opt.name}>
+                                            {opt.name} (+{opt.price} BYN)
+                                        </option>
+                                    ))}
                             </select>
                         </div>
                     )}

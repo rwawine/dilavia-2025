@@ -1,33 +1,35 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 4px;
   padding: 16px 0;
   font-size: 14px;
   color: #666;
 }
 
+.item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.separator {
+  color: #999;
+  margin: 0 4px;
+}
+
 .link {
   color: #666;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
 .link:hover {
   color: #000;
 }
 
-.separator {
-  color: #999;
-}
-
 .current {
   color: #000;
   font-weight: 500;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 } 

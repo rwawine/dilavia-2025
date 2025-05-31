@@ -57,7 +57,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     const isProductInCart = items.some(item => 
       item.id === product.id && 
       (!selectedDimension || (
-        item.dimension?.width === selectedDimension.width && 
+      item.dimension?.width === selectedDimension.width && 
         item.dimension?.length === selectedDimension.length
       )) &&
       item.additionalOption?.name === selectedOption?.name
@@ -164,10 +164,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             >
               <option value="">Выберите опцию</option>
               {selectedDimension.additionalOptions.map((opt) => (
-                <option key={opt.name} value={opt.name}>
-                  {opt.name} (+{opt.price} BYN)
-                </option>
-              ))}
+                  <option key={opt.name} value={opt.name}>
+                    {opt.name} (+{opt.price} BYN)
+                  </option>
+                ))}
             </select>
           </div>
         )}

@@ -76,6 +76,7 @@
 
 .drawer {
   position: fixed;
+  overflow: scroll;
   top: 0;
   left: 0;
   width: 320px;
@@ -137,10 +138,17 @@
 }
 
 .drawerFooter {
-  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: #fff;
+  border-top: 1px solid #eee;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  z-index: 1;
 }
 
 .resetButton,

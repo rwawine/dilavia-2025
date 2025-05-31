@@ -154,3 +154,29 @@ body {
   background-color: #f6f6f6;
   font-family: 'Montserrat', sans-serif;
 }
+
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}

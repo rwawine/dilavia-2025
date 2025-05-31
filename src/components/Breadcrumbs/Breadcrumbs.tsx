@@ -13,12 +13,9 @@ interface BreadcrumbsProps {
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav className={styles.breadcrumbs}>
-      <Link to="/" className={styles.link}>
-        Главная
-      </Link>
       {items.map((item, index) => (
         <div key={item.path} className={styles.item}>
-          <span className={styles.separator}>/</span>
+          {index > 0 && <span className={styles.separator}>/</span>}
           {index === items.length - 1 ? (
             <span className={styles.current}>{item.name}</span>
           ) : (
