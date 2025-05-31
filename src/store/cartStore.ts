@@ -7,7 +7,7 @@ interface CartItem {
   price: number
   quantity: number
   image: string
-  dimension: {
+  dimension?: {
     width: number
     length: number
   }
@@ -40,7 +40,7 @@ export const useCartStore = create<CartStore>()(
       items: [],
       
       addToCart: (item) => {
-        const currentItems = get().items
+        const currentItems = get().items || []
         const existingItem = currentItems.find(
           (i) => i.id === item.id && 
           i.dimension?.width === item.dimension?.width && 
@@ -62,12 +62,14 @@ export const useCartStore = create<CartStore>()(
       },
 
       removeFromCart: (id) => {
-        set({ items: get().items.filter((item) => item.id !== id) })
+        const currentItems = get().items || []
+        set({ items: currentItems.filter((item) => item.id !== id) })
       },
 
       updateQuantity: (id, quantity) => {
+        const currentItems = get().items || []
         set({
-          items: get().items.map((item) =>
+          items: currentItems.map((item) =>
             item.id === id ? { ...item, quantity } : item
           ),
         })
@@ -78,11 +80,13 @@ export const useCartStore = create<CartStore>()(
       },
 
       totalItems: () => {
-        return get().items.reduce((total, item) => total + item.quantity, 0)
+        const currentItems = get().items || []
+        return currentItems.reduce((total, item) => total + item.quantity, 0)
       },
 
       totalPrice: () => {
-        return get().items.reduce(
+        const currentItems = get().items || []
+        return currentItems.reduce(
           (total, item) => total + item.price * item.quantity,
           0
         )

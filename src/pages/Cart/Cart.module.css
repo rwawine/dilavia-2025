@@ -1,18 +1,18 @@
 .container {
   margin: 0 auto;
+  padding: 20px;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 32px;
-  color: #333;
+  margin-bottom: 20px;
 }
 
 .cartContent {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 30px;
 }
 
 .items {
@@ -219,16 +219,126 @@
   height: 28px;
 }
 
-.summary {
-  width: 100%;
-  max-width: 520px;
-  background-color: white;
+/* Стили для формы оформления заказа */
+.checkoutForm {
+  background: #fff;
+  padding: 30px;
   border-radius: 12px;
-  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+  margin-bottom: 24px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.formInput {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s;
+  background: #f8f9fa;
+}
+
+.formInput:focus {
+  border-color: #007bff;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.formInput.inputError {
+  border-color: #dc3545;
+  background: #fff;
+}
+
+.formInput.inputError:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.errorMessage {
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: #fff3f3;
+  border-radius: 6px;
+  border: 1px solid #ffcdd2;
+}
+
+.contactMethods,
+.paymentMethods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.contactMethod,
+.paymentMethod {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8f9fa;
+}
+
+.contactMethod:hover,
+.paymentMethod:hover {
+  border-color: #007bff;
+  background: #fff;
+}
+
+.contactMethod.selected,
+.paymentMethod.selected {
+  border-color: #007bff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.contactMethod input[type="radio"],
+.paymentMethod input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.contactMethod span,
+.paymentMethod span {
+  font-size: 15px;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.contactMethod.selected span,
+.paymentMethod.selected span {
+  color: #007bff;
+  font-weight: 500;
+}
+
+/* Стили для итоговой информации */
+.summary {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: fit-content;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
-  top: 24px;
+  top: 20px;
 }
 
 .summary h2 {
@@ -241,58 +351,64 @@
 .summaryCategory {
   font-size: 16px;
   font-weight: 500;
-  margin: 16px 0 12px;
-  color: #555;
+  margin: 20px 0 12px;
+  color: #333;
 }
 
 .summaryItem {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #f0f0f0;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
 }
 
 .summaryItemInfo {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  margin-right: 16px;
 }
 
 .summaryItemName {
-  font-size: 14px;
+  display: block;
+  font-size: 15px;
   font-weight: 500;
+  margin-bottom: 6px;
   color: #333;
   text-decoration: none;
 }
 
 .summaryItemName:hover {
-  color: #000;
-  text-decoration: underline;
+  color: #007bff;
 }
 
 .summaryItemDetail {
-  font-size: 12px;
+  display: block;
+  font-size: 13px;
   color: #666;
   margin-top: 4px;
 }
 
 .summaryItemPrice {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   color: #333;
-  margin-left: 16px;
+  white-space: nowrap;
 }
 
 .summaryRow {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 16px;
-  font-size: 16px;
-  color: #333;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  font-size: 15px;
 }
 
 .discount {
-  color: #52c41a;
+  color: #dc3545;
+  font-weight: 500;
 }
 
 .totalPrice {
@@ -301,36 +417,7 @@
   color: #333;
 }
 
-.checkoutButton {
-  width: 100%;
-  padding: 14px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 24px;
-}
-
-.checkoutButton:hover {
-  background-color: #000;
-}
-
-.continueShopping {
-  display: block;
-  text-align: center;
-  color: #666;
-  margin-top: 16px;
-  text-decoration: none;
-}
-
-.continueShopping:hover {
-  color: #333;
-  text-decoration: underline;
-}
-
+/* Стили для промокода */
 .promoCode {
   margin-bottom: 20px;
 }
@@ -338,202 +425,209 @@
 .promoForm {
   display: flex;
   gap: 8px;
+  margin-bottom: 8px;
 }
 
 .promoInput {
   flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #d9d9d9;
-  border-radius: 6px;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   font-size: 14px;
+  transition: all 0.2s;
+}
+
+.promoInput:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 .promoButton {
-  padding: 0 16px;
-  background-color: #f5f5f5;
-  border: 1px solid #d9d9d9;
-  border-radius: 6px;
+  padding: 12px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .promoButton:hover {
-  background-color: #e6e6e6;
-}
-
-.promoError {
-  color: #ff4d4f;
-  font-size: 12px;
-  margin-top: 8px;
+  background: #0056b3;
 }
 
 .appliedPromo {
   display: flex;
   align-items: center;
-  background-color: #f6ffed;
-  border: 1px solid #b7eb8f;
-  border-radius: 6px;
-  padding: 8px 12px;
-  color: #52c41a;
+  justify-content: space-between;
+  padding: 12px;
+  background: #f8f9fa;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.appliedPromo span {
   font-size: 14px;
+  color: #333;
 }
 
 .removePromo {
   background: none;
   border: none;
-  color: #52c41a;
-  margin-left: auto;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.empty {
-  padding: 48px;
-  text-align: center;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-}
-
-.empty p {
-  font-size: 18px;
   color: #666;
-  margin-bottom: 24px;
-}
-
-.loading, .error {
-  text-align: center;
-  padding: 48px;
   font-size: 18px;
-  color: #666;
-}
-
-.errorMessage {
-  color: #ff4d4f;
-  margin-bottom: 16px;
-}
-
-.checkoutForm {
-  flex: 1;
-  max-width: 600px;
-}
-
-.formGroup {
-  margin-bottom: 24px;
-}
-
-.formLabel {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 16px;
-  color: #333;
-}
-
-.formInput {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #d9d9d9;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.contactMethods, .paymentMethods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.contactMethod, .paymentMethod {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   cursor: pointer;
+  padding: 0 4px;
 }
 
+.removePromo:hover {
+  color: #dc3545;
+}
+
+.promoError {
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Стили для кнопок */
 .submitButton {
   width: 100%;
-  padding: 14px;
-  background-color: #333;
-  color: white;
+  padding: 16px;
+  background: #007bff;
+  color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s;
   margin-top: 24px;
 }
 
 .submitButton:hover {
-  background-color: #000;
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
 
 .submitButton:disabled {
-  background-color: #d9d9d9;
+  background: #ccc;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-.successMessage {
-  padding: 48px;
+.checkoutButton {
+  width: 100%;
+  padding: 16px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 24px;
+}
+
+.checkoutButton:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.continueShopping {
+  display: block;
   text-align: center;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 16px;
+  color: #666;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.continueShopping:hover {
+  color: #333;
+}
+
+/* Стили для пустой корзины */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.empty p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Стили для успешного оформления заказа */
+.successMessage {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .successMessage p {
-  font-size: 18px;
-  color: #52c41a;
-  margin-bottom: 24px;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
 }
 
 .backButton {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #333;
-  color: white;
-  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
   text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s;
 }
 
 .backButton:hover {
-  background-color: #000;
+  background: #0056b3;
 }
 
+/* Адаптивность */
 @media (max-width: 768px) {
   .cartContent {
-    flex-direction: column;
-  }
-  
-  .summary {
-    width: 100%;
-    margin-top: 24px;
-  }
-  
-  .cartItem {
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  .itemImage {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .itemInfo {
-    width: calc(100% - 76px);
-  }
-  
-  .itemPrice, .quantityControl, .itemTotal {
-    margin: 0;
-  }
-  
-  .removeButton {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+    grid-template-columns: 1fr;
   }
 
-  .contactMethods, .paymentMethods {
+  .contactMethods,
+  .paymentMethods {
+    grid-template-columns: 1fr;
+  }
+
+  .formInput,
+  .contactMethod,
+  .paymentMethod {
+    padding: 12px;
+  }
+
+  .summary {
+    position: static;
+    margin-top: 20px;
+  }
+
+  .promoForm {
     flex-direction: column;
-    gap: 12px;
+  }
+
+  .promoButton {
+    width: 100%;
   }
 } 

@@ -41,7 +41,9 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const [selectedDimension, setSelectedDimension] = useState<Dimension>(product.dimensions[0])
+  const [selectedDimension, setSelectedDimension] = useState<Dimension | null>(
+    product.dimensions && product.dimensions.length > 0 ? product.dimensions[0] : null
+  )
   const [selectedOption, setSelectedOption] = useState<AdditionalOption | null>(null)
   const [isInCart, setIsInCart] = useState(false)
   const [isFavorite, setIsFavorite] = useState(false)
@@ -54,8 +56,10 @@ export default function ProductCard({ product }: ProductCardProps) {
   useEffect(() => {
     const isProductInCart = items.some(item => 
       item.id === product.id && 
-      item.dimension?.width === selectedDimension.width && 
-      item.dimension?.length === selectedDimension.length &&
+      (!selectedDimension || (
+        item.dimension?.width === selectedDimension.width && 
+        item.dimension?.length === selectedDimension.length
+      )) &&
       item.additionalOption?.name === selectedOption?.name
     )
     
@@ -75,10 +79,12 @@ export default function ProductCard({ product }: ProductCardProps) {
     addToCart({
       id: product.id,
       name: product.name,
-      price: selectedDimension.price + (selectedOption?.price || 0),
+      price: selectedDimension ? 
+        selectedDimension.price + (selectedOption?.price || 0) : 
+        product.price.current,
       quantity: 1,
       image: product.images[0],
-      dimension: selectedDimension,
+      dimension: selectedDimension || undefined,
       additionalOption: selectedOption || undefined,
       configuration: {
         material: product.material,
@@ -89,8 +95,8 @@ export default function ProductCard({ product }: ProductCardProps) {
     })
   }
 
-  const hasMultipleDimensions = product.dimensions.length > 1
-  const hasAdditionalOptions = selectedDimension.additionalOptions.some(opt => opt.available)
+  const hasMultipleDimensions = product.dimensions && product.dimensions.length > 1
+  const hasAdditionalOptions = selectedDimension?.additionalOptions && selectedDimension.additionalOptions.length > 0
 
   return (
     <div className={styles.card}>
@@ -123,7 +129,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.name}
         </Link>
 
-        {hasMultipleDimensions && (
+        {hasMultipleDimensions && selectedDimension && (
           <div className={styles.dimensions}>
             <select 
               value={`${selectedDimension.width}x${selectedDimension.length}`}
@@ -146,7 +152,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
 
-        {hasAdditionalOptions && (
+        {hasAdditionalOptions && selectedDimension && (
           <div className={styles.additionalOptions}>
             <select
               value={selectedOption?.name || ''}
@@ -157,20 +163,20 @@ export default function ProductCard({ product }: ProductCardProps) {
               className={styles.optionSelect}
             >
               <option value="">Выберите опцию</option>
-              {selectedDimension.additionalOptions
-                .filter(opt => opt.available)
-                .map((opt) => (
-                  <option key={opt.name} value={opt.name}>
-                    {opt.name} (+{opt.price} BYN)
-                  </option>
-                ))}
+              {selectedDimension.additionalOptions.map((opt) => (
+                <option key={opt.name} value={opt.name}>
+                  {opt.name} (+{opt.price} BYN)
+                </option>
+              ))}
             </select>
           </div>
         )}
 
         <div className={styles.priceContainer}>
           <div className={styles.price}>
-            {selectedDimension.price + (selectedOption?.price || 0)} BYN
+            {selectedDimension ? 
+              selectedDimension.price + (selectedOption?.price || 0) : 
+              product.price.current} BYN
             {product.price.old && (
               <span className={styles.oldPrice}>{product.price.old} BYN</span>
             )}

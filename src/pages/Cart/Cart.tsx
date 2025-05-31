@@ -4,13 +4,33 @@ import { useCartStore } from '../../store/cartStore'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 import styles from './Cart.module.css'
 
-interface CheckoutForm {
-  fullName: string
+interface FormData {
+  name: string
   phone: string
   address: string
   contactMethod: 'phone' | 'telegram' | 'whatsapp' | 'viber'
   paymentMethod: 'card' | 'cash'
+  promoCode?: string
+  telegram?: string
+  whatsapp?: string
+  viber?: string
 }
+
+interface FormErrors {
+  name?: string
+  phone?: string
+  address?: string
+  contactMethod?: string
+  paymentMethod?: string
+  submit?: string
+  telegram?: string
+  whatsapp?: string
+  viber?: string
+}
+
+const TELEGRAM_BOT_TOKEN = '8125343989:AAEoT5kUFJaziP1OIF9cDvuB_mcqY2oKuPQ'
+const TELEGRAM_CHAT_ID = '-4894017525'
+const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`
 
 export default function Cart() {
   const { items, removeFromCart, updateQuantity, clearCart } = useCartStore()
@@ -19,14 +39,16 @@ export default function Cart() {
   const [appliedPromo, setAppliedPromo] = useState<string | null>(null)
   const [promoError, setPromoError] = useState<string | null>(null)
   const [isCheckout, setIsCheckout] = useState(false)
-  const [formData, setFormData] = useState<CheckoutForm>({
-    fullName: '',
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
     phone: '',
     address: '',
     contactMethod: 'phone',
     paymentMethod: 'card'
   })
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [formErrors, setFormErrors] = useState<FormErrors>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleQuantityChange = (id: string, quantity: number) => {
     if (quantity < 1) return
@@ -53,29 +75,197 @@ export default function Cart() {
     setAppliedPromo(null)
   }
 
+  const formatPhoneNumber = (value: string) => {
+    // Удаляем все нецифровые символы
+    const numbers = value.replace(/\D/g, '')
+    
+    // Если пустая строка, возвращаем пустую строку
+    if (!numbers) return ''
+    
+    // Ограничиваем до 12 цифр
+    const limitedNumbers = numbers.slice(0, 12)
+    
+    // Форматируем номер
+    if (limitedNumbers.length <= 2) {
+      return `+375 ${limitedNumbers}`
+    } else if (limitedNumbers.length <= 4) {
+      return `+375 ${limitedNumbers.slice(0, 2)} ${limitedNumbers.slice(2)}`
+    } else if (limitedNumbers.length <= 7) {
+      return `+375 ${limitedNumbers.slice(0, 2)} ${limitedNumbers.slice(2, 4)}-${limitedNumbers.slice(4)}`
+    } else {
+      return `+375 ${limitedNumbers.slice(0, 2)} ${limitedNumbers.slice(2, 4)}-${limitedNumbers.slice(4, 6)}-${limitedNumbers.slice(6)}`
+    }
+  }
+
+  const validateForm = () => {
+    const newErrors: FormErrors = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Пожалуйста, введите ваше имя'
+    } else if (formData.name.length < 2) {
+      newErrors.name = 'Имя должно содержать минимум 2 символа'
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Пожалуйста, введите номер телефона'
+    }
+
+    if (!formData.address.trim()) {
+      newErrors.address = 'Пожалуйста, введите адрес доставки'
+    } else if (formData.address.length < 10) {
+      newErrors.address = 'Адрес должен содержать минимум 10 символов'
+    }
+
+    // Валидация дополнительных полей для способов связи
+    switch (formData.contactMethod) {
+      case 'telegram':
+        if (!formData.telegram?.trim()) {
+          newErrors.telegram = 'Пожалуйста, введите ваш Telegram'
+        } else if (!formData.telegram.startsWith('@')) {
+          newErrors.telegram = 'Telegram должен начинаться с @'
+        }
+        break
+      case 'whatsapp':
+        if (!formData.whatsapp?.trim()) {
+          newErrors.whatsapp = 'Пожалуйста, введите ваш WhatsApp'
+        }
+        break
+      case 'viber':
+        if (!formData.viber?.trim()) {
+          newErrors.viber = 'Пожалуйста, введите ваш Viber'
+        }
+        break
+    }
+
+    setFormErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    
+    if (name === 'contactMethod') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value as FormData['contactMethod'],
+        // Очищаем неиспользуемые поля при смене способа связи
+        telegram: value === 'telegram' ? prev.telegram : '',
+        whatsapp: value === 'whatsapp' ? prev.whatsapp : '',
+        viber: value === 'viber' ? prev.viber : ''
+      }))
+      setFormErrors({})
+      return
+    }
+    
+    if (name === 'phone') {
+      // Ограничиваем ввод только цифрами
+      const numbers = value.replace(/\D/g, '')
+      setFormData(prev => ({
+        ...prev,
+        phone: numbers
+      }))
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }))
+    }
+    
+    // Очищаем ошибку при изменении поля
+    if (formErrors[name as keyof FormErrors]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }))
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    setSubmitStatus('idle')
+    setIsSubmitting(true)
+    setFormErrors({})
+
+    if (!validateForm()) {
+      setIsSubmitting(false)
+      return
+    }
 
     try {
-      // Здесь будет отправка данных на сервер
-      await new Promise(resolve => setTimeout(resolve, 1500)) // Имитация запроса
-      
-      setSubmitStatus('success')
+      // Формируем информацию о способе связи
+      let contactInfo = `Способ связи: ${formData.contactMethod}`
+      switch (formData.contactMethod) {
+        case 'telegram':
+          contactInfo += ` (${formData.telegram})`
+          break
+        case 'whatsapp':
+          contactInfo += ` (${formData.whatsapp})`
+          break
+        case 'viber':
+          contactInfo += ` (${formData.viber})`
+          break
+      }
+
+      const message = `
+🛍 Новый заказ!
+
+👤 Контактная информация:
+Имя: ${formData.name}
+Телефон: ${formData.phone}
+Адрес: ${formData.address}
+${contactInfo}
+Способ оплаты: ${formData.paymentMethod}
+${formData.promoCode ? `Промокод: ${formData.promoCode}` : ''}
+
+📦 Заказанные товары:
+${items.map(item => `
+• ${item.name}
+  Количество: ${item.quantity}
+  ${item.dimension ? `Размер: ${item.dimension.width}x${item.dimension.length}` : ''}
+  ${item.additionalOption ? `Доп. опция: ${item.additionalOption.name}` : ''}
+  Цена: ${item.price} BYN
+  Итого: ${item.price * item.quantity} BYN`).join('\n')}
+
+${fabricItems.length > 0 ? `
+🧵 Ткани:
+${fabricItems.map(item => `
+• ${item.name}
+  Цвет: ${item.configuration?.color}`).join('\n')}` : ''}
+
+💰 Итого:
+Подытог: ${totalPrice} BYN
+${discount > 0 ? `Скидка: -${discount} BYN` : ''}
+Итоговая сумма: ${totalPrice - discount} BYN
+`
+
+      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+          parse_mode: 'HTML',
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!data.ok) {
+        throw new Error(data.description || 'Failed to send message to Telegram')
+      }
+
       clearCart()
+      setSubmitStatus('success')
     } catch (error) {
+      console.error('Error sending order:', error)
+      setFormErrors(prev => ({ 
+        ...prev, 
+        submit: 'Не удалось отправить заказ. Пожалуйста, попробуйте позже.' 
+      }))
       setSubmitStatus('error')
     } finally {
-      setIsLoading(false)
+      setIsSubmitting(false)
     }
   }
 
@@ -133,16 +323,17 @@ export default function Cart() {
         <div className={styles.cartContent}>
           <form onSubmit={handleSubmit} className={styles.checkoutForm}>
             <div className={styles.formGroup}>
-              <label htmlFor="fullName" className={styles.formLabel}>ФИО</label>
+              <label htmlFor="name" className={styles.formLabel}>ФИО</label>
               <input
                 type="text"
-                id="fullName"
-                name="fullName"
-                value={formData.fullName}
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={handleFormChange}
-                required
-                className={styles.formInput}
+                className={`${styles.formInput} ${formErrors.name ? styles.inputError : ''}`}
+                placeholder="Введите ваше полное имя"
               />
+              {formErrors.name && <div className={styles.errorMessage}>{formErrors.name}</div>}
             </div>
 
             <div className={styles.formGroup}>
@@ -153,9 +344,20 @@ export default function Cart() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleFormChange}
-                required
-                className={styles.formInput}
+                onKeyDown={(e) => {
+                  // Разрешаем: backspace, delete, tab, escape, enter, стрелки
+                  if ([8, 9, 13, 27, 37, 38, 39, 40, 46].includes(e.keyCode)) {
+                    return
+                  }
+                  // Разрешаем только цифры
+                  if (!/^\d$/.test(e.key)) {
+                    e.preventDefault()
+                  }
+                }}
+                className={`${styles.formInput} ${formErrors.phone ? styles.inputError : ''}`}
+                placeholder="Введите номер телефона"
               />
+              {formErrors.phone && <div className={styles.errorMessage}>{formErrors.phone}</div>}
             </div>
 
             <div className={styles.formGroup}>
@@ -166,15 +368,16 @@ export default function Cart() {
                 name="address"
                 value={formData.address}
                 onChange={handleFormChange}
-                required
-                className={styles.formInput}
+                className={`${styles.formInput} ${formErrors.address ? styles.inputError : ''}`}
+                placeholder="Введите полный адрес доставки"
               />
+              {formErrors.address && <div className={styles.errorMessage}>{formErrors.address}</div>}
             </div>
 
             <div className={styles.formGroup}>
               <label className={styles.formLabel}>Удобный способ связи</label>
               <div className={styles.contactMethods}>
-                <label className={styles.contactMethod}>
+                <label className={`${styles.contactMethod} ${formData.contactMethod === 'phone' ? styles.selected : ''}`}>
                   <input
                     type="radio"
                     name="contactMethod"
@@ -184,7 +387,7 @@ export default function Cart() {
                   />
                   <span>По телефону</span>
                 </label>
-                <label className={styles.contactMethod}>
+                <label className={`${styles.contactMethod} ${formData.contactMethod === 'telegram' ? styles.selected : ''}`}>
                   <input
                     type="radio"
                     name="contactMethod"
@@ -194,7 +397,7 @@ export default function Cart() {
                   />
                   <span>Telegram</span>
                 </label>
-                <label className={styles.contactMethod}>
+                <label className={`${styles.contactMethod} ${formData.contactMethod === 'whatsapp' ? styles.selected : ''}`}>
                   <input
                     type="radio"
                     name="contactMethod"
@@ -204,7 +407,7 @@ export default function Cart() {
                   />
                   <span>WhatsApp</span>
                 </label>
-                <label className={styles.contactMethod}>
+                <label className={`${styles.contactMethod} ${formData.contactMethod === 'viber' ? styles.selected : ''}`}>
                   <input
                     type="radio"
                     name="contactMethod"
@@ -217,10 +420,58 @@ export default function Cart() {
               </div>
             </div>
 
+            {formData.contactMethod === 'telegram' && (
+              <div className={styles.formGroup}>
+                <label htmlFor="telegram" className={styles.formLabel}>Telegram</label>
+                <input
+                  type="text"
+                  id="telegram"
+                  name="telegram"
+                  value={formData.telegram || ''}
+                  onChange={handleFormChange}
+                  className={`${styles.formInput} ${formErrors.telegram ? styles.inputError : ''}`}
+                  placeholder="@username"
+                />
+                {formErrors.telegram && <div className={styles.errorMessage}>{formErrors.telegram}</div>}
+              </div>
+            )}
+
+            {formData.contactMethod === 'whatsapp' && (
+              <div className={styles.formGroup}>
+                <label htmlFor="whatsapp" className={styles.formLabel}>WhatsApp</label>
+                <input
+                  type="text"
+                  id="whatsapp"
+                  name="whatsapp"
+                  value={formData.whatsapp || ''}
+                  onChange={handleFormChange}
+                  className={`${styles.formInput} ${formErrors.whatsapp ? styles.inputError : ''}`}
+                  placeholder="Введите ваш WhatsApp"
+                />
+                {formErrors.whatsapp && <div className={styles.errorMessage}>{formErrors.whatsapp}</div>}
+              </div>
+            )}
+
+            {formData.contactMethod === 'viber' && (
+              <div className={styles.formGroup}>
+                <label htmlFor="viber" className={styles.formLabel}>Viber</label>
+                <input
+                  type="text"
+                  id="viber"
+                  name="viber"
+                  value={formData.viber || ''}
+                  onChange={handleFormChange}
+                  className={`${styles.formInput} ${formErrors.viber ? styles.inputError : ''}`}
+                  placeholder="Введите ваш Viber"
+                />
+                {formErrors.viber && <div className={styles.errorMessage}>{formErrors.viber}</div>}
+              </div>
+            )}
+
             <div className={styles.formGroup}>
               <label className={styles.formLabel}>Способ оплаты</label>
               <div className={styles.paymentMethods}>
-                <label className={styles.paymentMethod}>
+                <label className={`${styles.paymentMethod} ${formData.paymentMethod === 'card' ? styles.selected : ''}`}>
                   <input
                     type="radio"
                     name="paymentMethod"
@@ -230,7 +481,7 @@ export default function Cart() {
                   />
                   <span>Банковской картой</span>
                 </label>
-                <label className={styles.paymentMethod}>
+                <label className={`${styles.paymentMethod} ${formData.paymentMethod === 'cash' ? styles.selected : ''}`}>
                   <input
                     type="radio"
                     name="paymentMethod"
@@ -243,18 +494,18 @@ export default function Cart() {
               </div>
             </div>
 
-            {submitStatus === 'error' && (
+            {formErrors.submit && (
               <div className={styles.errorMessage}>
-                Произошла ошибка при оформлении заказа. Пожалуйста, попробуйте еще раз.
+                {formErrors.submit}
               </div>
             )}
 
             <button 
               type="submit"
               className={styles.submitButton}
-              disabled={isLoading}
+              disabled={isSubmitting}
             >
-              {isLoading ? 'Отправка...' : 'Отправить заказ'}
+              {isSubmitting ? 'Отправка...' : 'Отправить заказ'}
             </button>
           </form>
 

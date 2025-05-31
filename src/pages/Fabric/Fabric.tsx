@@ -118,10 +118,6 @@ export default function Fabric() {
                     ? material.collections[0].variants[0].image 
                     : `/${material.collections[0].variants[0].image}`} 
                   alt={material.nameLoc}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.src = '/images/placeholder.png'
-                  }}
                 />
               )}
             </div>

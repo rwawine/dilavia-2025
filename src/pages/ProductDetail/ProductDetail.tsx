@@ -278,7 +278,7 @@ export default function ProductDetail() {
                         </div>
                     )}
 
-                    {selectedDimension?.additionalOptions.some(opt => opt.available) && (
+                    {selectedDimension?.additionalOptions && selectedDimension.additionalOptions.length > 0 && (
                         <div className={styles.additionalOptions}>
                             <label>Дополнительные опции:</label>
                             <select
@@ -290,13 +290,11 @@ export default function ProductDetail() {
                                 className={styles.optionSelect}
                             >
                                 <option value="">Выберите опцию</option>
-                                {selectedDimension.additionalOptions
-                                    .filter(opt => opt.available)
-                                    .map((opt) => (
-                                        <option key={opt.name} value={opt.name}>
-                                            {opt.name} (+{opt.price} BYN)
-                                        </option>
-                                    ))}
+                                {selectedDimension.additionalOptions.map((opt) => (
+                                    <option key={opt.name} value={opt.name}>
+                                        {opt.name} (+{opt.price} BYN)
+                                    </option>
+                                ))}
                             </select>
                         </div>
                     )}

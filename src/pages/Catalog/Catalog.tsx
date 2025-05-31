@@ -177,7 +177,9 @@ export default function Catalog() {
   const filteredAndSortedProducts = products
     .filter(product => {
       try {
-        const price = product.dimensions[0].price
+        // Проверяем наличие размеров и цены
+        const hasDimensions = product.dimensions && product.dimensions.length > 0
+        const price = hasDimensions ? product.dimensions[0].price : product.price?.current || 0
         const matchesPrice = price >= priceRange.min && price <= priceRange.max
         const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category.code)
         const matchesSubcategory = !subcategoryParam || (product.subcategory?.code === subcategoryParam)
@@ -189,11 +191,14 @@ export default function Catalog() {
     })
     .sort((a, b) => {
       try {
+        const priceA = a.dimensions && a.dimensions.length > 0 ? a.dimensions[0].price : a.price?.current || 0
+        const priceB = b.dimensions && b.dimensions.length > 0 ? b.dimensions[0].price : b.price?.current || 0
+        
         switch (sortBy) {
           case 'price-asc':
-            return a.dimensions[0].price - b.dimensions[0].price
+            return priceA - priceB
           case 'price-desc':
-            return b.dimensions[0].price - a.dimensions[0].price
+            return priceB - priceA
           default:
             return b.popularity - a.popularity
         }
@@ -206,7 +211,7 @@ export default function Catalog() {
   const getFilteredCount = () => {
     try {
       return products.filter(product => {
-        const price = product.dimensions[0].price
+        const price = product.dimensions && product.dimensions.length > 0 ? product.dimensions[0].price : product.price?.current || 0
         const matchesPrice = price >= tempPriceRange.min && price <= tempPriceRange.max
         const matchesCategory = tempSelectedCategories.length === 0 || tempSelectedCategories.includes(product.category.code)
         return matchesPrice && matchesCategory
