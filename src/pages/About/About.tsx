@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { SEO } from '../../components/SEO/SEO'
 import styles from './About.module.css'
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 
 interface FAQItem {
   question: string
@@ -71,7 +72,11 @@ export default function About() {
         keywords="Dilavia, о компании, мебель, производство"
       />
       <div className={styles.container}>
-        <h1 className={styles.title}>О компании</h1>
+        <Breadcrumbs items={[
+          { name: 'Главная', path: '/' },
+          { name: 'О нас', path: '/about' },
+        ]} />
+        <h1 className={styles.title}>О нас</h1>
         
         <div className={styles.content}>
           <div className={styles.mainInfo}>

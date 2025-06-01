@@ -59,6 +59,7 @@ const Header: React.FC<HeaderProps> = ({
     { title: 'Каталог', url: '/catalog', items: navMenuItems },
     { title: 'Доставка и оплата', url: '/delivery' },
     { title: 'Ткани', url: '/fabric' },
+    { title: 'Отзывы', url: '/reviews' },
     { title: 'О нас', url: '/about' },
     { title: 'Контакты', url: '/contacts' },
   ];
@@ -110,6 +111,7 @@ const Header: React.FC<HeaderProps> = ({
             </div>
             <Link className={styles.header__link} to="/delivery">Доставка и оплата</Link>
             <Link className={styles.header__link} to="/fabric">Ткани</Link>
+            <Link className={styles.header__link} to="/reviews">Отзывы</Link>
             <Link className={styles.header__link} to="/about">О нас</Link>
             <Link className={styles.header__link} to="/contacts">Контакты</Link>
           </nav>

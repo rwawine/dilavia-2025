@@ -1,7 +1,5 @@
 .container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
 }
 
 .title {
@@ -52,17 +50,19 @@
 .infoLabel {
   font-size: 14px;
   color: #666;
+  margin-bottom: 4px;
 }
 
 .infoValue {
   font-size: 16px;
+  font-weight: 500;
   color: #333;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .infoValue:hover {
-  color: #000;
+  color: orange;
 }
 
 .mapContainer {

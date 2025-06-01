@@ -5,6 +5,8 @@ import Benefits from './Benefits/Benefits';
 import SliderBenefits from './SliderBenefits/SliderBenefits';
 import Copirate from './Copirate/Copirate';
 import SizeVisual from './SizeVisual/SizeVisual';
+import ReviewsGroup from '../../components/ReviewsGroup/ReviewsGroup';
+
 export default function Home() {
     return (
         <>
@@ -19,6 +21,7 @@ export default function Home() {
             <SliderBenefits />
             <Copirate />
             <SizeVisual />
+            <ReviewsGroup />
         </>
     );
 }

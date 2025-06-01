@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SEO } from '../../components/SEO/SEO'
 import styles from './Contacts.module.css'
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 
 interface FormData {
   name: string
@@ -54,6 +55,10 @@ function Contacts() {
         keywords="Dilavia, контакты, связь, обратная связь"
       />
       <div className={styles.container}>
+        <Breadcrumbs items={[
+          { name: 'Главная', path: '/' },
+          { name: 'Контакты', path: '/contacts' },
+        ]} />
         <h1 className={styles.title}>Контакты</h1>
 
         <div className={styles.content}>

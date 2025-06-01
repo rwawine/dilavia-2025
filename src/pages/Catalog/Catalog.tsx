@@ -175,20 +175,27 @@ export default function Catalog() {
   const handleApplyFilters = () => {
     setFilters(tempFilters)
     
-    if (tempFilters.selectedCategories.length > 0) {
-      const category = tempFilters.selectedCategories[0]
-      const subcategory = tempFilters.selectedSubcategories[0]
-      if (subcategory && tempFilters.selectedSubcategories.length === 1) {
-        navigate(`/catalog/${category}/${subcategory}`)
+    // If we have a subcategory selected, we need to check if it belongs to any of the selected categories
+    if (tempFilters.selectedSubcategories.length === 1) {
+      const selectedSubcategory = tempFilters.selectedSubcategories[0]
+      // Find the category that this subcategory belongs to
+      const matchingProduct = products.find(p => p.subcategory?.code === selectedSubcategory)
+      
+      if (matchingProduct) {
+        // Navigate to the specific category/subcategory combination
+        navigate(`/catalog/${matchingProduct.category.code}/${selectedSubcategory}`)
       } else {
-        // Если выбрано несколько категорий или подкатегорий, переходим в общий каталог
-        if (tempFilters.selectedCategories.length > 1 || tempFilters.selectedSubcategories.length > 1) {
-          navigate('/catalog')
-        } else {
-          navigate(`/catalog/${category}`)
-        }
+        // If no matching product found, go to catalog root
+        navigate('/catalog')
       }
+    } else if (tempFilters.selectedCategories.length === 1) {
+      // If only one category is selected, navigate to that category
+      navigate(`/catalog/${tempFilters.selectedCategories[0]}`)
+    } else if (tempFilters.selectedCategories.length > 1) {
+      // If multiple categories are selected, go to catalog root
+      navigate('/catalog')
     } else {
+      // If no categories selected, go to catalog root
       navigate('/catalog')
     }
     

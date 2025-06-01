@@ -14,6 +14,7 @@ import Catalog from './pages/Catalog/Catalog';
 import FabricDetail from './pages/Fabric/FabricDetail';
 import FabricMaterial from './pages/Fabric/FabricMaterial';
 import FabricSlug from './pages/Fabric/FabricSlug';
+import Review from './pages/Review/Review';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/catalog/:category" element={<Catalog />} />
             <Route path="/catalog/:category/:subcategory" element={<Catalog />} />
             <Route path="/product/:slug" element={<FabricSlug />} />
+            <Route path="/reviews" element={<Review />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

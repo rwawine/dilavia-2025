@@ -75,6 +75,7 @@ export default function Footer() {
                                 <a href="/about" className={styles.link}>О нас</a>
                                 <a href="/delivery" className={styles.link}>Доставка</a>
                                 <a href="/contacts" className={styles.link}>Контакты</a>
+                                <a href="/reviews" className={styles.link}>Отзывы</a>
                             </div>
                         </div>
                     </div>

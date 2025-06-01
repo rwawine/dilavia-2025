@@ -97,6 +97,7 @@ export default function Fabric() {
   return (
     <div className={styles.container}>
       <Breadcrumbs items={[
+        { name: 'Главная', path: '/' },
         { name: 'Ткани', path: '/fabric' },
       ]} />
       <h1 className={styles.title}>Ткани</h1>

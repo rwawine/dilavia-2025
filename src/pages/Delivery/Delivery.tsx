@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './Delivery.module.css'
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 
 interface FAQItem {
   question: string
@@ -56,7 +57,7 @@ function Delivery() {
           prevElement.style.height = '0px'
         }
       }
-      
+
       // Открываем новый элемент
       const element = answerRefs.current[index]
       if (element) {
@@ -68,17 +69,21 @@ function Delivery() {
 
   return (
     <div className={styles.container}>
+      <Breadcrumbs items={[
+        { name: 'Главная', path: '/' },
+        { name: 'Доставка и оплата', path: '/delivery' },
+      ]} />
       <h1 className={styles.title}>Доставка и оплата</h1>
-      
+
       <div className={styles.faqSection}>
         <h2 className={styles.sectionTitle}>Часто задаваемые вопросы</h2>
         <div className={styles.faqList}>
           {faqItems.map((item, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`${styles.faqItem} ${openIndex === index ? styles.faqItemOpen : ''}`}
             >
-              <button 
+              <button
                 className={styles.faqQuestion}
                 onClick={() => toggleItem(index)}
                 aria-expanded={openIndex === index}
@@ -86,7 +91,7 @@ function Delivery() {
                 {item.question}
                 <span className={styles.arrow} />
               </button>
-              <div 
+              <div
                 ref={el => answerRefs.current[index] = el}
                 className={styles.faqAnswer}
                 style={{ height: '0px' }}
