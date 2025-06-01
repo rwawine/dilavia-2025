@@ -1,6 +1,20 @@
 RewriteEngine On
 RewriteBase /
+
+# Отключаем кэширование HTML файлов
+<FilesMatch "\.html$">
+    Header set Cache-Control "no-store"
+</FilesMatch>
+
+# Правила для статических файлов
+RewriteRule ^assets/ - [L]
+RewriteRule ^images/ - [L]
+RewriteRule ^data/ - [L]
+
+# Правило для index.html
 RewriteRule ^index\.html$ - [L]
+
+# Все остальные запросы перенаправляем на index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
