@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './Delivery.module.css'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
+import { SEO } from '../../components/SEO/SEO'
 
 interface FAQItem {
   question: string
@@ -68,41 +69,48 @@ function Delivery() {
   }
 
   return (
-    <div className={styles.container}>
-      <Breadcrumbs items={[
-        { name: 'Главная', path: '/' },
-        { name: 'Доставка и оплата', path: '/delivery' },
-      ]} />
-      <h1 className={styles.title}>Доставка и оплата</h1>
+    <>
+      <SEO
+        title="Доставка и оплата | DILAVIA - Интернет-магазин мебели"
+        description="Условия доставки и оплаты в интернет-магазине DILAVIA. Бесплатная доставка по Минску от 1000 BYN. Доставка по всей Беларуси. Гарантия 24 месяца. Возврат в течение 14 дней."
+        keywords="доставка мебели, оплата мебели, гарантия на мебель, возврат мебели, DILAVIA, доставка по Беларуси, бесплатная доставка"
+      />
+      <div className={styles.container}>
+        <Breadcrumbs items={[
+          { name: 'Главная', path: '/' },
+          { name: 'Доставка и оплата', path: '/delivery' },
+        ]} />
+        <h1 className={styles.title}>Доставка и оплата</h1>
 
-      <div className={styles.faqSection}>
-        <h2 className={styles.sectionTitle}>Часто задаваемые вопросы</h2>
-        <div className={styles.faqList}>
-          {faqItems.map((item, index) => (
-            <div
-              key={index}
-              className={`${styles.faqItem} ${openIndex === index ? styles.faqItemOpen : ''}`}
-            >
-              <button
-                className={styles.faqQuestion}
-                onClick={() => toggleItem(index)}
-                aria-expanded={openIndex === index}
-              >
-                {item.question}
-                <span className={styles.arrow} />
-              </button>
+        <div className={styles.faqSection}>
+          <h2 className={styles.sectionTitle}>Часто задаваемые вопросы</h2>
+          <div className={styles.faqList}>
+            {faqItems.map((item, index) => (
               <div
-                ref={el => answerRefs.current[index] = el}
-                className={styles.faqAnswer}
-                style={{ height: '0px' }}
+                key={index}
+                className={`${styles.faqItem} ${openIndex === index ? styles.faqItemOpen : ''}`}
               >
-                <p>{item.answer}</p>
+                <button
+                  className={styles.faqQuestion}
+                  onClick={() => toggleItem(index)}
+                  aria-expanded={openIndex === index}
+                >
+                  {item.question}
+                  <span className={styles.arrow} />
+                </button>
+                <div
+                  ref={el => answerRefs.current[index] = el}
+                  className={styles.faqAnswer}
+                  style={{ height: '0px' }}
+                >
+                  <p>{item.answer}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

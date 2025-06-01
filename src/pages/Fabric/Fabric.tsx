@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { SEO } from '../../components/SEO/SEO'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 import styles from './Fabric.module.css'
 
@@ -95,37 +96,44 @@ export default function Fabric() {
   }
 
   return (
-    <div className={styles.container}>
-      <Breadcrumbs items={[
-        { name: 'Главная', path: '/' },
-        { name: 'Ткани', path: '/fabric' },
-      ]} />
-      <h1 className={styles.title}>Ткани</h1>
-      <p className={styles.description}>
-        Все ткани предоставляются бесплатно при заказе мебели
-      </p>
-      
-      <div className={styles.materialsGrid}>
-        {materials.map((material) => (
-          <div 
-            key={material.name} 
-            className={styles.materialCard}
-            onClick={() => handleMaterialClick(material.name)}
-          >
-            <div className={styles.materialImage}>
-              {material.collections[0]?.variants[0]?.image && (
-                <img 
-                  src={material.collections[0].variants[0].image.startsWith('/') 
-                    ? material.collections[0].variants[0].image 
-                    : `/${material.collections[0].variants[0].image}`} 
-                  alt={material.nameLoc}
-                />
-              )}
+    <>
+      <SEO
+        title="Ткани для мебели | DILAVIA - Интернет-магазин мебели"
+        description="Широкий выбор качественных тканей для мебели. Бесплатная ткань при заказе мебели. Натуральные и синтетические ткани различных цветов и фактур. Доставка по всей Беларуси."
+        keywords="ткани для мебели, обивка для мебели, мебельные ткани, выбор ткани, DILAVIA, бесплатная ткань, натуральные ткани, синтетические ткани"
+      />
+      <div className={styles.container}>
+        <Breadcrumbs items={[
+          { name: 'Главная', path: '/' },
+          { name: 'Ткани', path: '/fabric' },
+        ]} />
+        <h1 className={styles.title}>Ткани</h1>
+        <p className={styles.description}>
+          Все ткани предоставляются бесплатно при заказе мебели
+        </p>
+        
+        <div className={styles.materialsGrid}>
+          {materials.map((material) => (
+            <div 
+              key={material.name} 
+              className={styles.materialCard}
+              onClick={() => handleMaterialClick(material.name)}
+            >
+              <div className={styles.materialImage}>
+                {material.collections[0]?.variants[0]?.image && (
+                  <img 
+                    src={material.collections[0].variants[0].image.startsWith('/') 
+                      ? material.collections[0].variants[0].image 
+                      : `/${material.collections[0].variants[0].image}`} 
+                    alt={material.nameLoc}
+                  />
+                )}
+              </div>
+              <h2 className={styles.materialName}>{material.nameLoc}</h2>
             </div>
-            <h2 className={styles.materialName}>{material.nameLoc}</h2>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   )
 }

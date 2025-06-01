@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import styles from './Catalog.module.css'
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs"
+import { SEO } from '../../components/SEO/SEO'
 
 interface Product {
   id: string
@@ -358,146 +359,153 @@ export default function Catalog() {
   }
 
   return (
-    <div className={styles.container}>
-      <Breadcrumbs items={[
-        { name: 'Главная', path: '/' },
-        { name: 'Каталог', path: '/catalog' },
-        ...(categoryParam ? [{ 
-          name: products.find(p => p.category.code === categoryParam)?.category.name || '', 
-          path: `/catalog/${categoryParam}` 
-        }] : []),
-        ...(subcategoryParam ? [{ 
-          name: products.find(p => p.subcategory?.code === subcategoryParam)?.subcategory?.name || '', 
-          path: `/catalog/${categoryParam}/${subcategoryParam}` 
-        }] : [])
-      ].filter((item, index, self) => 
-        // Удаляем дубликаты по path и пустые имена
-        item.name && 
-        index === self.findIndex(t => t.path === item.path)
-      )} />
-      <div className={styles.header}>
-        <h1 className={styles.title}>Каталог</h1>
-        <div className={styles.controls}>
-          <button className={styles.filterButton} onClick={handleFilterOpen}>
-            Фильтры
-          </button>
-          <select 
-            className={styles.sortSelect}
-            value={sortBy}
-            onChange={(e) => handleSort(e.target.value as SortOption)}
-          >
-            <option value="popularity">По популярности</option>
-            <option value="price-asc">По возрастанию цены</option>
-            <option value="price-desc">По убыванию цены</option>
-          </select>
+    <>
+      <SEO 
+        title={`${categoryParam ? products.find(p => p.category.code === categoryParam)?.category.name + ' - ' : ''}Каталог мебели | DILAVIA`}
+        description={`Широкий выбор качественной мебели в интернет-магазине DILAVIA. ${categoryParam ? products.find(p => p.category.code === categoryParam)?.category.name + '. ' : ''}Бесплатная доставка по Минску от 1000 BYN. Гарантия 24 месяца. Рассрочка.`}
+        keywords={`мебель, ${categoryParam ? products.find(p => p.category.code === categoryParam)?.category.name + ', ' : ''}каталог мебели, купить мебель, DILAVIA, мебельный магазин, доставка мебели`}
+      />
+      <div className={styles.container}>
+        <Breadcrumbs items={[
+          { name: 'Главная', path: '/' },
+          { name: 'Каталог', path: '/catalog' },
+          ...(categoryParam ? [{ 
+            name: products.find(p => p.category.code === categoryParam)?.category.name || '', 
+            path: `/catalog/${categoryParam}` 
+          }] : []),
+          ...(subcategoryParam ? [{ 
+            name: products.find(p => p.subcategory?.code === subcategoryParam)?.subcategory?.name || '', 
+            path: `/catalog/${categoryParam}/${subcategoryParam}` 
+          }] : [])
+        ].filter((item, index, self) => 
+          // Удаляем дубликаты по path и пустые имена
+          item.name && 
+          index === self.findIndex(t => t.path === item.path)
+        )} />
+        <div className={styles.header}>
+          <h1 className={styles.title}>Каталог</h1>
+          <div className={styles.controls}>
+            <button className={styles.filterButton} onClick={handleFilterOpen}>
+              Фильтры
+            </button>
+            <select 
+              className={styles.sortSelect}
+              value={sortBy}
+              onChange={(e) => handleSort(e.target.value as SortOption)}
+            >
+              <option value="popularity">По популярности</option>
+              <option value="price-asc">По возрастанию цены</option>
+              <option value="price-desc">По убыванию цены</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.products}>
-        {filteredAndSortedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+        <div className={styles.products}>
+          {filteredAndSortedProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
 
-      {isFilterOpen && (
-        <div className={styles.overlay} onClick={handleFilterClose}>
-          <div className={styles.drawer} onClick={e => e.stopPropagation()}>
-            <div className={styles.drawerHeader}>
-              <h2>Фильтры</h2>
-              <button className={styles.closeButton} onClick={handleFilterClose}>×</button>
-            </div>
-            
-            <div className={styles.filterSection}>
-              <h3>Тип товара</h3>
-              <div className={styles.categoryFilters}>
-                {uniqueCategories.map(categoryCode => {
-                  const category = products.find(p => p.category.code === categoryCode)?.category
-                  return (
-                    <label key={categoryCode} className={styles.categoryLabel}>
-                      <input
-                        type="checkbox"
-                        checked={tempFilters.selectedCategories.includes(categoryCode)}
-                        onChange={() => handleCategoryChange(categoryCode)}
-                      />
-                      {category?.name}
-                    </label>
-                  )
-                })}
+        {isFilterOpen && (
+          <div className={styles.overlay} onClick={handleFilterClose}>
+            <div className={styles.drawer} onClick={e => e.stopPropagation()}>
+              <div className={styles.drawerHeader}>
+                <h2>Фильтры</h2>
+                <button className={styles.closeButton} onClick={handleFilterClose}>×</button>
               </div>
-            </div>
-
-            {tempFilters.selectedCategories.length > 0 && filteredUniqueSubcategories.length > 0 && (
+              
               <div className={styles.filterSection}>
-                <h3>Подкатегория</h3>
+                <h3>Тип товара</h3>
                 <div className={styles.categoryFilters}>
-                  {filteredUniqueSubcategories.map(subcategoryCode => {
-                    const subcategory = products.find(p => p.subcategory?.code === subcategoryCode)?.subcategory
+                  {uniqueCategories.map(categoryCode => {
+                    const category = products.find(p => p.category.code === categoryCode)?.category
                     return (
-                      <label key={subcategoryCode} className={styles.categoryLabel}>
+                      <label key={categoryCode} className={styles.categoryLabel}>
                         <input
                           type="checkbox"
-                          checked={tempFilters.selectedSubcategories.includes(subcategoryCode)}
-                          onChange={() => handleSubcategoryChange(subcategoryCode)}
+                          checked={tempFilters.selectedCategories.includes(categoryCode)}
+                          onChange={() => handleCategoryChange(categoryCode)}
                         />
-                        {subcategory?.name}
+                        {category?.name}
                       </label>
                     )
                   })}
                 </div>
               </div>
-            )}
 
-            <div className={styles.filterSection}>
-              <h3>Цена</h3>
-              <div className={styles.priceInputs}>
-                <input
-                  type="number"
-                  value={tempFilters.priceRange.min}
-                  onChange={(e) => setTempFilters(prev => ({ 
-                    ...prev, 
-                    priceRange: { ...prev.priceRange, min: Number(e.target.value) }
-                  }))}
-                  placeholder="От"
-                />
-                <input
-                  type="number"
-                  value={tempFilters.priceRange.max}
-                  onChange={(e) => setTempFilters(prev => ({ 
-                    ...prev, 
-                    priceRange: { ...prev.priceRange, max: Number(e.target.value) }
-                  }))}
-                  placeholder="До"
-                />
+              {tempFilters.selectedCategories.length > 0 && filteredUniqueSubcategories.length > 0 && (
+                <div className={styles.filterSection}>
+                  <h3>Подкатегория</h3>
+                  <div className={styles.categoryFilters}>
+                    {filteredUniqueSubcategories.map(subcategoryCode => {
+                      const subcategory = products.find(p => p.subcategory?.code === subcategoryCode)?.subcategory
+                      return (
+                        <label key={subcategoryCode} className={styles.categoryLabel}>
+                          <input
+                            type="checkbox"
+                            checked={tempFilters.selectedSubcategories.includes(subcategoryCode)}
+                            onChange={() => handleSubcategoryChange(subcategoryCode)}
+                          />
+                          {subcategory?.name}
+                        </label>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              <div className={styles.filterSection}>
+                <h3>Цена</h3>
+                <div className={styles.priceInputs}>
+                  <input
+                    type="number"
+                    value={tempFilters.priceRange.min}
+                    onChange={(e) => setTempFilters(prev => ({ 
+                      ...prev, 
+                      priceRange: { ...prev.priceRange, min: Number(e.target.value) }
+                    }))}
+                    placeholder="От"
+                  />
+                  <input
+                    type="number"
+                    value={tempFilters.priceRange.max}
+                    onChange={(e) => setTempFilters(prev => ({ 
+                      ...prev, 
+                      priceRange: { ...prev.priceRange, max: Number(e.target.value) }
+                    }))}
+                    placeholder="До"
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className={styles.filterSection}>
-              <h3>Цвет</h3>
-              <div className={styles.categoryFilters}>
-                {filteredUniqueColors.map(color => (
-                  <label key={color} className={styles.categoryLabel}>
-                    <input
-                      type="checkbox"
-                      checked={tempFilters.selectedColors.includes(color)}
-                      onChange={() => handleMultiSelectChange(color, 'selectedColors')}
-                    />
-                    {color}
-                  </label>
-                ))}
+              <div className={styles.filterSection}>
+                <h3>Цвет</h3>
+                <div className={styles.categoryFilters}>
+                  {filteredUniqueColors.map(color => (
+                    <label key={color} className={styles.categoryLabel}>
+                      <input
+                        type="checkbox"
+                        checked={tempFilters.selectedColors.includes(color)}
+                        onChange={() => handleMultiSelectChange(color, 'selectedColors')}
+                      />
+                      {color}
+                    </label>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className={styles.drawerFooter}>
-              <button className={styles.applyButton} onClick={handleApplyFilters}>
-                Применить ({getFilteredCount()})
-              </button>
-              <button className={styles.resetButton} onClick={handleResetFilters}>
-                Сбросить
-              </button>
+              <div className={styles.drawerFooter}>
+                <button className={styles.applyButton} onClick={handleApplyFilters}>
+                  Применить ({getFilteredCount()})
+                </button>
+                <button className={styles.resetButton} onClick={handleResetFilters}>
+                  Сбросить
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   )
 } 

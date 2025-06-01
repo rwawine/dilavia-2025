@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { SEO } from '../../components/SEO/SEO'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 import { Filter, X } from 'lucide-react'
 import styles from './FabricMaterial.module.css'
@@ -144,111 +145,118 @@ export default function FabricMaterial() {
   }
 
   return (
-    <div className={styles.container}>
-      <Breadcrumbs items={[
-        { name: 'Ткани', path: '/fabric' },
-        { name: material.nameLoc, path: `/fabric/${material.name}` }
-      ]} />
-      
-      <div className={styles.header}>
-        <h1 className={styles.title}>{material.nameLoc}</h1>
-        <button className={styles.filterButton} onClick={toggleFilter}>
-          <Filter size={20} />
-          <span>Фильтры</span>
-        </button>
-      </div>
-      
-      <div className={`${styles.filterDrawer} ${isFilterOpen ? styles.open : ''}`}>
-        <div className={styles.filterHeader}>
-          <h3 className={styles.filterTitle}>Фильтры</h3>
-          <button className={styles.closeButton} onClick={toggleFilter}>
-            <X size={20} />
+    <>
+      <SEO
+        title={`${material?.nameLoc} - Ткани для мебели | DILAVIA`}
+        description={`Коллекции тканей ${material?.nameLoc} от DILAVIA. Широкий выбор цветов и фактур. Бесплатная ткань при заказе мебели. Доставка по всей Беларуси.`}
+        keywords={`${material?.nameLoc}, ткани для мебели, обивка для мебели, мебельные ткани, выбор ткани, DILAVIA, бесплатная ткань`}
+      />
+      <div className={styles.container}>
+        <Breadcrumbs items={[
+          { name: 'Ткани', path: '/fabric' },
+          { name: material.nameLoc, path: `/fabric/${material.name}` }
+        ]} />
+        
+        <div className={styles.header}>
+          <h1 className={styles.title}>{material.nameLoc}</h1>
+          <button className={styles.filterButton} onClick={toggleFilter}>
+            <Filter size={20} />
+            <span>Фильтры</span>
           </button>
         </div>
         
-        {uniqueFilters.fabricTypes.length > 0 && (
-          <div className={styles.filterSection}>
-            <h4 className={styles.filterSectionTitle}>Тип ткани</h4>
-            <div className={styles.filterOptions}>
-              {uniqueFilters.fabricTypes.map(type => (
-                <button 
-                  key={type}
-                  className={`${styles.filterOption} ${filters.fabricType === type ? styles.active : ''}`}
-                  onClick={() => handleFilterChange('fabricType', type)}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
+        <div className={`${styles.filterDrawer} ${isFilterOpen ? styles.open : ''}`}>
+          <div className={styles.filterHeader}>
+            <h3 className={styles.filterTitle}>Фильтры</h3>
+            <button className={styles.closeButton} onClick={toggleFilter}>
+              <X size={20} />
+            </button>
           </div>
-        )}
-        
-        {uniqueFilters.origins.length > 0 && (
-          <div className={styles.filterSection}>
-            <h4 className={styles.filterSectionTitle}>Страна</h4>
-            <div className={styles.filterOptions}>
-              {uniqueFilters.origins.map(origin => (
-                <button 
-                  key={origin}
-                  className={`${styles.filterOption} ${filters.origin === origin ? styles.active : ''}`}
-                  onClick={() => handleFilterChange('origin', origin)}
-                >
-                  {origin}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-        
-        {uniqueFilters.applicationAreas.length > 0 && (
-          <div className={styles.filterSection}>
-            <h4 className={styles.filterSectionTitle}>Применение</h4>
-            <div className={styles.filterOptions}>
-              {uniqueFilters.applicationAreas.map(area => (
-                <button 
-                  key={area}
-                  className={`${styles.filterOption} ${filters.applicationArea === area ? styles.active : ''}`}
-                  onClick={() => handleFilterChange('applicationArea', area)}
-                >
-                  {area}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-        
-        <button className={styles.resetButton} onClick={resetFilters}>
-          Сбросить фильтры
-        </button>
-      </div>
-      
-      {isFilterOpen && <div className={styles.overlay} onClick={toggleFilter}></div>}
-      
-      <div className={styles.collectionsGrid}>
-        {filteredCollections?.length === 0 ? (
-          <div className={styles.noResults}>
-            Нет коллекций, соответствующих выбранным фильтрам
-          </div>
-        ) : (
-          filteredCollections?.map(collection => (
-            <div 
-              key={collection.name} 
-              className={styles.collectionCard}
-              onClick={() => handleCollectionClick(collection.name)}
-            >
-              <div className={styles.collectionImage}>
-                {collection.variants[0]?.image && (
-                  <img 
-                    src={`/${collection.variants[0].image}`} 
-                    alt={collection.nameLoc} 
-                  />
-                )}
+          
+          {uniqueFilters.fabricTypes.length > 0 && (
+            <div className={styles.filterSection}>
+              <h4 className={styles.filterSectionTitle}>Тип ткани</h4>
+              <div className={styles.filterOptions}>
+                {uniqueFilters.fabricTypes.map(type => (
+                  <button 
+                    key={type}
+                    className={`${styles.filterOption} ${filters.fabricType === type ? styles.active : ''}`}
+                    onClick={() => handleFilterChange('fabricType', type)}
+                  >
+                    {type}
+                  </button>
+                ))}
               </div>
-              <h2 className={styles.collectionName}>{collection.nameLoc}</h2>
             </div>
-          ))
-        )}
+          )}
+          
+          {uniqueFilters.origins.length > 0 && (
+            <div className={styles.filterSection}>
+              <h4 className={styles.filterSectionTitle}>Страна</h4>
+              <div className={styles.filterOptions}>
+                {uniqueFilters.origins.map(origin => (
+                  <button 
+                    key={origin}
+                    className={`${styles.filterOption} ${filters.origin === origin ? styles.active : ''}`}
+                    onClick={() => handleFilterChange('origin', origin)}
+                  >
+                    {origin}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {uniqueFilters.applicationAreas.length > 0 && (
+            <div className={styles.filterSection}>
+              <h4 className={styles.filterSectionTitle}>Применение</h4>
+              <div className={styles.filterOptions}>
+                {uniqueFilters.applicationAreas.map(area => (
+                  <button 
+                    key={area}
+                    className={`${styles.filterOption} ${filters.applicationArea === area ? styles.active : ''}`}
+                    onClick={() => handleFilterChange('applicationArea', area)}
+                  >
+                    {area}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          <button className={styles.resetButton} onClick={resetFilters}>
+            Сбросить фильтры
+          </button>
+        </div>
+        
+        {isFilterOpen && <div className={styles.overlay} onClick={toggleFilter}></div>}
+        
+        <div className={styles.collectionsGrid}>
+          {filteredCollections?.length === 0 ? (
+            <div className={styles.noResults}>
+              Нет коллекций, соответствующих выбранным фильтрам
+            </div>
+          ) : (
+            filteredCollections?.map(collection => (
+              <div 
+                key={collection.name} 
+                className={styles.collectionCard}
+                onClick={() => handleCollectionClick(collection.name)}
+              >
+                <div className={styles.collectionImage}>
+                  {collection.variants[0]?.image && (
+                    <img 
+                      src={`/${collection.variants[0].image}`} 
+                      alt={collection.nameLoc} 
+                    />
+                  )}
+                </div>
+                <h2 className={styles.collectionName}>{collection.nameLoc}</h2>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 } 

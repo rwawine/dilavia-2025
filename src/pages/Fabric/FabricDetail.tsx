@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { SEO } from '../../components/SEO/SEO'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 import { useFavoritesStore } from '../../store/favoritesStore'
 import { useCartStore } from '../../store/cartStore'
@@ -155,98 +156,105 @@ function FabricDetail() {
   }
 
   return (
-    <div className={styles.container}>
-      <Breadcrumbs items={[
-        { name: 'Ткани', path: '/fabric' },
-        { name: material.nameLoc, path: `/fabric/${material.name}` },
-        { name: selectedCollection.nameLoc, path: `/fabric/${material.name}/${selectedCollection.name}` }
-      ]} />
-      
-      <div className={styles.content}>
-        <div className={styles.imageSection}>
-          <div className={styles.mainImage}>
-            <img 
-              src={`/${selectedCollection.variants[selectedVariant]?.image}`} 
-              alt={selectedCollection.variants[selectedVariant]?.color.name} 
-            />
-          </div>
-          <div className={styles.thumbnails}>
-            {selectedCollection.variants.map((variant, index) => (
-              <div 
-                key={variant.id} 
-                className={`${styles.thumbnail} ${index === selectedVariant ? styles.active : ''}`}
-                onClick={() => handleVariantClick(index)}
-              >
-                <img 
-                  src={`/${variant.image}`} 
-                  alt={variant.color.name} 
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+    <>
+      <SEO
+        title={`${selectedCollection?.nameLoc} - ${material?.nameLoc} | DILAVIA`}
+        description={`Коллекция тканей ${selectedCollection?.nameLoc} из материала ${material?.nameLoc}. ${selectedCollection?.technicalSpecifications.compositionLoc}. Износостойкость ${selectedCollection?.technicalSpecifications.abrasionResistance} циклов. Бесплатная ткань при заказе мебели.`}
+        keywords={`${selectedCollection?.nameLoc}, ${material?.nameLoc}, ткани для мебели, обивка для мебели, ${selectedCollection?.technicalSpecifications.fabricType}, ${selectedCollection?.technicalSpecifications.originLoc}, DILAVIA`}
+      />
+      <div className={styles.container}>
+        <Breadcrumbs items={[
+          { name: 'Ткани', path: '/fabric' },
+          { name: material.nameLoc, path: `/fabric/${material.name}` },
+          { name: selectedCollection.nameLoc, path: `/fabric/${material.name}/${selectedCollection.name}` }
+        ]} />
         
-        <div className={styles.detailsSection}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>{selectedCollection.nameLoc}</h1>
-            <p className={styles.subtitle}>{material.nameLoc}</p>
-          </div>
-          
-          <div className={styles.colorInfo}>
-            <span className={styles.colorLabel}>Цвет:</span>
-            <span className={styles.colorName}>{selectedCollection.variants[selectedVariant]?.color.name}</span>
-          </div>
-          
-          <div className={styles.specifications}>
-            <h2 className={styles.sectionTitle}>Характеристики</h2>
-            <div className={styles.specsGrid}>
-              <div className={styles.specItem}>
-                <span className={styles.specLabel}>Тип ткани</span>
-                <span className={styles.specValue}>{selectedCollection.technicalSpecifications.fabricType}</span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specLabel}>Износостойкость</span>
-                <span className={styles.specValue}>{selectedCollection.technicalSpecifications.abrasionResistance} циклов</span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specLabel}>Состав</span>
-                <span className={styles.specValue}>{selectedCollection.technicalSpecifications.compositionLoc}</span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specLabel}>Страна</span>
-                <span className={styles.specValue}>{selectedCollection.technicalSpecifications.originLoc}</span>
-              </div>
+        <div className={styles.content}>
+          <div className={styles.imageSection}>
+            <div className={styles.mainImage}>
+              <img 
+                src={`/${selectedCollection.variants[selectedVariant]?.image}`} 
+                alt={selectedCollection.variants[selectedVariant]?.color.name} 
+              />
+            </div>
+            <div className={styles.thumbnails}>
+              {selectedCollection.variants.map((variant, index) => (
+                <div 
+                  key={variant.id} 
+                  className={`${styles.thumbnail} ${index === selectedVariant ? styles.active : ''}`}
+                  onClick={() => handleVariantClick(index)}
+                >
+                  <img 
+                    src={`/${variant.image}`} 
+                    alt={variant.color.name} 
+                  />
+                </div>
+              ))}
             </div>
           </div>
-
-          <div className={styles.application}>
-            <h2 className={styles.sectionTitle}>Применение</h2>
-            <ul className={styles.applicationList}>
-              {selectedCollection.technicalSpecifications.applicationAreas.map((area, index) => (
-                <li key={index} className={styles.applicationItem}>{area}</li>
-              ))}
-            </ul>
-          </div>
           
-          <div className={styles.actions}>
-            <button 
-              className={`${styles.cartButton} ${isInCart ? styles.inCart : ''}`}
-              onClick={isInCart ? handleGoToCart : handleAddToCart}
-            >
-              <ShoppingCart size={20} />
-              <span>{isInCart ? 'Перейти в корзину' : 'Добавить в корзину'}</span>
-            </button>
-            <button 
-              className={`${styles.favoriteButton} ${isInFavorites ? styles.active : ''}`}
-              onClick={handleFavoriteClick}
-            >
-              <Heart size={20} />
-              <span>{isInFavorites ? 'В избранном' : 'Добавить в избранное'}</span>
-            </button>
+          <div className={styles.detailsSection}>
+            <div className={styles.header}>
+              <h1 className={styles.title}>{selectedCollection.nameLoc}</h1>
+              <p className={styles.subtitle}>{material.nameLoc}</p>
+            </div>
+            
+            <div className={styles.colorInfo}>
+              <span className={styles.colorLabel}>Цвет:</span>
+              <span className={styles.colorName}>{selectedCollection.variants[selectedVariant]?.color.name}</span>
+            </div>
+            
+            <div className={styles.specifications}>
+              <h2 className={styles.sectionTitle}>Характеристики</h2>
+              <div className={styles.specsGrid}>
+                <div className={styles.specItem}>
+                  <span className={styles.specLabel}>Тип ткани</span>
+                  <span className={styles.specValue}>{selectedCollection.technicalSpecifications.fabricType}</span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specLabel}>Износостойкость</span>
+                  <span className={styles.specValue}>{selectedCollection.technicalSpecifications.abrasionResistance} циклов</span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specLabel}>Состав</span>
+                  <span className={styles.specValue}>{selectedCollection.technicalSpecifications.compositionLoc}</span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specLabel}>Страна</span>
+                  <span className={styles.specValue}>{selectedCollection.technicalSpecifications.originLoc}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.application}>
+              <h2 className={styles.sectionTitle}>Применение</h2>
+              <ul className={styles.applicationList}>
+                {selectedCollection.technicalSpecifications.applicationAreas.map((area, index) => (
+                  <li key={index} className={styles.applicationItem}>{area}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className={styles.actions}>
+              <button 
+                className={`${styles.cartButton} ${isInCart ? styles.inCart : ''}`}
+                onClick={isInCart ? handleGoToCart : handleAddToCart}
+              >
+                <ShoppingCart size={20} />
+                <span>{isInCart ? 'Перейти в корзину' : 'Добавить в корзину'}</span>
+              </button>
+              <button 
+                className={`${styles.favoriteButton} ${isInFavorites ? styles.active : ''}`}
+                onClick={handleFavoriteClick}
+              >
+                <Heart size={20} />
+                <span>{isInFavorites ? 'В избранном' : 'Добавить в избранное'}</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 } 
 

@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, query, orderBy, onSnapshot, QuerySnapshot, DocumentData } from 'firebase/firestore'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation } from 'swiper/modules'
-import { useRouter } from 'next/router'
+import { useNavigate } from 'react-router-dom'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import styles from './ReviewsGroup.module.css'
@@ -35,7 +35,7 @@ interface Review {
 export default function ReviewsGroup() {
     const [reviews, setReviews] = useState<Review[]>([])
     const swiperRef = useRef<any>(null)
-    const router = useRouter()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const q = query(commentsRef, orderBy('timestamp', 'desc'))
@@ -67,7 +67,7 @@ export default function ReviewsGroup() {
     }
 
     const handleReadMore = () => {
-        router.push('/reviews')
+        navigate('/reviews')
     }
 
     return (

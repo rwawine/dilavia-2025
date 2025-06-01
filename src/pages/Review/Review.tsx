@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, QuerySnapshot, DocumentData } from 'firebase/firestore'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
@@ -137,90 +138,101 @@ export default function Review() {
   }
 
   return (
-    <div className={styles.pageContainer}>
-      <Breadcrumbs items={[
-        { name: 'Главная', path: '/' },
-        { name: 'Отзывы', path: '/reviews' }
-      ]} />
-      <h1 className={styles.pageTitle}>Отзывы</h1>
-      <div className={styles.contentWrapper}>
-        <div className={styles.reviewForm}>
-          <h2 className={styles.formTitle}>Оставьте отзыв</h2>
-          <form onSubmit={handleSubmit}>
-            <div className={styles.inputGroup}>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value)
-                  setErrors(prev => ({ ...prev, username: '' }))
-                }}
-                placeholder="Ваше имя"
-                className={`${styles.input} ${errors.username ? styles.inputError : ''}`}
-              />
-              {errors.username && <span className={styles.errorMessage}>{errors.username}</span>}
-            </div>
-            <div className={styles.inputGroup}>
-              <textarea
-                value={comment}
-                onChange={(e) => {
-                  setComment(e.target.value)
-                  setErrors(prev => ({ ...prev, comment: '' }))
-                }}
-                placeholder="Ваш отзыв"
-                className={`${styles.textarea} ${errors.comment ? styles.inputError : ''}`}
-              />
-              {errors.comment && <span className={styles.errorMessage}>{errors.comment}</span>}
-            </div>
-            <div className={styles.ratingSection}>
-              <span className={styles.ratingLabel}>Ваша оценка:</span>
-              {renderStars(rating, true)}
-              {errors.rating && <span className={styles.errorMessage}>{errors.rating}</span>}
-            </div>
-            <button 
-              type="submit" 
-              disabled={isSubmitting}
-              className={styles.submitButton}
-            >
-              {isSubmitting ? 'Отправка...' : 'Отправить отзыв'}
-            </button>
-          </form>
-        </div>
-
-        <div className={styles.reviewsSection}>
-          <div className={styles.reviewsHeader}>
-            <h2 className={styles.reviewsTitle}>Все отзывы</h2>
-            <span className={styles.reviewsCount}>
-              {reviews.length} {(() => {
-                const count = reviews.length;
-                const lastDigit = count % 10;
-                const lastTwoDigits = count % 100;
-                
-                if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return 'отзывов';
-                if (lastDigit === 1) return 'отзыв';
-                if (lastDigit >= 2 && lastDigit <= 4) return 'отзыва';
-                return 'отзывов';
-              })()}
-            </span>
-          </div>
-          <div className={styles.reviews}>
-            {reviews.map((review) => (
-              <div key={review.id} className={styles.review}>
-                <div className={styles.reviewHeader}>
-                  <div className={styles.reviewUserInfo}>
-                    <strong className={styles.username}>{review.username}</strong>
-                    {renderStars(review.rating)}
-                  </div>
-                  <span className={styles.date}>
-                    {review.timestamp?.toDate().toLocaleString('ru-RU') || 'Неизвестно'}
-                  </span>
-                </div>
-                <p className={styles.comment}>{review.comment}</p>
+    <>
+      <Helmet>
+        <title>Отзывы клиентов | DILAVIA</title>
+        <meta name="description" content="Читайте отзывы наших клиентов о качестве продукции и сервисе DILAVIA. Оставьте свой отзыв и поделитесь впечатлениями о нашем магазине." />
+        <meta name="keywords" content="отзывы, DILAVIA, клиенты, мнения, рейтинг, качество" />
+        <meta property="og:title" content="Отзывы клиентов | DILAVIA" />
+        <meta property="og:description" content="Читайте отзывы наших клиентов о качестве продукции и сервисе DILAVIA. Оставьте свой отзыв и поделитесь впечатлениями о нашем магазине." />
+        <meta property="og:type" content="website" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+      <div className={styles.pageContainer}>
+        <Breadcrumbs items={[
+          { name: 'Главная', path: '/' },
+          { name: 'Отзывы', path: '/reviews' }
+        ]} />
+        <h1 className={styles.pageTitle}>Отзывы</h1>
+        <div className={styles.contentWrapper}>
+          <div className={styles.reviewForm}>
+            <h2 className={styles.formTitle}>Оставьте отзыв</h2>
+            <form onSubmit={handleSubmit}>
+              <div className={styles.inputGroup}>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => {
+                    setUsername(e.target.value)
+                    setErrors(prev => ({ ...prev, username: '' }))
+                  }}
+                  placeholder="Ваше имя"
+                  className={`${styles.input} ${errors.username ? styles.inputError : ''}`}
+                />
+                {errors.username && <span className={styles.errorMessage}>{errors.username}</span>}
               </div>
-            ))}
+              <div className={styles.inputGroup}>
+                <textarea
+                  value={comment}
+                  onChange={(e) => {
+                    setComment(e.target.value)
+                    setErrors(prev => ({ ...prev, comment: '' }))
+                  }}
+                  placeholder="Ваш отзыв"
+                  className={`${styles.textarea} ${errors.comment ? styles.inputError : ''}`}
+                />
+                {errors.comment && <span className={styles.errorMessage}>{errors.comment}</span>}
+              </div>
+              <div className={styles.ratingSection}>
+                <span className={styles.ratingLabel}>Ваша оценка:</span>
+                {renderStars(rating, true)}
+                {errors.rating && <span className={styles.errorMessage}>{errors.rating}</span>}
+              </div>
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className={styles.submitButton}
+              >
+                {isSubmitting ? 'Отправка...' : 'Отправить отзыв'}
+              </button>
+            </form>
+          </div>
+
+          <div className={styles.reviewsSection}>
+            <div className={styles.reviewsHeader}>
+              <h2 className={styles.reviewsTitle}>Все отзывы</h2>
+              <span className={styles.reviewsCount}>
+                {reviews.length} {(() => {
+                  const count = reviews.length;
+                  const lastDigit = count % 10;
+                  const lastTwoDigits = count % 100;
+                  
+                  if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return 'отзывов';
+                  if (lastDigit === 1) return 'отзыв';
+                  if (lastDigit >= 2 && lastDigit <= 4) return 'отзыва';
+                  return 'отзывов';
+                })()}
+              </span>
+            </div>
+            <div className={styles.reviews}>
+              {reviews.map((review) => (
+                <div key={review.id} className={styles.review}>
+                  <div className={styles.reviewHeader}>
+                    <div className={styles.reviewUserInfo}>
+                      <strong className={styles.username}>{review.username}</strong>
+                      {renderStars(review.rating)}
+                    </div>
+                    <span className={styles.date}>
+                      {review.timestamp?.toDate().toLocaleString('ru-RU') || 'Неизвестно'}
+                    </span>
+                  </div>
+                  <p className={styles.comment}>{review.comment}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

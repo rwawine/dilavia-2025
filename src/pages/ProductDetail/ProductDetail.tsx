@@ -131,10 +131,6 @@ export default function ProductDetail() {
         }
     }
 
-    const handleSectionToggle = (section: string) => {
-        setActiveSection(activeSection === section ? null : section)
-    }
-
     const handleAddToCart = () => {
         if (!product || !selectedDimension) return
 
