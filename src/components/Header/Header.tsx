@@ -116,13 +116,6 @@ const Header: React.FC<HeaderProps> = ({
             <Link className={styles.header__link} to="/contacts">Контакты</Link>
           </nav>
 
-          {/* Социальные сети */}
-          <div className={styles.header__social}>
-            <a href="https://www.instagram.com/ninjapizzaofficial/" target="_blank" rel="noopener noreferrer" className={styles.header__social_link}>
-              <span className={styles.icon}>instagram</span>
-            </a>
-          </div>
-
           {/* Информация (телефон, избранное, корзина) */}
           <div className={styles.header__info}>
             {/* Телефон */}
