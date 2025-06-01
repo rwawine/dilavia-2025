@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, query, orderBy, onSnapshot, QuerySnapshot, DocumentData } from 'firebase/firestore'
 import { Swiper, SwiperSlide } from 'swiper/react'

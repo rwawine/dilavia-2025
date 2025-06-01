@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './SizeVisual.module.css'
 import ModalContactForm from '@/components/ModalContactForm/ModalContactForm'
 
