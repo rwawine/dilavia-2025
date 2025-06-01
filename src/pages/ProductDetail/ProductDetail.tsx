@@ -93,7 +93,6 @@ export default function ProductDetail() {
     const [error, setError] = useState<string | null>(null)
     const [selectedDimension, setSelectedDimension] = useState<Dimension | null>(null)
     const [selectedOption, setSelectedOption] = useState<AdditionalOption | null>(null)
-    const [activeSection, setActiveSection] = useState<string | null>(null)
     const [thumbsSwiper, setThumbsSwiper] = useState<any>(null)
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 

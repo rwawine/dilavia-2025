@@ -74,28 +74,6 @@ export default function Cart() {
     setAppliedPromo(null)
   }
 
-  const formatPhoneNumber = (value: string) => {
-    // Удаляем все нецифровые символы
-    const numbers = value.replace(/\D/g, '')
-
-    // Если пустая строка, возвращаем пустую строку
-    if (!numbers) return ''
-
-    // Ограничиваем до 12 цифр
-    const limitedNumbers = numbers.slice(0, 12)
-
-    // Форматируем номер
-    if (limitedNumbers.length <= 2) {
-      return `+375 ${limitedNumbers}`
-    } else if (limitedNumbers.length <= 4) {
-      return `+375 ${limitedNumbers.slice(0, 2)} ${limitedNumbers.slice(2)}`
-    } else if (limitedNumbers.length <= 7) {
-      return `+375 ${limitedNumbers.slice(0, 2)} ${limitedNumbers.slice(2, 4)}-${limitedNumbers.slice(4)}`
-    } else {
-      return `+375 ${limitedNumbers.slice(0, 2)} ${limitedNumbers.slice(2, 4)}-${limitedNumbers.slice(4, 6)}-${limitedNumbers.slice(6)}`
-    }
-  }
-
   const validateForm = () => {
     const newErrors: FormErrors = {}
 

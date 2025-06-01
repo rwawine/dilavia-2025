@@ -250,13 +250,6 @@ export default function Catalog() {
   }
 
   const uniqueCategories = Array.from(new Set(products.map(product => product.category.code)))
-  const uniqueSubcategories = Array.from(new Set(
-    products
-      .filter(product => tempFilters.selectedCategories.includes(product.category.code))
-      .map(product => product.subcategory?.code)
-      .filter((code): code is string => code !== undefined)
-  ))
-  const uniqueColors = Array.from(new Set(products.map(product => product.color)))
 
   const filteredAndSortedProducts = products
     .filter(product => {

@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SEO } from '../../components/SEO/SEO'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
