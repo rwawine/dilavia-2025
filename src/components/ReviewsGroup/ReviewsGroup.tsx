@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, query, orderBy, onSnapshot, QuerySnapshot, DocumentData } from 'firebase/firestore'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation } from 'swiper/modules'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import styles from './ReviewsGroup.module.css'
@@ -35,7 +35,7 @@ interface Review {
 export default function ReviewsGroup() {
     const [reviews, setReviews] = useState<Review[]>([])
     const swiperRef = useRef<any>(null)
-    const navigate = useNavigate()
+    const router = useRouter()
 
     useEffect(() => {
         const q = query(commentsRef, orderBy('timestamp', 'desc'))
@@ -66,8 +66,8 @@ export default function ReviewsGroup() {
         )
     }
 
-    const handleReadMore = (reviewId: string) => {
-        navigate('/reviews', { state: { reviewId } })
+    const handleReadMore = () => {
+        router.push('/reviews')
     }
 
     return (
@@ -135,7 +135,7 @@ export default function ReviewsGroup() {
                                 {review.comment.length > 200 && (
                                     <button
                                         className={styles.readMoreButton}
-                                        onClick={() => handleReadMore(review.id)}
+                                        onClick={handleReadMore}
                                     >
                                         Читать полностью
                                     </button>
