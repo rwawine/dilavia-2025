@@ -1,5 +1,5 @@
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import styles from './App.module.css';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
@@ -38,6 +38,7 @@ function App() {
             <Route path="/catalog/:category/:subcategory" element={<Catalog />} />
             <Route path="/product/:slug" element={<FabricSlug />} />
             <Route path="/reviews" element={<Review />} />
+            <Route path="/review" element={<Review />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

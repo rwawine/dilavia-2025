@@ -9,10 +9,19 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          'react-helmet': ['react-helmet-async'],
+        },
+      },
+    },
   },
   server: {
     port: 3000,
