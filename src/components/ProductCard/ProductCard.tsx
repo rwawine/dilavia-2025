@@ -46,11 +46,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   )
   const [selectedOption, setSelectedOption] = useState<AdditionalOption | null>(null)
   const [isInCart, setIsInCart] = useState(false)
-  const [isFavorite, setIsFavorite] = useState(false)
+  const { toggleFavorite, isFavorite: favoritesStoreIsFavorite } = useFavoritesStore()
+  const isFavorite = favoritesStoreIsFavorite(product.id)
   
   const navigate = useNavigate()
   const { addToCart, items } = useCartStore()
-  const { toggleFavorite, isFavorite: favoritesStoreIsFavorite } = useFavoritesStore()
 
   // Проверяем, есть ли товар в корзине при изменении конфигурации
   useEffect(() => {
@@ -65,10 +65,6 @@ export default function ProductCard({ product }: ProductCardProps) {
     
     setIsInCart(isProductInCart)
   }, [product.id, selectedDimension, selectedOption, items])
-
-  useEffect(() => {
-    setIsFavorite(favoritesStoreIsFavorite(product.id))
-  }, [favoritesStoreIsFavorite, product.id])
 
   const handleAddToCart = () => {
     if (isInCart) {

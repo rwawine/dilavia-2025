@@ -24,6 +24,26 @@
   animation: slideIn 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 32px 24px;
+    width: 95%;
+    overflow: scroll;
+    height: 90%;
+    max-width: none;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 1.25rem;
+    width: 100%;
+    margin: 0 12px;
+    border-radius: 8px;
+  }
+}
+
 .title {
   font-size: 1.75rem;
   font-weight: 600;
@@ -124,6 +144,7 @@
   cursor: pointer;
   user-select: none;
   line-height: 1.4;
+  padding: 0.5rem 0;
 }
 
 /* Скрываем нативный чекбокс */
@@ -139,14 +160,15 @@
 .privacyLabel input[type="checkbox"] + span::before {
   content: '';
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border: 2px solid #eaeaea;
-  border-radius: 4px;
-  margin-right: 8px;
+  border-radius: 6px;
+  margin-right: 12px;
   vertical-align: middle;
   background-color: white;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 /* Стили для отмеченного состояния */
@@ -154,14 +176,39 @@
   background-color: #007bff;
   border-color: #007bff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
-  background-size: 16px;
+  background-size: 18px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Стили при наведении */
-.privacyLabel input[type="checkbox"]:hover + span::before {
+/* Стили при наведении и фокусе */
+.privacyLabel input[type="checkbox"]:hover + span::before,
+.privacyLabel input[type="checkbox"]:focus + span::before {
   border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Стили для активного состояния (при нажатии) */
+.privacyLabel input[type="checkbox"]:active + span::before {
+  transform: scale(0.95);
+}
+
+/* Мобильные стили */
+@media (max-width: 480px) {
+  .privacyLabel {
+    font-size: 0.95rem;
+    gap: 1rem;
+  }
+
+  .privacyLabel input[type="checkbox"] + span::before {
+    width: 24px;
+    height: 24px;
+    margin-right: 14px;
+  }
+
+  .privacyLabel input[type="checkbox"]:checked + span::before {
+    background-size: 20px;
+  }
 }
 
 .privacyLink {

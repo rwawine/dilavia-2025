@@ -95,6 +95,7 @@ export default function ProductDetail() {
     const [selectedOption, setSelectedOption] = useState<AdditionalOption | null>(null)
     const [activeSection, setActiveSection] = useState<string | null>(null)
     const [thumbsSwiper, setThumbsSwiper] = useState<any>(null)
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
     const { addToCart, items } = useCartStore()
     const { toggleFavorite, isFavorite } = useFavoritesStore()
@@ -183,7 +184,20 @@ export default function ProductDetail() {
         }
     ]
 
-  return (
+    // Компактные характеристики только по реальным полям
+    const shortSpecs: { label: string, value: string | number }[] = [
+        { label: 'Артикул', value: product.id },
+        { label: 'Модель', value: product.name },
+        { label: 'Гарантия', value: product.warranty || '' },
+        { label: 'Цвет', value: product.color || '' },
+        { label: 'Страна', value: product.country || '' },
+        { label: 'Категория', value: product.category?.name || '' },
+        { label: 'Подкатегория', value: product.subcategory?.name || '' },
+        { label: 'Размер', value: product.dimensions && product.dimensions[0] ? `${product.dimensions[0].width}x${product.dimensions[0].length}` : '' },
+        { label: 'Особенности', value: product.features && product.features.length > 0 ? product.features.join(', ') : '' },
+    ].filter(spec => spec.value !== '')
+
+    return (
         <>
             <Helmet>
                 <title>{product.seo.title}</title>
@@ -307,6 +321,7 @@ export default function ProductDetail() {
 
                     <div className={styles.description}>{product.description}</div>
 
+
                     {product.dimensions.length > 1 && (
                         <div className={styles.dimensions}>
                             <label>Размеры:</label>
@@ -352,127 +367,98 @@ export default function ProductDetail() {
                         </div>
                     )}
 
+                    {/* Компактные характеристики */}
+                    <div className={styles.shortSpecsBlock}>
+                        {shortSpecs.map((spec, i) => (
+                            <div key={i} className={styles.shortSpecRow}>
+                                <span className={styles.shortSpecLabel}>{spec.label}</span>
+                                <span className={styles.shortSpecValue}>{spec.value}</span>
+                            </div>
+                        ))}
+                        <button className={styles.openDrawerBtn} onClick={() => setIsDrawerOpen(true)}>
+                            Характеристики и описание
+                        </button>
+                    </div>
+
                     <button
                         className={`${styles.addToCartButton} ${isInCart ? styles.inCart : ''}`}
                         onClick={handleAddToCart}
                     >
                         {isInCart ? 'В корзине' : 'В корзину'}
                     </button>
+                </div>
+            </div>
 
-                    <div className={styles.sections}>
-                        <div className={styles.section}>
-                            <button
-                                className={`${styles.sectionButton} ${activeSection === 'characteristics' ? styles.active : ''}`}
-                                onClick={() => handleSectionToggle('characteristics')}
-                            >
-                                Характеристики
-                            </button>
-                            <div className={`${styles.sectionContent} ${activeSection === 'characteristics' ? styles.active : ''}`}>
-                                <div className={styles.characteristic}>
-                                    <span>Категория:</span>
-                                    <span>{product.category.name}</span>
-                                </div>
-                                <div className={styles.characteristic}>
-                                    <span>Подкатегория:</span>
-                                    <span>{product.subcategory.name}</span>
-                                </div>
-                                <div className={styles.characteristic}>
-                                    <span>Стиль:</span>
-                                    <span>{product.style}</span>
-                                </div>
-                                {product.color && (
-                                    <div className={styles.characteristic}>
-                                        <span>Цвет:</span>
-                                        <span>{product.color}</span>
-                                    </div>
-                                )}
-                                <div className={styles.characteristic}>
-                                    <span>Страна:</span>
-                                    <span>{product.country}</span>
-                                </div>
-                                <div className={styles.characteristic}>
-                                    <span>Гарантия:</span>
-                                    <span>{product.warranty}</span>
-                                </div>
-                                <div className={styles.characteristic}>
-                                    <span>Материалы:</span>
-                                    <div className={styles.materials}>
-                                        {product.materials.map((material, index) => (
-                                            <div key={index}>
-                                                <strong>{material.name}:</strong> {material.type}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className={styles.characteristic}>
-                                    <span>Особенности:</span>
-                                    <ul className={styles.features}>
-                                        {product.features.map((feature, index) => (
-                                            <li key={index}>{feature}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
+            {/* Drawer справа */}
+            {isDrawerOpen && (
+                <div className={styles.drawerOverlay} onClick={() => setIsDrawerOpen(false)}>
+                    <div className={styles.drawer} onClick={e => e.stopPropagation()}>
+                        <div className={styles.drawerHeader}>
+                            <span className={styles.drawerTitle}>Характеристики и описание</span>
+                            <button className={styles.drawerClose} onClick={() => setIsDrawerOpen(false)}>×</button>
                         </div>
-
-                        <div className={styles.section}>
-                            <button
-                                className={`${styles.sectionButton} ${activeSection === 'delivery' ? styles.active : ''}`}
-                                onClick={() => handleSectionToggle('delivery')}
-                            >
-                                Доставка
-                            </button>
-                            <div className={`${styles.sectionContent} ${activeSection === 'delivery' ? styles.active : ''}`}>
-                                <div className={styles.characteristic}>
-                                    <span>Доступность:</span>
-                                    <span>{product.delivery.available ? 'Доступна' : 'Недоступна'}</span>
-                                </div>
-                                <div className={styles.characteristic}>
-                                    <span>Стоимость:</span>
-                                    <span>{product.delivery.cost}</span>
-                                </div>
-                                <div className={styles.characteristic}>
-                                    <span>Сроки:</span>
-                                    <span>{product.delivery.time}</span>
-                                </div>
+                        <div className={styles.drawerContent}>
+                            {/* Общие характеристики */}
+                            <div className={styles.drawerSection}>
+                                <h3>Общие характеристики</h3>
+                                <div className={styles.drawerRow}><span>Артикул</span><span>{product.id}</span></div>
+                                <div className={styles.drawerRow}><span>Модель</span><span>{product.name}</span></div>
+                                {product.warranty && <div className={styles.drawerRow}><span>Гарантия</span><span>{product.warranty}</span></div>}
+                                {product.category?.name && <div className={styles.drawerRow}><span>Категория</span><span>{product.category.name}</span></div>}
+                                {product.subcategory?.name && <div className={styles.drawerRow}><span>Подкатегория</span><span>{product.subcategory.name}</span></div>}
+                                {product.color && <div className={styles.drawerRow}><span>Цвет</span><span>{product.color}</span></div>}
+                                {product.country && <div className={styles.drawerRow}><span>Страна</span><span>{product.country}</span></div>}
                             </div>
-                        </div>
-
-                        <div className={styles.section}>
-                            <button
-                                className={`${styles.sectionButton} ${activeSection === 'payment' ? styles.active : ''}`}
-                                onClick={() => handleSectionToggle('payment')}
-                            >
-                                Оплата
-                            </button>
-                            <div className={`${styles.sectionContent} ${activeSection === 'payment' ? styles.active : ''}`}>
-                                <h3>Рассрочка и кредит</h3>
-                                {product.installmentPlans.map((plan, index) => (
-                                    <div key={index} className={styles.paymentPlan}>
-                                        <h4>{plan.bank}</h4>
-                                        <div className={styles.installment}>
-                                            <h5>Рассрочка:</h5>
-                                            <ul>
-                                                <li>Срок: {plan.installment.durationMonths} месяцев</li>
-                                                <li>Процент: {plan.installment.interest}</li>
-                                                <li>Дополнительные платежи: {plan.installment.additionalFees}</li>
-                                            </ul>
+                            {/* Размеры */}
+                            {product.dimensions && product.dimensions.length > 0 && (
+                                <div className={styles.drawerSection}>
+                                    <h3>Размеры</h3>
+                                    {product.dimensions.map((dim, idx) => (
+                                        <div key={idx} className={styles.drawerRow}>
+                                            <span>{dim.width}x{dim.length}{dim.height ? `x${dim.height}` : ''}{dim.depth ? `x${dim.depth}` : ''} мм</span>
+                                            <span>{dim.price} BYN</span>
                                         </div>
-                                        <div className={styles.credit}>
-                                            <h5>Кредит:</h5>
-                                            <ul>
-                                                <li>Срок: {plan.credit.durationMonths} месяцев</li>
-                                                <li>Процент: {plan.credit.interest}</li>
-                                            </ul>
+                                    ))}
+                                </div>
+                            )}
+                            {/* Материалы */}
+                            {product.materials && product.materials.length > 0 && (
+                                <div className={styles.drawerSection}>
+                                    <h3>Материалы</h3>
+                                    {product.materials.map((mat, idx) => (
+                                        <div key={idx} className={styles.drawerRow}>
+                                            <span>{mat.name}</span>
+                                            <span>{mat.type}{mat.color ? `, ${mat.color}` : ''}</span>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            )}
+                            {/* Доставка */}
+                            {product.delivery && (
+                                <div className={styles.drawerSection}>
+                                    <h3>Доставка</h3>
+                                    <div className={styles.drawerRow}><span>Доступность</span><span>{product.delivery.available ? 'Доступна' : 'Недоступна'}</span></div>
+                                    <div className={styles.drawerRow}><span>Стоимость</span><span>{product.delivery.cost}</span></div>
+                                    <div className={styles.drawerRow}><span>Сроки</span><span>{product.delivery.time}</span></div>
+                                </div>
+                            )}
+                            {/* Рассрочка и кредит */}
+                            {product.installmentPlans && product.installmentPlans.length > 0 && (
+                                <div className={styles.drawerSection}>
+                                    <h3>Рассрочка и кредит</h3>
+                                    {product.installmentPlans.map((plan, idx) => (
+                                        <div key={idx} className={styles.drawerRow}>
+                                            <span>{plan.bank}</span>
+                                            <span>Рассрочка: {plan.installment.durationMonths} мес, {plan.installment.interest}, {plan.installment.additionalFees} | Кредит: {plan.credit.durationMonths} мес, {plan.credit.interest}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
             <PopularProduct />
         </>
-  )
+    )
 }

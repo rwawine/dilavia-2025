@@ -1,16 +1,18 @@
 .card {
   background: #fff;
   display: flex;
-  height: 100%;
-  justify-content: space-between;
+  height: fit-content;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #f2f2f2;
+  box-shadow: none;
+  transition: border 0.2s;
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid #212121;
+  box-shadow: none;
 }
 
 .imageContainer {
@@ -18,6 +20,7 @@
   width: 100%;
   padding-top: 75%;
   overflow: hidden;
+  background: #fff;
 }
 
 .image {
@@ -26,129 +29,122 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.card:hover .image {
-  transform: scale(1.05);
+  object-fit: contain;
+  background: #fff;
+  transition: none;
 }
 
 .favoriteButton {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
+  top: 10px;
+  right: 10px;
+  background: #fff;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s, border 0.2s;
   z-index: 1;
 }
 
 .favoriteButton:hover {
-  background: #fff;
-  transform: scale(1.1);
+  background: #f6f6f6;
 }
 
-.favoriteButton.active {
-  background: rgba(255, 255, 255, 0.95);
+.favoriteButton.active svg path {
+  fill: #e30611;
+  stroke: #e30611;
 }
 
 .content {
-  padding: 24px 16px;
+  padding: 20px 14px 24px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .title {
   display: block;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
+  font-size: 17px;
+  font-weight: 600;
+  color: #222;
   text-decoration: none;
-  margin-bottom: 6px;
-  line-height: 1.4;
+  line-height: 1.3;
+  transition: color 0.2s;
 }
 
 .title:hover {
-  color: #000;
+  color: orange;
 }
 
 .dimensions,
 .additionalOptions {
-  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .dimensionSelect,
 .optionSelect {
   width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border: 1px solid #f2f2f2;
   border-radius: 6px;
-  font-size: 14px;
-  color: #333;
+  font-size: 15px;
+  color: #222;
   background-color: #fff;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border 0.2s;
 }
 
 .dimensionSelect:hover,
 .optionSelect:hover {
-  border-color: #999;
-}
-
-.dimensionSelect:focus,
-.optionSelect:focus {
-  outline: none;
-  border-color: #666;
+  border-color: #212121;
 }
 
 .priceContainer {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  align-items: flex-start;
 }
 
 .price {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: #222;
 }
 
 .oldPrice {
   font-size: 14px;
-  color: #999;
+  color: #bbb;
   text-decoration: line-through;
   margin-left: 8px;
 }
 
 .addToCartButton {
-  padding: 12px 24px;
-  background-color: #000;
+  padding: 12px 0;
+  background: #212121;
   color: #fff;
   border: none;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s;
+  margin-top: 4px;
 }
 
 .addToCartButton:hover {
-  background-color: #333;
+  background: rgb(17, 17, 10);
 }
 
 .addToCartButton.inCart {
-  background-color: #4CAF50;
-}
-
-.addToCartButton.inCart:hover {
-  background-color: #45a049;
+  background: #bbb;
+  color: #fff;
 }
 
 .detailsLink {
@@ -158,27 +154,26 @@
   width: 100%;
   font-size: 14px;
   transition: color 0.2s;
+  margin-top: 2px;
 }
 
 .detailsLink:hover {
-  color: #000;
+  color: #212121;
 }
 
 @media (max-width: 768px) {
   .content {
-    padding: 12px;
+    padding: 10px 10px 24px 10px;
+    gap: 8px;
   }
-
   .title {
     font-size: 14px;
   }
-
   .price {
-    font-size: 16px;
+    font-size: 15px;
   }
-
   .addToCartButton {
-    padding: 6px 12px;
+    padding: 14px 24px;
     font-size: 13px;
   }
 } 

@@ -64,6 +64,14 @@
   gap: 24px;
 }
 
+@media (max-width: 768px) {
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -76,7 +84,7 @@
 
 .drawer {
   position: fixed;
-  overflow: scroll;
+  overflow-y: scroll;
   top: 0;
   left: 0;
   width: 320px;
@@ -139,7 +147,7 @@
 
 .drawerFooter {
   position: sticky;
-  bottom: 0;
+  bottom: -25px;
   left: 0;
   right: 0;
   padding: 16px;
@@ -281,4 +289,4 @@
   .drawer {
     width: 100%;
   }
-} 
+}
