@@ -21,33 +21,51 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
-  background: #f0f0f0;
-  border: none;
-  border-radius: 8px;
+  padding: 8px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #000;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
 .filterButton:hover {
-  background: #e0e0e0;
+  background: #f5f5f5;
+}
+
+.filterBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
 }
 
 .filterDrawer {
   position: fixed;
   top: 0;
-  right: -300px;
-  width: 280px;
+  right: -400px;
+  width: 400px;
   height: 100vh;
   background: #fff;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   transition: right 0.3s ease;
-  padding: 24px;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .filterDrawer.open {
@@ -56,14 +74,15 @@
 
 .filterHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .filterTitle {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   margin: 0;
 }
 
@@ -73,12 +92,17 @@
   padding: 8px;
   cursor: pointer;
   color: #666;
-  border-radius: 8px;
-  transition: background 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .closeButton:hover {
-  background: #f0f0f0;
+  color: #000;
+}
+
+.filterContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
 }
 
 .filterSection {
@@ -88,8 +112,25 @@
 .filterSectionTitle {
   font-size: 16px;
   font-weight: 500;
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterSectionTitle button {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
   color: #666;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.filterSectionTitle button:hover {
+  color: #000;
 }
 
 .filterOptions {
@@ -99,42 +140,146 @@
 }
 
 .filterOption {
-  padding: 8px 12px;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterOption:hover {
   background: #f5f5f5;
-  border: none;
+}
+
+.filterOption.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.rangeInputs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.rangeInput {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rangeInput label {
+  font-size: 12px;
+  color: #666;
+}
+
+.rangeInput input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
   border-radius: 6px;
   font-size: 14px;
-  text-align: left;
-  color: #333;
+  color: #000;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.rangeInput input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.rangeInput input::placeholder {
+  color: #999;
+}
+
+.rangeLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.filterActions {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.resetButton {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.filterOption:hover {
-  background: #e8e8e8;
+.resetButton:hover {
+  background: #f5f5f5;
 }
 
-.filterOption.active {
-  background: #333;
-  color: #fff;
-}
-
-.resetButton {
-  width: 100%;
+.applyButton {
+  height: 40px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
   padding: 12px;
-  background: #f0f0f0;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  background: #000;
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #fff;
   cursor: pointer;
-  transition: background 0.2s ease;
-  margin-top: 24px;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.resetButton:hover {
+.applyButton:hover {
+  background: #333;
+}
+
+.applyButton:disabled {
   background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.filterCount {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 1px solid #e0e0e0;
 }
 
 .overlay {
@@ -145,6 +290,34 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .filterDrawer {
+    width: 100%;
+    right: -100%;
+  }
+  
+  .filterContent {
+    padding: 16px;
+  }
+  
+  .filterHeader {
+    padding: 16px;
+  }
+  
+  .filterActions {
+    padding: 16px;
+  }
 }
 
 .collectionsGrid {
@@ -295,22 +468,18 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 16px;
   }
 
   .header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    flex-direction: row;
     gap: 16px;
   }
 
   .title {
     font-size: 24px;
     margin-bottom: 0;
-  }
-
-  .filterDrawer {
-    width: 260px;
   }
 
   .collectionsGrid {
@@ -352,4 +521,50 @@
   font-size: 18px;
   font-weight: 500;
   color: #333;
+}
+
+.rangeInputs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.rangeInput {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rangeInput label {
+  font-size: 12px;
+  color: #666;
+}
+
+.rangeInput input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #000;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.rangeInput input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.rangeInput input::placeholder {
+  color: #999;
+}
+
+.rangeLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
 } 

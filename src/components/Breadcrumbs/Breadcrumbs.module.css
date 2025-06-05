@@ -33,3 +33,12 @@
   color: #000;
   font-weight: 500;
 } 
+
+@media (max-width: 768px) {
+  .link {
+    font-size: 12px;
+  }
+  .current {
+    font-size: 12px;
+  }
+}

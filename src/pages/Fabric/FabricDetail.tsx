@@ -4,7 +4,7 @@ import { SEO } from '../../components/SEO/SEO'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
 import { useFavoritesStore } from '../../store/favoritesStore'
 import { useCartStore } from '../../store/cartStore'
-import { Heart, ShoppingCart } from 'lucide-react'
+import { Heart, ShoppingCart, ChevronDown } from 'lucide-react'
 import styles from './FabricDetail.module.css'
 
 interface Material {
@@ -46,6 +46,7 @@ function FabricDetail() {
   const { addToCart, items } = useCartStore()
   const [isInCart, setIsInCart] = useState(false)
   const [isInFavorites, setIsInFavorites] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     const fetchMaterial = async () => {
@@ -107,6 +108,10 @@ function FabricDetail() {
   const handleVariantClick = (index: number) => {
     setSelectedVariant(index)
   }
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded)
+  }
   
   const handleFavoriteClick = () => {
     if (material && selectedCollection) {
@@ -155,6 +160,11 @@ function FabricDetail() {
     return <div className={styles.error}>{error || 'Ткань не найдена'}</div>
   }
 
+  const visibleThumbnails = isExpanded 
+    ? selectedCollection.variants 
+    : selectedCollection.variants.slice(0, 10)
+  const hasMoreThumbnails = selectedCollection.variants.length > 10
+
   return (
     <>
       <SEO
@@ -178,7 +188,7 @@ function FabricDetail() {
               />
             </div>
             <div className={styles.thumbnails}>
-              {selectedCollection.variants.map((variant, index) => (
+              {visibleThumbnails.map((variant, index) => (
                 <div 
                   key={variant.id} 
                   className={`${styles.thumbnail} ${index === selectedVariant ? styles.active : ''}`}
@@ -190,6 +200,14 @@ function FabricDetail() {
                   />
                 </div>
               ))}
+              {hasMoreThumbnails && (
+                <div 
+                  className={`${styles.expandButton} ${isExpanded ? styles.expanded : ''}`}
+                  onClick={toggleExpand}
+                >
+                  <ChevronDown size={24} />
+                </div>
+              )}
             </div>
           </div>
           

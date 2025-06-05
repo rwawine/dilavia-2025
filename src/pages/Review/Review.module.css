@@ -235,12 +235,10 @@
 
 @media (max-width: 768px) {
   .pageContainer {
-    padding: 1rem;
   }
 
   .reviewForm,
   .reviewsSection {
-    padding: 1.5rem;
   }
 
   .review {

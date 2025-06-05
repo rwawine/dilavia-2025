@@ -241,44 +241,66 @@ export default function ProductDetail() {
             <Breadcrumbs items={breadcrumbs} />
             <div className={styles.container}>
                 <div className={styles.gallery}>
-                    <Swiper
-                        spaceBetween={10}
-                        navigation={true}
-                        thumbs={{ swiper: thumbsSwiper }}
-                        modules={[Navigation, Thumbs]}
-                        className={styles.mainSwiper}
-                        loop={true}
-                    >
-                        {product.images.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <img src={`/${image}`} alt={`${product.name} - фото ${index + 1}`} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                    <Swiper
-                        onSwiper={setThumbsSwiper}
-                        spaceBetween={10}
-                        slidesPerView={4}
-                        watchSlidesProgress={true}
-                        modules={[Thumbs]}
-                        className={styles.thumbsSwiper}
-                        breakpoints={{
-                            320: {
-                                slidesPerView: 3,
-                                spaceBetween: 5
-                            },
-                            480: {
-                                slidesPerView: 4,
-                                spaceBetween: 10
-                            }
-                        }}
-                    >
-                        {product.images.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <img src={`/${image}`} alt={`${product.name} - миниатюра ${index + 1}`} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                    <div className={styles.galleryGrid}>
+                        <div className={styles.mainImage}>
+                            <Swiper
+                                spaceBetween={10}
+                                navigation={true}
+                                thumbs={{ swiper: thumbsSwiper }}
+                                modules={[Navigation, Thumbs]}
+                                className={styles.mainSwiper}
+                                loop={true}
+                            >
+                                {product.images.map((image, index) => (
+                                    <SwiperSlide key={index}>
+                                        <img 
+                                            src={`/${image}`} 
+                                            alt={`${product.name} - фото ${index + 1}`}
+                                            loading="lazy"
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                        <div className={styles.thumbnails}>
+                            <Swiper
+                                onSwiper={setThumbsSwiper}
+                                spaceBetween={8}
+                                slidesPerView="auto"
+                                watchSlidesProgress={true}
+                                modules={[Thumbs]}
+                                className={styles.thumbsSwiper}
+                                breakpoints={{
+                                    320: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 4
+                                    },
+                                    480: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 6
+                                    },
+                                    768: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 8
+                                    },
+                                    1024: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 10
+                                    }
+                                }}
+                            >
+                                {product.images.map((image, index) => (
+                                    <SwiperSlide key={index} className={styles.thumbSlide}>
+                                        <img 
+                                            src={`/${image}`} 
+                                            alt={`${product.name} - миниатюра ${index + 1}`}
+                                            loading="lazy"
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
                 </div>
 
                 <div className={styles.info}>

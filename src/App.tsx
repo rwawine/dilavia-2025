@@ -22,7 +22,7 @@ function App() {
     <HelmetProvider>
       <Router>
         <Header />
-        <main className={styles.main} style={{ marginTop: '120px' }}>
+        <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

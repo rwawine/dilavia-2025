@@ -13,6 +13,63 @@
   max-width: 1000px;
   border-radius: 8px;
   box-shadow: none;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.mainImage {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.mainImage img:hover {
+}
+
+.thumbnails {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.thumbSlide {
+  width: auto !important;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.thumbSlide:hover {
+  opacity: 0.8;
+}
+
+.thumbSlide.swiper-slide-thumb-active {
+  opacity: 1;
+  border: 2px solid #007bff;
+}
+
+.thumbSlide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
 }
 
 .mainSwiper {
@@ -24,6 +81,8 @@
   background: #fff;
   border: 1px solid #f2f2f2;
   box-shadow: none;
+  width: 100%;
+  height: 100%;
 }
 
 .mainSwiper :global(.swiper-slide) {
@@ -45,12 +104,10 @@
 
 .mainSwiper :global(.swiper-button-next),
 .mainSwiper :global(.swiper-button-prev) {
-  color: #21a038;
-  background: transparent;
+  color: #212121;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition: background 0.2s;
 }
 
 .mainSwiper :global(.swiper-button-next:hover),
@@ -60,7 +117,8 @@
 
 .mainSwiper :global(.swiper-button-next::after),
 .mainSwiper :global(.swiper-button-prev::after) {
-  font-size: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .thumbsSwiper {
@@ -70,6 +128,8 @@
   box-shadow: none;
   gap: 4px;
   padding: 8px 0;
+  width: 100%;
+  height: auto;
 }
 
 .thumbsSwiper :global(.swiper-slide) {
@@ -434,7 +494,7 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 8px;
+    padding: 0px;
   }
 
   .mainSwiper {
@@ -481,4 +541,59 @@
 
 .drawer::-webkit-scrollbar-track {
   background: #fff;
+}
+
+/* Swiper custom styles */
+.mainSwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.mainSwiper .swiper-button-next,
+.mainSwiper .swiper-button-prev {
+  color: #007bff;
+  background: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mainSwiper .swiper-button-next:after,
+.mainSwiper .swiper-button-prev:after {
+  font-size: 1.2rem;
+}
+
+.thumbsSwiper {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .mainImage {
+    aspect-ratio: 4/3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .mainImage {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    margin-bottom: 0;
+  }
 }

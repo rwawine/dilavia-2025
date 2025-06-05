@@ -127,8 +127,10 @@
   background: none;
   border: none;
   color: #212121;
-  padding: 0.5rem 0;
-  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
   cursor: pointer;
   align-self: flex-start;
   margin-top: 0.5rem;
