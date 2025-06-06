@@ -241,6 +241,8 @@ export default function Catalog() {
     value: string,
     field: keyof Pick<FilterState, 'selectedColors'>
   ) => {
+    if (!value.trim()) return; // Игнорируем пустые значения
+
     setTempFilters(prev => ({
       ...prev,
       [field]: prev[field].includes(value)
@@ -259,7 +261,8 @@ export default function Catalog() {
         const matchesPrice = price >= filters.priceRange.min && price <= filters.priceRange.max
         const matchesCategory = filters.selectedCategories.length === 0 || filters.selectedCategories.includes(product.category.code)
         const matchesSubcategory = filters.selectedSubcategories.length === 0 || filters.selectedSubcategories.includes(product.subcategory?.code || '')
-        const matchesColor = filters.selectedColors.length === 0 || filters.selectedColors.includes(product.color)
+        const matchesColor = filters.selectedColors.length === 0 || 
+          (product.color && product.color.trim() && filters.selectedColors.includes(product.color.trim()))
 
         return matchesPrice && matchesCategory && matchesSubcategory && matchesColor
       } catch (err) {
@@ -294,7 +297,8 @@ export default function Catalog() {
         const matchesPrice = price >= tempFilters.priceRange.min && price <= tempFilters.priceRange.max
         const matchesCategory = tempFilters.selectedCategories.length === 0 || tempFilters.selectedCategories.includes(product.category.code)
         const matchesSubcategory = tempFilters.selectedSubcategories.length === 0 || tempFilters.selectedSubcategories.includes(product.subcategory?.code || '')
-        const matchesColor = tempFilters.selectedColors.length === 0 || tempFilters.selectedColors.includes(product.color)
+        const matchesColor = tempFilters.selectedColors.length === 0 || 
+          (product.color && product.color.trim() && tempFilters.selectedColors.includes(product.color.trim()))
 
         return matchesPrice && matchesCategory && matchesSubcategory && matchesColor
       }).length
@@ -334,8 +338,15 @@ export default function Catalog() {
       )
     }
 
-    // Получаем уникальные значения для выбранного поля
-    return Array.from(new Set(filteredProducts.map(product => product[field])))
+    // Получаем уникальные значения для выбранного поля, исключая пустые значения
+    return Array.from(new Set(
+      filteredProducts
+        .map(product => product[field])
+        .filter((value): value is string => 
+          typeof value === 'string' && 
+          value.trim().length > 0
+        )
+    )).sort((a, b) => a.localeCompare(b))
   }
 
   // Получаем отфильтрованные уникальные значения для каждого поля
