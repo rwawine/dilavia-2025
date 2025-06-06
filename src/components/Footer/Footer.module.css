@@ -1,6 +1,7 @@
 .footer {
     margin: 40px auto 40px;
     max-width: 1660px;
+    padding: 0 20px;
 }
 
 .grid {
@@ -107,18 +108,80 @@
 }
 
 @media (max-width: 700px) {
+    .footer {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .grid {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .column {
+        padding: 20px 15px;
+    }
+
+    .title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .link {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
     .legalInfo {
         font-size: 0.85rem;
         padding: 4px 0;
     }
+
     .legalInfo div {
         margin-bottom: 6px;
+    }
+
+    .hours {
+        font-size: 13px;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+
+    .grid {
+        border-radius: 20px;
+    }
+
+    .column {
+        padding: 15px 10px;
+        border-radius: 15px;
+    }
+
+    .title {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .link {
+        font-size: 12px;
+    }
+
+    .link svg,
+    .link img {
+        width: 14px;
+        height: 14px;
     }
 }
 
 @media (max-width: 768px) {
     .grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 40px;
     }
 }
