@@ -264,6 +264,7 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
         />
         <div className={styles.container}>
           <Breadcrumbs items={[
+            { name: 'Главная', path: '/' },
             { name: 'Корзина', path: '/cart' },
           ]} />
           <h1 className={styles.title}>Корзина</h1>
@@ -288,6 +289,7 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
         />
         <div className={styles.container}>
           <Breadcrumbs items={[
+            { name: 'Главная', path: '/' },
             { name: 'Корзина', path: '/cart' },
           ]} />
           <h1 className={styles.title}>Заказ оформлен</h1>
@@ -312,6 +314,7 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
         />
         <div className={styles.container}>
           <Breadcrumbs items={[
+            { name: 'Главная', path: '/' },
             { name: 'Корзина', path: '/cart' },
             { name: 'Оформление заказа', path: '/cart/checkout' },
           ]} />
@@ -570,6 +573,7 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
       />
       <div className={styles.container}>
         <Breadcrumbs items={[
+          { name: 'Главная', path: '/' },
           { name: 'Корзина', path: '/cart' },
         ]} />
         <h1 className={styles.title}>Корзина</h1>
