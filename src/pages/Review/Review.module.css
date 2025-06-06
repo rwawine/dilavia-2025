@@ -61,7 +61,7 @@
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-color: #0066cc;
+  border-color: #232323;
   box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
 }
 
@@ -125,7 +125,7 @@
 .submitButton {
   width: 100%;
   padding: 0.75rem;
-  background: #0066cc;
+  background: #232323;
   color: white;
   border: none;
   border-radius: 8px;
@@ -136,7 +136,7 @@
 }
 
 .submitButton:hover {
-  background: #0052a3;
+  background: #141414;
 }
 
 .submitButton:disabled {

@@ -9,8 +9,8 @@ interface FormData {
   name: string
   phone: string
   address: string
-  contactMethod: 'phone' | 'telegram' | 'whatsapp' | 'viber'
-  paymentMethod: 'card' | 'cash'
+  contactMethod: 'Телефон' | 'telegram' | 'whatsapp' | 'viber'
+  paymentMethod: 'Карта' | 'Наличные'
   promoCode?: string
   telegram?: string
   whatsapp?: string
@@ -42,8 +42,8 @@ export default function Cart() {
     name: '',
     phone: '',
     address: '',
-    contactMethod: 'phone',
-    paymentMethod: 'card'
+    contactMethod: 'Телефон',
+    paymentMethod: 'Карта'
   })
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [formErrors, setFormErrors] = useState<FormErrors>({})
@@ -182,8 +182,25 @@ export default function Cart() {
           break
       }
 
-      const message = `
-🛍 Новый заказ!
+      // Формируем сообщение о товарах
+      const productsMessage = productItems.map(item =>
+        `• ${item.name}
+  Количество: ${item.quantity}
+  ${item.dimension ? `Размер: ${item.dimension.width}x${item.dimension.length}` : ''}
+  ${item.additionalOption ? `Доп. опция: ${item.additionalOption.name}` : ''}
+  Цена: ${item.price} BYN
+  Итого: ${item.price * item.quantity} BYN`
+      ).join('\n')
+
+      // Формируем сообщение о тканях
+      const fabricsMessage = fabricItems.length > 0
+        ? `\n🧵 Ткани:\n${fabricItems.map(item =>
+          `• ${item.name}
+  Цвет: ${item.configuration?.color || 'Не указан'}`
+        ).join('\n')}`
+        : ''
+
+      const message = `🛍 Новый заказ!
 
 👤 Контактная информация:
 Имя: ${formData.name}
@@ -194,25 +211,16 @@ ${contactInfo}
 ${formData.promoCode ? `Промокод: ${formData.promoCode}` : ''}
 
 📦 Заказанные товары:
-${items.map(item => `
-• ${item.name}
-  Количество: ${item.quantity}
-  ${item.dimension ? `Размер: ${item.dimension.width}x${item.dimension.length}` : ''}
-  ${item.additionalOption ? `Доп. опция: ${item.additionalOption.name}` : ''}
-  Цена: ${item.price} BYN
-  Итого: ${item.price * item.quantity} BYN`).join('\n')}
-
-${fabricItems.length > 0 ? `
-🧵 Ткани:
-${fabricItems.map(item => `
-• ${item.name}
-  Цвет: ${item.configuration?.color}`).join('\n')}` : ''}
+${productsMessage}${fabricsMessage}
 
 💰 Итого:
-Подытог: ${totalPrice} BYN
+Подытог: ${subtotal} BYN
 ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
-Итоговая сумма: ${totalPrice - discount} BYN
-`
+Итоговая сумма: ${totalPrice} BYN`
+
+      if (!message.trim()) {
+        throw new Error('Message cannot be empty')
+      }
 
       const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
@@ -377,12 +385,12 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
               <div className={styles.formGroup}>
                 <label className={styles.formLabel}>Удобный способ связи</label>
                 <div className={styles.contactMethods}>
-                  <label className={`${styles.contactMethod} ${formData.contactMethod === 'phone' ? styles.selected : ''}`}>
+                  <label className={`${styles.contactMethod} ${formData.contactMethod === 'Телефон' ? styles.selected : ''}`}>
                     <input
                       type="radio"
                       name="contactMethod"
-                      value="phone"
-                      checked={formData.contactMethod === 'phone'}
+                      value="Телефон"
+                      checked={formData.contactMethod === 'Телефон'}
                       onChange={handleFormChange}
                     />
                     <span>По телефону</span>
@@ -471,22 +479,22 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
               <div className={styles.formGroup}>
                 <label className={styles.formLabel}>Способ оплаты</label>
                 <div className={styles.paymentMethods}>
-                  <label className={`${styles.paymentMethod} ${formData.paymentMethod === 'card' ? styles.selected : ''}`}>
+                  <label className={`${styles.paymentMethod} ${formData.paymentMethod === 'Карта' ? styles.selected : ''}`}>
                     <input
                       type="radio"
                       name="paymentMethod"
-                      value="card"
-                      checked={formData.paymentMethod === 'card'}
+                      value="Карта"
+                      checked={formData.paymentMethod === 'Карта'}
                       onChange={handleFormChange}
                     />
                     <span>Банковской картой</span>
                   </label>
-                  <label className={`${styles.paymentMethod} ${formData.paymentMethod === 'cash' ? styles.selected : ''}`}>
+                  <label className={`${styles.paymentMethod} ${formData.paymentMethod === 'Наличные' ? styles.selected : ''}`}>
                     <input
                       type="radio"
                       name="paymentMethod"
-                      value="cash"
-                      checked={formData.paymentMethod === 'cash'}
+                      value="Наличные"
+                      checked={formData.paymentMethod === 'Наличные'}
                       onChange={handleFormChange}
                     />
                     <span>Наличными при получении</span>
