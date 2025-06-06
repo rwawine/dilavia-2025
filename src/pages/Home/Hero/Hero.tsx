@@ -25,7 +25,7 @@ const slides = [
   {
     id: 3,
     title: 'Бесплатная доставка',
-    description: 'При заказе от 50 000 ₽ доставка по всей Беларуси бесплатно',
+    description: 'При заказе нашей мебели, доставка по всей Беларуси бесплатно',
     image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     buttonText: 'Подробнее',
     buttonLink: '/delivery'

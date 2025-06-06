@@ -274,8 +274,8 @@ export default function FabricMaterial() {
     <>
       <SEO
         title={`${material.nameLoc} - Ткани для мебели | DILAVIA`}
-        description={`Коллекции тканей ${material.nameLoc} от DILAVIA. Широкий выбор цветов и фактур. Бесплатная ткань при заказе мебели. Доставка по всей Беларуси.`}
-        keywords={`${material.nameLoc}, ткани для мебели, обивка для мебели, мебельные ткани, выбор ткани, DILAVIA, бесплатная ткань`}
+        description={`Коллекции тканей ${material.nameLoc} от DILAVIA. Широкий выбор цветов и фактур.`}
+        keywords={`${material.nameLoc}, ткани для мебели, обивка для мебели, мебельные ткани, выбор ткани, DILAVIA`}
       />
       <div className={styles.container}>
         <Breadcrumbs items={[

@@ -172,7 +172,7 @@ ${formData.message}
     <>
       <SEO
         title="Контакты | DILAVIA - Интернет-магазин мебели"
-        description="Свяжитесь с нами для консультации по выбору мебели и тканей. Адрес в Минске, телефон, email. Режим работы: Пн-Пт 9:00-18:00. Бесплатная доставка по Минску от 1000 BYN."
+        description="Свяжитесь с нами для консультации по выбору мебели и тканей. Адрес в Минске, телефон, email. Режим работы: Пн-Пт 9:00-18:00. Бесплатная доставка по Минску."
         keywords="контакты DILAVIA, адрес мебельного магазина, телефон DILAVIA, email DILAVIA, режим работы, консультация по мебели, заказать мебель"
       />
       <div className={styles.container}>
@@ -189,15 +189,15 @@ ${formData.message}
               <div className={styles.infoList}>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Адрес:</span>
-                  <span className={styles.infoValue}>г. Минск, ул. Примерная, 123</span>
+                  <span className={styles.infoValue}>г. Минск, ул. Казинца 121Ак46</span>
                 </div>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Телефон:</span>
-                  <a href="tel:+375291234567" className={styles.infoValue}>+375 (29) 123-45-67</a>
+                  <a href="tel:+375336641830" className={styles.infoValue}>+375 (33) 664-18-30</a>
                 </div>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Email:</span>
-                  <a href="mailto:info@dilavia.by" className={styles.infoValue}>info@dilavia.by</a>
+                  <a href="mailto:info@dilavia.by" className={styles.infoValue}>infomiagkhikomfort@gmail.com</a>
                 </div>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Режим работы:</span>

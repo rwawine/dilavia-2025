@@ -19,7 +19,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: 'Почему выбирают нас?',
-    answer: 'Мы предлагаем индивидуальный подход к каждому клиенту, гарантируем качество нашей продукции, используем экологичные материалы и предоставляем профессиональную поддержку на всех этапах сотрудничества.'
+    answer: 'Мы предлагаем индивидуальный подход к каждому клиенту, гарантируем качество нашей продукции, используем лучшие материалы и предоставляем профессиональную поддержку на всех этапах сотрудничества.'
   },
   {
     question: 'Наше производство',
@@ -27,7 +27,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: 'Наши ценности',
-    answer: 'Качество, инновации, экологичность и забота о клиентах - вот основные ценности, которыми мы руководствуемся в нашей работе. Мы постоянно совершенствуемся и следим за последними тенденциями в мире мебели.'
+    answer: 'Качество, инновации и забота о клиентах - вот основные ценности, которыми мы руководствуемся в нашей работе. Мы постоянно совершенствуемся и следим за последними тенденциями в мире мебели.'
   }
 ]
 
@@ -87,7 +87,7 @@ export default function About() {
             
             <div className={styles.stats}>
               <div className={styles.statItem}>
-                <span className={styles.statNumber}>10+</span>
+                <span className={styles.statNumber}>15+</span>
                 <span className={styles.statText}>лет на рынке</span>
               </div>
               <div className={styles.statItem}>
@@ -95,7 +95,7 @@ export default function About() {
                 <span className={styles.statText}>довольных клиентов</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statNumber}>500+</span>
+                <span className={styles.statNumber}>50+</span>
                 <span className={styles.statText}>моделей мебели</span>
               </div>
             </div>

@@ -366,7 +366,7 @@ export default function Catalog() {
     <>
       <SEO 
         title={`${categoryParam ? products.find(p => p.category.code === categoryParam)?.category.name + ' - ' : ''}Каталог мебели | DILAVIA`}
-        description={`Широкий выбор качественной мебели в интернет-магазине DILAVIA. ${categoryParam ? products.find(p => p.category.code === categoryParam)?.category.name + '. ' : ''}Бесплатная доставка по Минску от 1000 BYN. Гарантия 24 месяца. Рассрочка.`}
+        description={`Широкий выбор качественной мебели в интернет-магазине DILAVIA. ${categoryParam ? products.find(p => p.category.code === categoryParam)?.category.name + '. ' : ''}Бесплатная доставка по Минску. Гарантия 18 месяцев. Рассрочка.`}
         keywords={`мебель, ${categoryParam ? products.find(p => p.category.code === categoryParam)?.category.name + ', ' : ''}каталог мебели, купить мебель, DILAVIA, мебельный магазин, доставка мебели`}
       />
       <div className={styles.container}>

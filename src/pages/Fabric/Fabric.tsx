@@ -109,7 +109,7 @@ export default function Fabric() {
         ]} />
         <h1 className={styles.title}>Ткани</h1>
         <p className={styles.description}>
-          Все ткани предоставляются бесплатно при заказе мебели
+          Все ткани для осмотра предоставляются бесплатно
         </p>
         
         <div className={styles.materialsGrid}>

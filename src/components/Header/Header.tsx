@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
             >
               <div className={styles.header__info_link}>
                 <PhoneIcon className={styles.icon} />
-                <a className={styles.header__info_title} href={`tel:${phones.a1}`} title="Позвонить по номеру А1">
+                <a className={styles.header__info_title} href={`tel:${phones.a1}`} title="Позвонить по номеру">
                   {phones.a1}
                 </a>
               </div>
@@ -138,8 +138,8 @@ const Header: React.FC<HeaderProps> = ({
                       <a className={`${styles.phone_expander__link} ${styles.mts}`} href={`tel:${phones.mts}`} title="Позвонить по номеру МТС">
                         <span className={styles.icon}>МТС</span> {phones.mts}
                       </a>
-                      <a className={`${styles.phone_expander__link} ${styles.life}`} href={`tel:${phones.a1}`} title="Позвонить по номеру А1">
-                        <span className={styles.icon}>А1</span> {phones.a1}
+                      <a className={`${styles.phone_expander__link} ${styles.life}`} href={`tel:${phones.a1}`} title="Позвонить по номеру">
+                        <span className={styles.icon}>МТС</span> {phones.a1}
                       </a>
                     </div>
                     <div className={styles.expander__small}>Звоните нам с 08:00 до 20:00 без выходных</div>
