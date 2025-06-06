@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs } from 'swiper/modules'
 import { Helmet } from 'react-helmet-async'
@@ -88,6 +88,7 @@ interface Product {
 
 export default function ProductDetail() {
     const { slug } = useParams()
+    const location = useLocation()
     const [product, setProduct] = useState<Product | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
@@ -98,6 +99,10 @@ export default function ProductDetail() {
 
     const { addToCart, items } = useCartStore()
     const { toggleFavorite, isFavorite } = useFavoritesStore()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [location.pathname])
 
     useEffect(() => {
         fetchProduct()

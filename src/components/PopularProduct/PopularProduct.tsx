@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
+import { useLocation } from 'react-router-dom'
 import ProductCard from '../ProductCard/ProductCard'
 import styles from './PopularProduct.module.css'
 import 'swiper/css'
@@ -41,15 +42,20 @@ export default function PopularProduct() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const swiperRef = useRef<SwiperType | null>(null)
+  const location = useLocation()
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch('/data/data.json')
         const data = await response.json()
+        const currentProductSlug = location.pathname.split('/').pop()
+        
         const popularProducts = data[0].products
+          .filter((product: Product) => product.slug !== currentProductSlug)
           .sort((a: Product, b: Product) => b.popularity - a.popularity)
           .slice(0, 8)
+        
         setProducts(popularProducts)
       } catch (err) {
         setError('Ошибка при загрузке товаров')
@@ -60,7 +66,7 @@ export default function PopularProduct() {
     }
 
     fetchProducts()
-  }, [])
+  }, [location.pathname])
 
   if (isLoading) {
     return <div className={styles.loading}>Загрузка...</div>

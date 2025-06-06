@@ -150,6 +150,7 @@
 .detailsLink {
   display: block;
   text-align: center;
+  cursor: pointer;
   color: #666;
   width: 100%;
   font-size: 14px;
@@ -159,6 +160,7 @@
 
 .detailsLink:hover {
   color: #212121;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -166,14 +168,17 @@
     padding: 10px 10px 24px 10px;
     gap: 8px;
   }
+
   .title {
     font-size: 14px;
   }
+
   .price {
     font-size: 15px;
   }
+
   .addToCartButton {
     padding: 14px 24px;
     font-size: 13px;
   }
-} 
+}
