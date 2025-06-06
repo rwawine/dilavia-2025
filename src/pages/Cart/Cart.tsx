@@ -30,7 +30,7 @@ interface FormErrors {
 }
 
 const TELEGRAM_BOT_TOKEN = '8125343989:AAEoT5kUFJaziP1OIF9cDvuB_mcqY2oKuPQ'
-const TELEGRAM_CHAT_ID = '-2688370963'
+const TELEGRAM_CHAT_ID = '@dilaviatest2233'
 
 export default function Cart() {
   const { items, removeFromCart, updateQuantity, clearCart } = useCartStore()
