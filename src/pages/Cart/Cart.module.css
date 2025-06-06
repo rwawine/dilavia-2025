@@ -250,7 +250,7 @@
 }
 
 .formInput:focus {
-  border-color: #007bff;
+  border-color: #232323;
   outline: none;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
@@ -298,13 +298,13 @@
 
 .contactMethod:hover,
 .paymentMethod:hover {
-  border-color: #007bff;
+  border-color: #232323;
   background: #fff;
 }
 
 .contactMethod.selected,
 .paymentMethod.selected {
-  border-color: #007bff;
+  border-color: #232323;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
@@ -326,7 +326,7 @@
 
 .contactMethod.selected span,
 .paymentMethod.selected span {
-  color: #007bff;
+  color: #232323;
   font-weight: 500;
 }
 
@@ -379,7 +379,7 @@
 }
 
 .summaryItemName:hover {
-  color: #007bff;
+  color: #232323;
 }
 
 .summaryItemDetail {
@@ -438,14 +438,14 @@
 }
 
 .promoInput:focus {
-  border-color: #007bff;
+  border-color: #232323;
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 .promoButton {
   padding: 12px 20px;
-  background: #007bff;
+  background: #232323;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -456,7 +456,7 @@
 }
 
 .promoButton:hover {
-  background: #0056b3;
+  background: #1a1919;
 }
 
 .appliedPromo {
@@ -465,7 +465,7 @@
   justify-content: space-between;
   padding: 12px;
   background: #f8f9fa;
-  border: 2px solid #007bff;
+  border: 2px solid #232323;
   border-radius: 8px;
   margin-bottom: 8px;
 }
@@ -498,7 +498,7 @@
 .submitButton {
   width: 100%;
   padding: 16px;
-  background: #007bff;
+  background: #232323;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -510,7 +510,7 @@
 }
 
 .submitButton:hover {
-  background: #0056b3;
+  background: #1a1919;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
@@ -525,7 +525,7 @@
 .checkoutButton {
   width: 100%;
   padding: 16px;
-  background: #007bff;
+  background: #232323;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -537,7 +537,7 @@
 }
 
 .checkoutButton:hover {
-  background: #0056b3;
+  background: #1a1919;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
@@ -589,7 +589,7 @@
 .backButton {
   display: inline-block;
   padding: 12px 24px;
-  background: #007bff;
+  background: #232323;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -598,7 +598,7 @@
 }
 
 .backButton:hover {
-  background: #0056b3;
+  background: #1a1919;
 }
 
 /* Адаптивность */

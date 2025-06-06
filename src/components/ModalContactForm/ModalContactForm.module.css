@@ -108,7 +108,7 @@
 }
 
 .input:focus {
-  border-color: #007bff;
+  border-color: #232323;
   background-color: white;
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
@@ -126,7 +126,7 @@
 }
 
 .textarea:focus {
-  border-color: #007bff;
+  border-color: #232323;
   background-color: white;
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
@@ -173,8 +173,8 @@
 
 /* Стили для отмеченного состояния */
 .privacyLabel input[type="checkbox"]:checked + span::before {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #232323;
+  border-color: #232323;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
   background-size: 18px;
   background-position: center;
@@ -184,7 +184,7 @@
 /* Стили при наведении и фокусе */
 .privacyLabel input[type="checkbox"]:hover + span::before,
 .privacyLabel input[type="checkbox"]:focus + span::before {
-  border-color: #007bff;
+  border-color: #232323;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
@@ -212,19 +212,19 @@
 }
 
 .privacyLink {
-  color: #007bff;
+  color: #232323;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .privacyLink:hover {
-  color: #0056b3;
+  color: #1a1919;
   text-decoration: underline;
 }
 
 .submitButton {
-  background-color: #007bff;
+  background-color: #232323;
   color: white;
   padding: 1rem;
   border: none;
@@ -237,7 +237,7 @@
 }
 
 .submitButton:hover {
-  background-color: #0056b3;
+  background-color: #1a1919;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }

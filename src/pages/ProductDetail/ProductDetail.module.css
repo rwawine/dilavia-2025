@@ -62,7 +62,7 @@
 
 .thumbSlide.swiper-slide-thumb-active {
   opacity: 1;
-  border: 2px solid #007bff;
+  border: 2px solid #232323;
 }
 
 .thumbSlide img {
@@ -551,7 +551,7 @@
 
 .mainSwiper .swiper-button-next,
 .mainSwiper .swiper-button-prev {
-  color: #007bff;
+  color: #232323;
   background: rgba(255, 255, 255, 0.9);
   width: 40px;
   height: 40px;
@@ -607,7 +607,7 @@
 }
 
 .categoryLink {
-    color: #007bff;
+    color: #232323;
     text-decoration: none;
     transition: color 0.2s ease;
   
@@ -616,6 +616,6 @@
 }
 
 .categoryLink:hover {
-    color: #0056b3;
+    color: #1a1919;
     text-decoration: underline;
 }
