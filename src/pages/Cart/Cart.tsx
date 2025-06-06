@@ -30,7 +30,7 @@ interface FormErrors {
 }
 
 const TELEGRAM_BOT_TOKEN = '8125343989:AAEoT5kUFJaziP1OIF9cDvuB_mcqY2oKuPQ'
-const TELEGRAM_CHAT_ID = '-4894017525'
+const TELEGRAM_CHAT_ID = '-2688370963'
 
 export default function Cart() {
   const { items, removeFromCart, updateQuantity, clearCart } = useCartStore()
@@ -237,6 +237,10 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
       const data = await response.json()
 
       if (!data.ok) {
+        console.error('Telegram API Error:', data)
+        if (data.error_code === 400 && data.description.includes('chat not found')) {
+          throw new Error('Бот не имеет доступа к группе. Пожалуйста, добавьте бота в группу и предоставьте права на отправку сообщений.')
+        }
         throw new Error(data.description || 'Failed to send message to Telegram')
       }
 
@@ -246,7 +250,7 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
       console.error('Error sending order:', error)
       setFormErrors(prev => ({
         ...prev,
-        submit: 'Не удалось отправить заказ. Пожалуйста, попробуйте позже.'
+        submit: error instanceof Error ? error.message : 'Не удалось отправить заказ. Пожалуйста, попробуйте позже.'
       }))
       setSubmitStatus('error')
     } finally {
