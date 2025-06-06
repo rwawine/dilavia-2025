@@ -597,3 +597,25 @@
     margin-bottom: 0;
   }
 }
+
+.categoryLinks {
+    font-size: 13px;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.categoryLink {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.categoryLink:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

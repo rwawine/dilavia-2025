@@ -75,19 +75,19 @@ const Header: React.FC<HeaderProps> = ({
         <div className={styles.header__content}>
           {/* Логотип */}
           <div className={styles.header__logo} tabIndex={0}>
-            <Link to="/"> Dilavia</Link>
+            <Link to="/" title="Dilavia - Главная страница"> Dilavia</Link>
           </div>
 
           {/* Навигация */}
           <nav className={styles.header__navigation}>
-            <Link className={styles.header__link} to="/">Главная</Link>
+            <Link className={styles.header__link} to="/" title="Перейти на главную страницу">Главная</Link>
             <div 
               className={styles.header__link_menu}
               onMouseEnter={() => !isMobile && setIsNavMenuExpanded(true)}
               onMouseLeave={() => !isMobile && setIsNavMenuExpanded(false)}
             >
               <div className={styles.header__link}>
-                <Link to="/catalog" className={styles.header__link_text}>Каталог</Link>
+                <Link to="/catalog" className={styles.header__link_text} title="Перейти в каталог товаров">Каталог</Link>
                 <div 
                   className={styles.header__link_arrow}
                   onClick={() => setIsNavMenuExpanded(!isNavMenuExpanded)}
@@ -100,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({
                   <div className={`${styles.expander} ${styles.menu_expander}`}>
                     <div className={styles.menu_expander__content}>
                       {navMenuItems.map((item, index) => (
-                        <Link key={index} to={item.url} className={styles.menu_expander__item}>
+                        <Link key={index} to={item.url} className={styles.menu_expander__item} title={`Перейти в раздел ${item.title}`}>
                           {item.title}
                         </Link>
                       ))}
@@ -109,11 +109,11 @@ const Header: React.FC<HeaderProps> = ({
                 </div>
               )}
             </div>
-            <Link className={styles.header__link} to="/delivery">Доставка и оплата</Link>
+            <Link className={styles.header__link} to="/delivery" title="Информация о доставке и оплате">Доставка и оплата</Link>
             <Link className={styles.header__link} to="/fabric">Ткани</Link>
-            <Link className={styles.header__link} to="/reviews">Отзывы</Link>
-            <Link className={styles.header__link} to="/about">О нас</Link>
-            <Link className={styles.header__link} to="/contacts">Контакты</Link>
+            <Link className={styles.header__link} to="/reviews" title="Отзывы наших клиентов">Отзывы</Link>
+            <Link className={styles.header__link} to="/about" title="Информация о компании">О нас</Link>
+            <Link className={styles.header__link} to="/contacts" title="Контактная информация">Контакты</Link>
           </nav>
 
           {/* Информация (телефон, избранное, корзина) */}
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
             >
               <div className={styles.header__info_link}>
                 <PhoneIcon className={styles.icon} />
-                <a className={styles.header__info_title} href={`tel:${phones.a1}`}>
+                <a className={styles.header__info_title} href={`tel:${phones.a1}`} title="Позвонить по номеру А1">
                   {phones.a1}
                 </a>
               </div>
@@ -135,10 +135,10 @@ const Header: React.FC<HeaderProps> = ({
                 <div className={styles.header__expander}>
                   <div className={`${styles.expander} ${styles.phone_expander}`}>
                     <div className={styles.phone_expander__links}>
-                      <a className={`${styles.phone_expander__link} ${styles.mts}`} href={`tel:${phones.mts}`}>
+                      <a className={`${styles.phone_expander__link} ${styles.mts}`} href={`tel:${phones.mts}`} title="Позвонить по номеру МТС">
                         <span className={styles.icon}>МТС</span> {phones.mts}
                       </a>
-                      <a className={`${styles.phone_expander__link} ${styles.life}`} href={`tel:${phones.a1}`}>
+                      <a className={`${styles.phone_expander__link} ${styles.life}`} href={`tel:${phones.a1}`} title="Позвонить по номеру А1">
                         <span className={styles.icon}>А1</span> {phones.a1}
                       </a>
                     </div>
@@ -150,7 +150,7 @@ const Header: React.FC<HeaderProps> = ({
 
             {/* Избранное */}
             <div className={styles.header__info_favorite}>
-              <Link to="/favorite" className={styles.header__info_link}>
+              <Link to="/favorite" className={styles.header__info_link} title="Перейти в избранное">
                 <HeartIcon className={`${styles.icon} ${favorites.length > 0 ? styles.mat_badge : ''}`} />
                 {favorites.length > 0 && (
                   <span className={styles.mat_badge_content}>{favorites.length}</span>
@@ -160,7 +160,7 @@ const Header: React.FC<HeaderProps> = ({
 
             {/* Корзина */}
             <div className={styles.header__info_cart}>
-              <Link to="/cart" className={styles.header__info_link}>
+              <Link to="/cart" className={styles.header__info_link} title="Перейти в корзину">
                 <CartIcon className={`${styles.icon} ${totalItems() > 0 ? styles.mat_badge : ''}`} />
                 {totalItems() > 0 && (
                   <span className={styles.mat_badge_content}>{totalItems()}</span>

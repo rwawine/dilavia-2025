@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs } from 'swiper/modules'
 import { Helmet } from 'react-helmet-async'
@@ -218,7 +218,7 @@ export default function ProductDetail() {
                 
                 {/* Additional SEO meta tags */}
                 <meta name="robots" content="index, follow" />
-                <link rel="canonical" href={`https://your-domain.com/product/${product.slug}`} />
+                <link rel="canonical" href={`${window.location.origin}/product/${product.slug}`} />
                 
                 {/* Product structured data */}
                 <script type="application/ld+json">
@@ -227,18 +227,18 @@ export default function ProductDetail() {
                         '@type': 'Product',
                         name: product.name,
                         description: product.description,
-                        image: product.images.map(img => `https://your-domain.com/${img}`),
+                        image: product.images.map(img => `https://dilavia.by/${img}`),
                         sku: product.id,
                         brand: {
                             '@type': 'Brand',
-                            name: 'Your Brand Name'
+                            name: 'Dilavia'
                         },
                         offers: {
                             '@type': 'Offer',
                             price: selectedDimension ? selectedDimension.price + (selectedOption?.price || 0) : 0,
                             priceCurrency: 'BYN',
                             availability: product.availability === 'В наличии' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-                            url: `https://your-domain.com/product/${product.slug}`
+                            url: `${window.location.origin}/product/${product.slug}`
                         }
                     })}
                 </script>
@@ -315,6 +315,12 @@ export default function ProductDetail() {
                             <span className={styles.label}>Доступность:</span>
                             <span className={styles.value}>{product.availability}</span>
                         </div>
+                        <div className={styles.categoryLinks}>
+                            <span>Категории: </span>
+                            <Link to={`/catalog/${product.category.code}/${product.subcategory.code}`} className={styles.categoryLink}>
+                                {product.subcategory.name}
+                            </Link>
+                        </div>
                         <div className={styles.availabilityItem}>
                             <span className={styles.label}>Срок изготовления:</span>
                             <span className={styles.value}>{product.manufacturing}</span>
@@ -341,7 +347,9 @@ export default function ProductDetail() {
                         </button>
                     </div>
 
-                    <div className={styles.description}>{product.description}</div>
+                    <div className={styles.description}>
+                        {product.description}
+                    </div>
 
 
                     {product.dimensions.length > 1 && (

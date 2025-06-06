@@ -20,7 +20,7 @@ export default function Footer() {
                                 </a>
                             </div>
                             <div className={styles.contactItem}>
-                                <a href="tel:+375336641830" className={styles.link}>
+                                <a href="tel:+375336641830" className={styles.link} title="Позвонить по номеру МТС">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none"
                                         stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path
@@ -31,7 +31,7 @@ export default function Footer() {
                                 </a>
                             </div>
                             <div className={styles.contactItem}>
-                                <a href="tel:+37528019271" className={styles.link}>
+                                <a href="tel:+37528019271" className={styles.link} title="Позвонить по номеру А1">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none"
                                         stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path
@@ -42,7 +42,7 @@ export default function Footer() {
                                 </a>
                             </div>
                             <div className={styles.contactItem}>
-                                <a href="https://t.me/dilavia" target="_blank" className={styles.link}>
+                                <a href="https://t.me/dilavia" target="_blank" className={styles.link} title="Написать в Telegram">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none"
                                         stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path
@@ -72,10 +72,10 @@ export default function Footer() {
                         <h3 className={styles.title}>Клиентам</h3>
                         <div className={styles.block}>
                             <div className={styles.linksGroup}>
-                                <a href="/about" className={styles.link}>О нас</a>
-                                <a href="/delivery" className={styles.link}>Доставка</a>
-                                <a href="/contacts" className={styles.link}>Контакты</a>
-                                <a href="/reviews" className={styles.link}>Отзывы</a>
+                                <a href="/about" className={styles.link} title="Информация о компании">О нас</a>
+                                <a href="/delivery" className={styles.link} title="Информация о доставке">Доставка</a>
+                                <a href="/contacts" className={styles.link} title="Контактная информация">Контакты</a>
+                                <a href="/reviews" className={styles.link} title="Отзывы клиентов">Отзывы</a>
                             </div>
                         </div>
                     </div>
@@ -85,9 +85,9 @@ export default function Footer() {
                         <h3 className={styles.title}>Мебель</h3>
                         <div className={styles.block}>
                             <div className={styles.linksGroup}>
-                                <a href="/catalog/sofa" className={styles.link}>Диваны</a>
-                                <a href="/catalog/bed" className={styles.link}>Кровати</a>
-                                <a href="/catalog/armchair" className={styles.link}>Кресла</a>
+                                <a href="/catalog/sofa" className={styles.link} title="Каталог диванов">Диваны</a>
+                                <a href="/catalog/bed" className={styles.link} title="Каталог кроватей">Кровати</a>
+                                <a href="/catalog/armchair" className={styles.link} title="Каталог кресел">Кресла</a>
                             </div>
                         </div>
                     </div>

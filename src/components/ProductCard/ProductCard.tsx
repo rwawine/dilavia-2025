@@ -124,6 +124,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <Link 
           to={`/product/${product.slug}`} 
           className={styles.title}
+          title={`Подробнее о товаре ${product.name}`}
           onClick={(e) => {
             e.preventDefault();
             document.documentElement.scrollIntoView({ behavior: 'instant' });
@@ -196,6 +197,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Link 
             to={`/product/${product.slug}`} 
             className={styles.detailsLink}
+            title={`Подробнее о товаре ${product.name}`}
             onClick={(e) => {
               e.preventDefault();
               document.documentElement.scrollIntoView({ behavior: 'instant' });

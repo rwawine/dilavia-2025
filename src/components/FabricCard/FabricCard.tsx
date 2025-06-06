@@ -115,6 +115,7 @@ export default function FabricCard({ material, materialName, collection, collect
           <Link 
             to={`/fabric/${material}/${collection}`} 
             className={styles.detailsLink}
+            title={`Подробнее о ткани ${displayName}`}
             onClick={(e) => e.stopPropagation()}
           >
             Подробнее о ткани

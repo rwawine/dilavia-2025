@@ -6,6 +6,7 @@ import SliderBenefits from './SliderBenefits/SliderBenefits';
 import Copirate from './Copirate/Copirate';
 import SizeVisual from './SizeVisual/SizeVisual';
 import ReviewsGroup from '../../components/ReviewsGroup/ReviewsGroup';
+import styles from './Home.module.css';
 
 export default function Home() {
     return (
@@ -17,12 +18,13 @@ export default function Home() {
                 image="/images/logo.png"
                 url="https://dilavia-2025-fjcc.vercel.app/"
             />
+            <h1 className={styles.visuallyHidden}>DILAVIA - интернет-магазин мебели в Минске. Диваны, кровати и кресла с доставкой по Беларуси</h1>
             <Hero />
             <PopularProduct />
             <Benefits />
             <SliderBenefits />
             <Copirate />
-            <SizeVisual />
+            <SizeVisual /> 
             <ReviewsGroup />
         </>
     );
