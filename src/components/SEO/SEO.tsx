@@ -32,7 +32,7 @@ export const SEO = ({
     description, 
     keywords, 
     noindex = false,
-    image = '/logo.png',
+    image = '/logo.svg',
     url,
     breadcrumbs = [],
     productData
@@ -59,7 +59,7 @@ export const SEO = ({
         "@type": "Organization",
         "name": "DILAVIA",
         "url": baseUrl,
-        "logo": `${baseUrl}/logo.png`,
+        "logo": `${baseUrl}/logo.svg`,
         "description": "Интернет-магазин мебели в Минске. Диваны, кровати и кресла с доставкой по Беларуси",
         "address": {
             "@type": "PostalAddress",

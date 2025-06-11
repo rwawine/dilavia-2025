@@ -1,28 +1,792 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+                            http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+  <!-- Главная страница -->
   <url>
     <loc>https://dilavia.by/</loc>
-    <lastmod>2024-03-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Статические страницы -->
   <url>
     <loc>https://dilavia.by/about</loc>
-    <lastmod>2024-03-20</lastmod>
+    <lastmod>2025-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dilavia.by/contact</loc>
-    <lastmod>2024-03-20</lastmod>
+    <loc>https://dilavia.by/delivery</loc>
+    <lastmod>2025-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dilavia.by/services</loc>
-    <lastmod>2024-03-20</lastmod>
+    <loc>https://dilavia.by/contacts</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/reviews</loc>
+    <lastmod>2025-06-11</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Функциональные страницы -->
+  <url>
+    <loc>https://dilavia.by/catalog</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- Add more URLs as your site grows -->
-</urlset> 
+  <url>
+    <loc>https://dilavia.by/fabric</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Категории мебели -->
+  <url>
+    <loc>https://dilavia.by/catalog/sofa</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/catalog/bed</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/catalog/armchair</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Подкатегории мебели -->
+  <url>
+    <loc>https://dilavia.by/catalog/sofa/straight-sofa</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/catalog/sofa/corner-sofa</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/catalog/sofa/U-shaped-sofa</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/catalog/bed/bed</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/catalog/bed/kids-tables</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/catalog/armchair/armchair</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Страницы товаров -->
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-Milton</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Milton/1.png</image:loc>
+      <image:title>Прямой диван  Милтон</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-2.0</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/2x/1.png</image:loc>
+      <image:title>Прямой диван  2.0</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-prynston</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Prinston/1.png</image:loc>
+      <image:title>Прямой диван  Принстон</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-bosfor</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Bosfor/1.png</image:loc>
+      <image:title>Прямой диван  Босфор</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-medison</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Medyson/1.png</image:loc>
+      <image:title>Прямой диван  Мэдисон</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-fluffy</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Fluffy/1.png</image:loc>
+      <image:title>Прямой диван  Fluffy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-padova</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Padova/1.png</image:loc>
+      <image:title>Прямой диван  Padova</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-selva</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Selva/1.png</image:loc>
+      <image:title>Прямой диван  Selva</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-kevin</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Kevin/1.png</image:loc>
+      <image:title>Прямой диван  Kevin</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-oasis</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Oasis/1.png</image:loc>
+      <image:title>Прямой диван  Oasis</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-accordion</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Accordeon/1.png</image:loc>
+      <image:title>Прямой диван  Аккордеон</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-loft</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Loft/1.png</image:loc>
+      <image:title>Прямой диван  Loft</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pryamoi-divan-klaus</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Straight_sofa/Klaus/1.png</image:loc>
+      <image:title>Прямой диван  Klaus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-klaus</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Klaus/1.png</image:loc>
+      <image:title>Угловой диван  Klaus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-fix</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Fix/1.png</image:loc>
+      <image:title>Угловой диван  Fix</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-padovau</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Padova/1.png</image:loc>
+      <image:title>Угловой диван  Padova</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-lounge</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Lounge/1.png</image:loc>
+      <image:title>Угловой диван  Lounge</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-luzi</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Luzi/1.png</image:loc>
+      <image:title>Угловой диван  Luzi</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-2.0</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/UGLOVOI4300/1.png</image:loc>
+      <image:title>Угловой диван  2.0</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-2.0.1</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/UGLOVOYD400/1.png</image:loc>
+      <image:title>Угловой диван  2.0.1</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-karnella</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Karnella/1.png</image:loc>
+      <image:title>Угловой диван  Карнелла</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-misandra</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Misandra/1.png</image:loc>
+      <image:title>Угловой диван  Мисандра</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-elke</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Elke/1.png</image:loc>
+      <image:title>Угловой диван  Elke</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-boston</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Boston/1.png</image:loc>
+      <image:title>Угловой диван Бостон</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-amsterdam</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Amsterdam/1.png</image:loc>
+      <image:title>Угловой диван Амстердам</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-gusto</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Gusto/1.png</image:loc>
+      <image:title>Угловой диван Gusto</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-boss</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Boss/1.png</image:loc>
+      <image:title>Угловой диван Boss</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-loft</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Loft/1.png</image:loc>
+      <image:title>Угловой диван Loft</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-parys</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Parys/1.png</image:loc>
+      <image:title>Угловой диван Parys</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-rowan</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Rowan/1.png</image:loc>
+      <image:title>Угловой диван Rowan</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/uglovoi-divan-Loft-u</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Corner_sofa/Loft1_0/1.png</image:loc>
+      <image:title>Угловой диван Loft 1.0</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pobrazny-factor</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/U_shaped_sofa/Factor/1.png</image:loc>
+      <image:title>П-образный диван Factor</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pobrazny-fluffy-p</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/U_shaped_sofa/Fluffy/1.png</image:loc>
+      <image:title>П-образный диван Fluffy</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pobrazny-loft-p</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/U_shaped_sofa/Loft/1.png</image:loc>
+      <image:title>П-образный диван Лофт</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/pobrazny-divan-klaus</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/U_shaped_sofa/Klaus/1.png</image:loc>
+      <image:title>П-образный диван  Klaus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-1</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/1/1.jpg</image:loc>
+      <image:title>Кровать  1</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-2</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/2/1.jpg</image:loc>
+      <image:title>Кровать  2</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-3</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/3/1.png</image:loc>
+      <image:title>Кровать  3</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-4</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/4/1.png</image:loc>
+      <image:title>Кровать  4</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-5</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/5/1.png</image:loc>
+      <image:title>Кровать  5</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-6</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/6/1.png</image:loc>
+      <image:title>Кровать  6</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-7</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/7/1.png</image:loc>
+      <image:title>Кровать  7</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-8</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/8/1.png</image:loc>
+      <image:title>Кровать  8</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-10</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/9/1.png</image:loc>
+      <image:title>Кровать  10</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-11</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/10/1.png</image:loc>
+      <image:title>Кровать  11</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-12</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/11/1.png</image:loc>
+      <image:title>Кровать  12</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-13</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/12/1.png</image:loc>
+      <image:title>Кровать  13</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/bed-14</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Bed/13/1.png</image:loc>
+      <image:title>Кровать  14</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kreslo-1.0</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Armchair/Kreslo/1.png</image:loc>
+      <image:title>Кресло  1.0</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kreslo-milton</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Armchair/Milton/1.png</image:loc>
+      <image:title>Кресло  Милтон</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kids-tables-15</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Kids_tables/215/1.png</image:loc>
+      <image:title>детская кровать  15</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kids-tables-16</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Kids_tables/216/1.png</image:loc>
+      <image:title>детская кровать  16</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kids-tables-17</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Kids_tables/217/1.png</image:loc>
+      <image:title>детская кровать  17</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kids-tables-18</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Kids_tables/218/1.png</image:loc>
+      <image:title>детская кровать  18</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kids-tables-19</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Kids_tables/219/1.png</image:loc>
+      <image:title>детская кровать  19</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://dilavia.by/product/kids-tables-20</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://dilavia.by/images/Sofa/Kids_tables/220/1.png</image:loc>
+      <image:title>детская кровать  20</image:title>
+    </image:image>
+  </url>
+
+  <!-- Страницы материалов -->
+  <url>
+    <loc>https://dilavia.by/fabric/Velours</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Microvelour</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Jacquard</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Gozhka</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Faux_suede</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Faux_leather</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Chenille</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Коллекции материалов -->
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Verona</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/River</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Pandora</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Omega</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Nessi</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Lorena</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Lanvin_Aqua</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Grand</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Fabriq</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Camel</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Velours/Bernar</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dilavia.by/fabric/Microvelour/Montale</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
