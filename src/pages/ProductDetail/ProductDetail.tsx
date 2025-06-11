@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs } from 'swiper/modules'
-import { Helmet } from 'react-helmet-async'
 import { useCartStore } from '../../store/cartStore'
 import { useFavoritesStore } from '../../store/favoritesStore'
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs'
+import { SEO } from '../../components/SEO/SEO'
 import styles from './ProductDetail.module.css'
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -204,50 +204,27 @@ export default function ProductDetail() {
 
     return (
         <>
-            <Helmet>
-                <title>{product.seo.title}</title>
-                <meta name="description" content={product.seo.metaDescription} />
-                <meta name="keywords" content={product.seo.keywords.join(', ')} />
-                
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content="product" />
-                <meta property="og:title" content={product.seo.title} />
-                <meta property="og:description" content={product.seo.metaDescription} />
-                <meta property="og:image" content={`/${product.images[0]}`} />
-                
-                {/* Twitter */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={product.seo.title} />
-                <meta name="twitter:description" content={product.seo.metaDescription} />
-                <meta name="twitter:image" content={`/${product.images[0]}`} />
-                
-                {/* Additional SEO meta tags */}
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href={`${window.location.origin}/product/${product.slug}`} />
-                
-                {/* Product structured data */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        '@context': 'https://schema.org',
-                        '@type': 'Product',
-                        name: product.name,
-                        description: product.description,
-                        image: product.images.map(img => `https://dilavia.by/${img}`),
-                        sku: product.id,
-                        brand: {
-                            '@type': 'Brand',
-                            name: 'Dilavia'
-                        },
-                        offers: {
-                            '@type': 'Offer',
-                            price: selectedDimension ? selectedDimension.price + (selectedOption?.price || 0) : 0,
-                            priceCurrency: 'BYN',
-                            availability: product.availability === 'В наличии' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-                            url: `${window.location.origin}/product/${product.slug}`
-                        }
-                    })}
-                </script>
-            </Helmet>
+            <SEO
+                title={product.seo.title}
+                description={product.seo.metaDescription}
+                keywords={product.seo.keywords.join(', ')}
+                image={`/${product.images[0]}`}
+                url={`/product/${product.slug}`}
+                breadcrumbs={breadcrumbs.map(item => ({
+                    name: item.name,
+                    item: item.path
+                }))}
+                productData={{
+                    name: product.name,
+                    description: product.description,
+                    images: product.images,
+                    sku: product.id,
+                    price: selectedDimension ? selectedDimension.price + (selectedOption?.price || 0) : 0,
+                    currency: "BYN",
+                    availability: product.availability,
+                    brand: "DILAVIA"
+                }}
+            />
             <Breadcrumbs items={breadcrumbs} />
             <div className={styles.container}>
                 <div className={styles.gallery}>

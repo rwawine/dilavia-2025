@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000,
+    port: 3001,
     host: true,
     strictPort: true,
     allowedHosts: true,
@@ -32,5 +32,6 @@ export default defineConfig({
       host: 'admin.dilavia.by',
       protocol: 'https',
     },
+    open: true
   },
 }); 
