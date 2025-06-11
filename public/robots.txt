@@ -9,4 +9,4 @@ Disallow: /private/
 Disallow: /temp/
 
 # Sitemap location
-Sitemap: https://dilavia.com/sitemap.xml 
+Sitemap: https://dilavia.by/sitemap.xml 
