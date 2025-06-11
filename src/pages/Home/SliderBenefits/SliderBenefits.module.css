@@ -54,9 +54,10 @@
 .marquee {
   display: flex;
   gap: 20px;
-  animation: scroll 40s linear infinite;
+  animation: scroll 120s linear infinite;
   width: fit-content;
   padding: 20px 0;
+  will-change: transform;
 }
 
 .marquee:hover {
@@ -67,8 +68,9 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-33.33%);
   }
 }
 

@@ -62,7 +62,7 @@ export default function Cart() {
     e.preventDefault()
     setPromoError(null)
 
-    if (promoCode.toLowerCase() === 'sale10') {
+    if (promoCode.toLowerCase() === 'sale5') {
       setAppliedPromo(promoCode)
       setPromoCode('')
     } else {
@@ -263,7 +263,7 @@ ${discount > 0 ? `Скидка: -${discount} BYN` : ''}
   const productItems = items.filter(item => !item.id.includes('-') || item.price > 0)
 
   const subtotal = productItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const discount = appliedPromo ? subtotal * 0.1 : 0
+  const discount = appliedPromo ? subtotal * 0.05 : 0
   const totalPrice = subtotal - discount
 
   if (items.length === 0 && !isCheckout) {

@@ -105,15 +105,14 @@ export default function ProductDetail() {
     }, [location.pathname])
 
     useEffect(() => {
-        fetchProduct()
-    }, [slug])
-    
-    const fetchProduct = async () => {
-        try {
-            const response = await fetch('/data/data.json')
-            const data = await response.json()
+        const loadProduct = async () => {
+            setIsLoading(true)
+            setProduct(null)
             
             try {
+                const response = await fetch(`/data/data.json?t=${Date.now()}`)
+                const data = await response.json()
+                
                 const foundProduct = data[0].products.find((p: Product) => p.slug === slug)
                 
                 if (foundProduct) {
@@ -128,12 +127,10 @@ export default function ProductDetail() {
             } finally {
                 setIsLoading(false)
             }
-        } catch (err) {
-            console.error('Error fetching product:', err)
-            setError('Ошибка при загрузке товара')
-            setIsLoading(false)
         }
-    }
+
+        loadProduct()
+    }, [slug, location.key])
 
     const handleAddToCart = () => {
         if (!product || !selectedDimension) return
@@ -170,6 +167,14 @@ export default function ProductDetail() {
     )
 
     const breadcrumbs = [
+        {
+            name: "Главная",
+            path: `/`
+        },
+        {
+            name: "Каталог",
+            path: `/catalog`
+        },
         {
             name: product.category.name,
             path: `/catalog/${product.category.code}`
@@ -328,7 +333,7 @@ export default function ProductDetail() {
                     </div>
                     <div className={styles.priceContainer}>
                         <div className={styles.price}>
-                            {selectedDimension ? selectedDimension.price + (selectedOption?.price || 0) : 0} BYN
+                            от {selectedDimension ? selectedDimension.price + (selectedOption?.price || 0) : 0} BYN
                             {product.price.old && (
                                 <span className={styles.oldPrice}>{product.price.old} BYN</span>
                             )}
@@ -390,7 +395,7 @@ export default function ProductDetail() {
                                 <option value="">Выберите опцию</option>
                                 {selectedDimension.additionalOptions.map((opt) => (
                                         <option key={opt.name} value={opt.name}>
-                                            {opt.name} (+{opt.price} BYN)
+                                            {opt.name}
                                         </option>
                                     ))}
                             </select>

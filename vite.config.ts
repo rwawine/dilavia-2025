@@ -18,7 +18,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          'react-helmet': ['react-helmet-async'],
         },
       },
     },
@@ -27,5 +26,11 @@ export default defineConfig({
     port: 3000,
     host: true,
     strictPort: true,
+    allowedHosts: true,
+    cors: true,
+    hmr: {
+      host: 'admin.dilavia.by',
+      protocol: 'https',
+    },
   },
 }); 

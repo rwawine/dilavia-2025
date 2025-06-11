@@ -16,7 +16,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     "@type": "ListItem" as const,
     position: index + 1,
     name: item.name,
-    item: `https://dilavia-2025-fjcc.vercel.app${item.path}`
+    item: `https://dilavia.by${item.path}`
   }));
 
   return (

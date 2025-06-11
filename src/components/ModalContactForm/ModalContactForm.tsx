@@ -23,7 +23,7 @@ type FormErrors = Partial<Record<keyof FormData, string>> & {
 }
 
 const TELEGRAM_BOT_TOKEN = '8125343989:AAEoT5kUFJaziP1OIF9cDvuB_mcqY2oKuPQ'
-const TELEGRAM_CHAT_ID = '-4894017525'
+const TELEGRAM_CHAT_ID = '@dilaviatest2233'
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`
 
 // Функция для форматирования номера телефона

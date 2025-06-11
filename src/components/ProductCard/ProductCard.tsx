@@ -94,6 +94,21 @@ export default function ProductCard({ product }: ProductCardProps) {
   const hasMultipleDimensions = product.dimensions && product.dimensions.length > 1
   const hasAdditionalOptions = selectedDimension?.additionalOptions && selectedDimension.additionalOptions.length > 0
 
+  const handleProductClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(`/product/${product.slug}`, { replace: true });
+    window.location.reload();
+  };
+
+  // Добавляем эффект для проверки сохраненного URL после перезагрузки
+  useEffect(() => {
+    const savedUrl = sessionStorage.getItem('productUrl');
+    if (savedUrl) {
+      sessionStorage.removeItem('productUrl');
+      window.location.href = savedUrl;
+    }
+  }, []);
+
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -121,17 +136,11 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       <div className={styles.content}>
-        <Link 
-          to={`/product/${product.slug}`} 
+        <Link
+          to={`/product/${product.slug}`}
           className={styles.title}
           title={`Подробнее о товаре ${product.name}`}
-          onClick={(e) => {
-            e.preventDefault();
-            document.documentElement.scrollIntoView({ behavior: 'instant' });
-            setTimeout(() => {
-              window.location.href = `/product/${product.slug}`;
-            }, 100);
-          }}
+          onClick={handleProductClick}
         >
           {product.name}
         </Link>
@@ -172,7 +181,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               <option value="">Выберите опцию</option>
               {selectedDimension.additionalOptions.map((opt) => (
                 <option key={opt.name} value={opt.name}>
-                  {opt.name} (+{opt.price} BYN)
+                  {opt.name}
                 </option>
               ))}
             </select>
@@ -181,7 +190,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className={styles.priceContainer}>
           <div className={styles.price}>
-            {selectedDimension ?
+            от {selectedDimension ?
               selectedDimension.price + (selectedOption?.price || 0) :
               product.price.current} BYN
             {product.price.old && (
@@ -194,17 +203,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           >
             {isInCart ? 'В корзине' : 'В корзину'}
           </button>
-          <Link 
-            to={`/product/${product.slug}`} 
+          <Link
+            to={`/product/${product.slug}`}
             className={styles.detailsLink}
             title={`Подробнее о товаре ${product.name}`}
-            onClick={(e) => {
-              e.preventDefault();
-              document.documentElement.scrollIntoView({ behavior: 'instant' });
-              setTimeout(() => {
-                window.location.href = `/product/${product.slug}`;
-              }, 100);
-            }}
+            onClick={handleProductClick}
           >
             Подробнее о товаре
           </Link>
