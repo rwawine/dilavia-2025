@@ -207,16 +207,7 @@ ${formData.message}
             </div>
 
             <div className={styles.mapContainer}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2349.1234567890123!2d27.5678!3d53.9012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDU0JzA0LjMiTiAyN8KwMzQnMDQuMSJF!5e0!3m2!1sru!2sby!4v1234567890"
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Карта расположения офиса"
-              />
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Acb083bc486aed45f850ece7385add2f7e81cb687e9d55eb869b506291fac6df9&amp;source=constructor" width="100%" height="421"></iframe>
             </div>
           </div>
 
