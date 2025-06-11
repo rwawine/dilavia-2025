@@ -11,7 +11,6 @@ export default function NotFound() {
       <SEO
         title="404 - Страница не найдена | DILAVIA"
         description="Страница не найдена. Вернитесь на главную страницу DILAVIA или воспользуйтесь навигацией сайта."
-        noindex={true}
       />
       <div className={styles.container}>
         <Breadcrumbs items={[

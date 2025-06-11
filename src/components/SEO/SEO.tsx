@@ -17,7 +17,6 @@ interface SEOProps {
     title?: string;
     description?: string;
     keywords?: string;
-    noindex?: boolean;
     image?: string;
     url?: string;
     breadcrumbs?: Array<{
@@ -31,7 +30,6 @@ export const SEO = ({
     title = 'DILAVIA - интернет-магазин мебели в Минске', 
     description, 
     keywords, 
-    noindex = false,
     image = '/logo.svg',
     url,
     breadcrumbs = [],
@@ -124,7 +122,6 @@ export const SEO = ({
             <title>{title}</title>
             {description && <meta name="description" content={description} />}
             {keywords && <meta name="keywords" content={keywords} />}
-            {noindex && <meta name="robots" content="noindex, nofollow" />}
             
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={productData ? "product" : "website"} />
