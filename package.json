@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://dilavia.by",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 3001",
     "build": "node generate-sitemap.js && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

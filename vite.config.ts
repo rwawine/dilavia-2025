@@ -28,6 +28,11 @@ export default defineConfig({
     strictPort: true,
     allowedHosts: true,
     cors: true,
+    hmr: {
+      clientPort: 3001,
+      host: 'localhost',
+      protocol: 'ws'
+    },
     open: true
   },
 }); 
