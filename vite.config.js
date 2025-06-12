@@ -27,10 +27,6 @@ export default defineConfig({
         strictPort: true,
         allowedHosts: true,
         cors: true,
-        // hmr: {
-        //   host: 'admin.dilavia.by',
-        //   protocol: 'https',
-        // },
         open: true
     },
 });
