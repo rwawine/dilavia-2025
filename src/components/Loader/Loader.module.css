@@ -12,7 +12,7 @@
     z-index: 9999;
     opacity: 1;
     visibility: visible;
-    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .preloader.hidden {
@@ -40,7 +40,7 @@
     color: #333333;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInText 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: fadeInText 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 1.5s; /* Появляется после анимации букв */
 }
 

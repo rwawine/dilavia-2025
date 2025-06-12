@@ -10,8 +10,8 @@ const Loader = () => {
       setIsHidden(true);
       setTimeout(() => {
         setIsVisible(false);
-      }, 1500);
-    }, 3000); // Увеличиваем время показа, чтобы успеть увидеть текст
+      }, 900);
+    }, 1800); // Увеличиваем время показа, чтобы успеть увидеть текст
 
     return () => clearTimeout(timer);
   }, []);
