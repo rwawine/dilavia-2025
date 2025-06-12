@@ -6,7 +6,7 @@
   "homepage": "https://dilavia.by",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node generate-sitemap.js && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "vercel-build": "vite build"
