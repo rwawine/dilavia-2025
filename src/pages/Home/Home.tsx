@@ -17,7 +17,7 @@ export default function Home() {
         const hasVisited = sessionStorage.getItem('hasVisited');
         // Проверяем, является ли устройство мобильным
         const isMobile = window.innerWidth <= 1200;
-        
+
         if (!hasVisited && !isMobile) {
             setShowLoader(true);
             sessionStorage.setItem('hasVisited', 'true');
@@ -40,7 +40,7 @@ export default function Home() {
             <Benefits />
             <SliderBenefits />
             <Copirate />
-            <SizeVisual /> 
+            <SizeVisual />
             <ReviewsGroup />
         </>
     );

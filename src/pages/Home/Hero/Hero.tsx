@@ -20,6 +20,19 @@ interface Slide {
   }[]
 }
 
+// Функция для оптимизации URL изображения
+const optimizeImageUrl = (url: string, width: number = 1920) => {
+  if (!url) return '';
+  // Добавляем параметры оптимизации для Cloudinary
+  return url.replace('/upload/', `/upload/w_${width},c_scale,f_auto,q_auto/`);
+};
+
+// Функция для предварительной загрузки изображения
+const preloadImage = (url: string) => {
+  const img = new Image();
+  img.src = url;
+};
+
 export default function Hero() {
   const [slides, setSlides] = useState<Slide[]>([])
   const [loading, setLoading] = useState(true)
@@ -27,13 +40,34 @@ export default function Hero() {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
+        // Проверяем кэш
+        const cachedData = sessionStorage.getItem('heroSlides');
+        if (cachedData) {
+          setSlides(JSON.parse(cachedData));
+          setLoading(false);
+          return;
+        }
+
         const response = await fetch('https://admin.dilavia.by/api/slajder-na-glavnoj-straniczes?populate=image', {
           headers: {
             'Authorization': 'Bearer 4d6db2e49ce43ede2750e04d8a12fa96bb9d567de6d40fd1776b834b43ef2871c5a1d0d48347c9416c9d42a66276338aa971d711b828f281508a6e1181c55750e9967fa23d5eb7faac2f6d54cbebe9a841065afd5923b7e6eaee4be2bd0912777c1c8f797506193a7699eefa2a8feb6ab22cf14087bf4cc479865a62052d1f4d'
           }
         })
         const data = await response.json()
-        setSlides(data.data)
+        
+        // Кэшируем данные
+        sessionStorage.setItem('heroSlides', JSON.stringify(data.data));
+        setSlides(data.data);
+
+        // Предварительно загружаем изображения
+        data.data.forEach((slide: Slide) => {
+          const imgUrl = slide.image[0]?.formats?.large?.url ||
+            slide.image[0]?.formats?.medium?.url ||
+            slide.image[0]?.url;
+          if (imgUrl) {
+            preloadImage(optimizeImageUrl(imgUrl));
+          }
+        });
       } catch (error) {
         console.error('Error fetching slides:', error)
       } finally {
@@ -66,13 +100,14 @@ export default function Hero() {
         className={styles.swiper}
       >
         {slides.map((slide) => {
-          // Получаем url картинки (large, medium, original — что есть)
           const img =
             slide.image[0]?.formats?.large?.url ||
             slide.image[0]?.formats?.medium?.url ||
             slide.image[0]?.url ||
             ''
-          const bgUrl = img ? `${img}` : undefined
+          
+          // Оптимизируем URL изображения
+          const bgUrl = img ? optimizeImageUrl(img) : undefined
 
           return (
             <SwiperSlide key={slide.id} className={styles.swiperSlide}>
