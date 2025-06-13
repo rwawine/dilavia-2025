@@ -602,7 +602,37 @@
 }
 
 /* Адаптивность */
+@media (max-width: 1200px) {
+  .cartContent {
+    grid-template-columns: 1fr 480px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .cartContent {
+    grid-template-columns: 1fr 420px;
+    gap: 16px;
+  }
+
+  .itemPrice {
+    margin: 0 16px;
+  }
+
+  .quantityControl {
+    margin: 0 16px;
+  }
+
+  .summary {
+    padding: 24px;
+  }
+}
+
 @media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
   .cartContent {
     grid-template-columns: 1fr;
   }
@@ -629,5 +659,149 @@
 
   .promoButton {
     width: 100%;
+  }
+
+  .cartItem {
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .itemImage {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+  }
+
+  .itemInfo {
+    flex: 1 1 calc(100% - 72px);
+    margin-bottom: 12px;
+  }
+
+  .itemPrice,
+  .quantityControl,
+  .itemTotal {
+    margin: 8px 0;
+  }
+
+  .removeButton {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .cartItem {
+    padding: 12px;
+  }
+
+  .itemName {
+    font-size: 16px;
+  }
+
+  .itemDetails {
+    font-size: 13px;
+  }
+
+  .itemPrice,
+  .itemTotal {
+    font-size: 15px;
+  }
+
+  .quantityControl button {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .summary {
+    padding: 20px;
+  }
+
+  .summary h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .summaryCategory {
+    font-size: 15px;
+  }
+
+  .summaryItemName {
+    font-size: 14px;
+  }
+
+  .summaryItemDetail {
+    font-size: 12px;
+  }
+
+  .totalPrice {
+    font-size: 18px;
+  }
+
+  .checkoutButton,
+  .submitButton {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .fabricItems {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .fabricImage {
+    height: 100px;
+  }
+
+  .fabricName {
+    font-size: 14px;
+  }
+
+  .fabricColor {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .cartItem {
+    padding: 10px;
+  }
+
+  .itemImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+  }
+
+  .itemInfo {
+    flex: 1 1 calc(100% - 58px);
+  }
+
+  .itemName {
+    font-size: 15px;
+  }
+
+  .itemDetails {
+    font-size: 12px;
+  }
+
+  .quantityControl button {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+  .fabricItems {
+    grid-template-columns: 1fr;
   }
 } 

@@ -94,6 +94,35 @@
   font-size: 18px;
 }
 
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 28px;
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 16px;
@@ -110,6 +139,13 @@
     white-space: nowrap;
     padding-bottom: 8px;
     gap: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   .tab {
@@ -122,8 +158,113 @@
     margin-bottom: 20px;
   }
 
+  .sectionTitle:after {
+    width: 40px;
+  }
+
   .products {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 16px;
+  }
+
+  .empty,
+  .loading,
+  .error {
+    padding: 32px 16px;
+  }
+
+  .empty p,
+  .loading,
+  .error {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .tabs {
+    margin-bottom: 20px;
+  }
+
+  .tab {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  .sectionTitle:after {
+    width: 35px;
+    bottom: -6px;
+  }
+
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .empty,
+  .loading,
+  .error {
+    padding: 24px 12px;
+  }
+
+  .empty p,
+  .loading,
+  .error {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 8px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .tab {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .empty,
+  .loading,
+  .error {
+    padding: 20px 10px;
+  }
+
+  .empty p,
+  .loading,
+  .error {
+    font-size: 14px;
   }
 }
