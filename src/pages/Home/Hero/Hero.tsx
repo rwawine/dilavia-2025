@@ -38,19 +38,24 @@ const getOptimalImageSize = () => {
 // Функция для оптимизации URL изображения
 const optimizeImageUrl = (url: string, width: number) => {
   if (!url) return ''
-  return url.replace('/upload/', `/upload/w_${width},c_scale,f_auto,q_auto,dpr_auto/`)
+  return url.replace('/upload/', `/upload/w_${width},c_scale,f_auto,q_auto,dpr_auto,fl_progressive/`)
 }
 
 // Функция для предварительной загрузки изображения
 const preloadImage = (url: string) => {
-  const img = new Image();
-  img.src = url;
-};
+  const img = new Image()
+  img.src = url
+  return new Promise((resolve) => {
+    img.onload = resolve
+    img.onerror = resolve
+  })
+}
 
 export default function Hero() {
   const [slides, setSlides] = useState<Slide[]>([])
   const [loading, setLoading] = useState(true)
   const [imageSize, setImageSize] = useState(getOptimalImageSize())
+  const [firstSlideLoaded, setFirstSlideLoaded] = useState(false)
 
   // Обработчик изменения размера окна
   useEffect(() => {
@@ -70,10 +75,23 @@ export default function Hero() {
         const cachedData = sessionStorage.getItem('heroSlides')
         const cachedTimestamp = sessionStorage.getItem('heroSlidesTimestamp')
         const now = Date.now()
-        
+
         // Используем кэш, если он не старше 1 часа
         if (cachedData && cachedTimestamp && (now - parseInt(cachedTimestamp)) < 3600000) {
-          setSlides(JSON.parse(cachedData))
+          const parsedData = JSON.parse(cachedData)
+          setSlides(parsedData)
+
+          // Предварительно загружаем первое изображение
+          if (parsedData[0]) {
+            const firstImage = parsedData[0].image[0]?.formats?.large?.url ||
+              parsedData[0].image[0]?.formats?.medium?.url ||
+              parsedData[0].image[0]?.url
+            if (firstImage) {
+              await preloadImage(optimizeImageUrl(firstImage, imageSize))
+              setFirstSlideLoaded(true)
+            }
+          }
+
           setLoading(false)
           return
         }
@@ -84,21 +102,22 @@ export default function Hero() {
           }
         })
         const data = await response.json()
-        
+
         // Кэшируем данные с временной меткой
         sessionStorage.setItem('heroSlides', JSON.stringify(data.data))
         sessionStorage.setItem('heroSlidesTimestamp', now.toString())
         setSlides(data.data)
 
-        // Предварительно загружаем изображения
-        data.data.forEach((slide: Slide) => {
-          const imgUrl = slide.image[0]?.formats?.large?.url ||
-            slide.image[0]?.formats?.medium?.url ||
-            slide.image[0]?.url;
-          if (imgUrl) {
-            preloadImage(optimizeImageUrl(imgUrl, imageSize));
+        // Предварительно загружаем первое изображение
+        if (data.data[0]) {
+          const firstImage = data.data[0].image[0]?.formats?.large?.url ||
+            data.data[0].image[0]?.formats?.medium?.url ||
+            data.data[0].image[0]?.url
+          if (firstImage) {
+            await preloadImage(optimizeImageUrl(firstImage, imageSize))
+            setFirstSlideLoaded(true)
           }
-        });
+        }
       } catch (error) {
         console.error('Error fetching slides:', error)
       } finally {
@@ -116,7 +135,7 @@ export default function Hero() {
         slide.image[0]?.formats?.medium?.url ||
         slide.image[0]?.url ||
         ''
-      
+
       return {
         ...slide,
         optimizedImage: img ? optimizeImageUrl(img, imageSize) : ''
@@ -124,10 +143,14 @@ export default function Hero() {
     })
   }, [slides, imageSize])
 
-  if (loading) {
-    return <div className={styles.skeletonHero}>
-      <div className={styles.skeletonSlide} />
-    </div>
+  if (loading || !firstSlideLoaded) {
+    return (
+      <div className={styles.hero}>
+        <div className={styles.skeletonHero}>
+          <div className={styles.skeletonSlide} />
+        </div>
+      </div>
+    )
   }
 
   return (

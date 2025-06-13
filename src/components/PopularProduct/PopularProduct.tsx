@@ -69,7 +69,24 @@ export default function PopularProduct() {
   }, [location.pathname])
 
   if (isLoading) {
-    return <div className={styles.loading}>Загрузка...</div>
+    return (
+      <section className={styles.skeletonSection}>
+        <div className={styles.container}>
+          <div className={styles.skeletonHeader}>
+            <div className={styles.skeletonTitle} />
+            <div className={styles.skeletonNavigation}>
+              <div className={styles.skeletonNavButton} />
+              <div className={styles.skeletonNavButton} />
+            </div>
+          </div>
+          <div className={styles.skeletonGrid}>
+            {[...Array(8)].map((_, index) => (
+              <div key={index} className={styles.skeletonCard} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
   }
 
   if (error) {
