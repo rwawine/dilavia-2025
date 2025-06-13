@@ -31,7 +31,11 @@
   height: 100%;
   object-fit: contain;
   background: #fff;
-  transition: none;
+  transition: filter 0.3s ease-out;
+  will-change: filter;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .favoriteButton {

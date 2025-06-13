@@ -47,6 +47,19 @@ export default function PopularProduct() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        // Проверяем кэш
+        const cachedData = sessionStorage.getItem('popularProducts')
+        const cachedTimestamp = sessionStorage.getItem('popularProductsTimestamp')
+        const now = Date.now()
+
+        // Используем кэш, если он не старше 5 минут
+        if (cachedData && cachedTimestamp && (now - parseInt(cachedTimestamp)) < 300000) {
+          const parsedData = JSON.parse(cachedData)
+          setProducts(parsedData)
+          setIsLoading(false)
+          return
+        }
+
         const response = await fetch('/data/data.json')
         const data = await response.json()
         const currentProductSlug = location.pathname.split('/').pop()
@@ -55,6 +68,18 @@ export default function PopularProduct() {
           .filter((product: Product) => product.slug !== currentProductSlug)
           .sort((a: Product, b: Product) => b.popularity - a.popularity)
           .slice(0, 8)
+        
+        // Кэшируем данные
+        sessionStorage.setItem('popularProducts', JSON.stringify(popularProducts))
+        sessionStorage.setItem('popularProductsTimestamp', now.toString())
+        
+        // Предварительно загружаем первое изображение
+        if (popularProducts[0]?.images[0]) {
+          const img = new Image()
+          img.src = popularProducts[0].images[0].startsWith('/') 
+            ? popularProducts[0].images[0] 
+            : `/${popularProducts[0].images[0]}`
+        }
         
         setProducts(popularProducts)
       } catch (err) {
@@ -125,6 +150,7 @@ export default function PopularProduct() {
           slidesPerView={1}
           loop={true}
           navigation={false}
+          watchSlidesProgress={true}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false

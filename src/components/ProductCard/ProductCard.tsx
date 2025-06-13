@@ -116,9 +116,26 @@ export default function ProductCard({ product }: ProductCardProps) {
           src={product.images[0].startsWith('/') ? product.images[0] : `/${product.images[0]}`}
           alt={product.name}
           className={styles.image}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          style={{
+            backgroundImage: `url(${product.images[0].startsWith('/') ? product.images[0] : `/${product.images[0]}`})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(10px)',
+            transform: 'scale(1)',
+            objectFit: 'cover',
+            transition: 'filter 0.3s ease-out'
+          }}
+          onLoad={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.filter = 'none';
+          }}
           onError={(e) => {
-            const target = e.target as HTMLImageElement
-            target.src = '/images/placeholder.png'
+            const target = e.target as HTMLImageElement;
+            target.src = '/images/placeholder.png';
+            target.style.filter = 'none';
           }}
         />
         <button
