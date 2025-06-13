@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import styles from './Hero.module.css'
@@ -20,12 +20,26 @@ interface Slide {
   }[]
 }
 
+// Константы для размеров изображений
+const IMAGE_SIZES = {
+  desktop: 1920,
+  tablet: 1024,
+  mobile: 768
+}
+
+// Функция для получения оптимального размера изображения
+const getOptimalImageSize = () => {
+  const width = window.innerWidth
+  if (width <= IMAGE_SIZES.mobile) return IMAGE_SIZES.mobile
+  if (width <= IMAGE_SIZES.tablet) return IMAGE_SIZES.tablet
+  return IMAGE_SIZES.desktop
+}
+
 // Функция для оптимизации URL изображения
-const optimizeImageUrl = (url: string, width: number = 1920) => {
-  if (!url) return '';
-  // Добавляем параметры оптимизации для Cloudinary
-  return url.replace('/upload/', `/upload/w_${width},c_scale,f_auto,q_auto/`);
-};
+const optimizeImageUrl = (url: string, width: number) => {
+  if (!url) return ''
+  return url.replace('/upload/', `/upload/w_${width},c_scale,f_auto,q_auto,dpr_auto/`)
+}
 
 // Функция для предварительной загрузки изображения
 const preloadImage = (url: string) => {
@@ -36,16 +50,32 @@ const preloadImage = (url: string) => {
 export default function Hero() {
   const [slides, setSlides] = useState<Slide[]>([])
   const [loading, setLoading] = useState(true)
+  const [imageSize, setImageSize] = useState(getOptimalImageSize())
 
+  // Обработчик изменения размера окна
+  useEffect(() => {
+    const handleResize = () => {
+      setImageSize(getOptimalImageSize())
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Загрузка данных
   useEffect(() => {
     const fetchSlides = async () => {
       try {
         // Проверяем кэш
-        const cachedData = sessionStorage.getItem('heroSlides');
-        if (cachedData) {
-          setSlides(JSON.parse(cachedData));
-          setLoading(false);
-          return;
+        const cachedData = sessionStorage.getItem('heroSlides')
+        const cachedTimestamp = sessionStorage.getItem('heroSlidesTimestamp')
+        const now = Date.now()
+        
+        // Используем кэш, если он не старше 1 часа
+        if (cachedData && cachedTimestamp && (now - parseInt(cachedTimestamp)) < 3600000) {
+          setSlides(JSON.parse(cachedData))
+          setLoading(false)
+          return
         }
 
         const response = await fetch('https://admin.dilavia.by/api/slajder-na-glavnoj-straniczes?populate=image', {
@@ -55,9 +85,10 @@ export default function Hero() {
         })
         const data = await response.json()
         
-        // Кэшируем данные
-        sessionStorage.setItem('heroSlides', JSON.stringify(data.data));
-        setSlides(data.data);
+        // Кэшируем данные с временной меткой
+        sessionStorage.setItem('heroSlides', JSON.stringify(data.data))
+        sessionStorage.setItem('heroSlidesTimestamp', now.toString())
+        setSlides(data.data)
 
         // Предварительно загружаем изображения
         data.data.forEach((slide: Slide) => {
@@ -65,7 +96,7 @@ export default function Hero() {
             slide.image[0]?.formats?.medium?.url ||
             slide.image[0]?.url;
           if (imgUrl) {
-            preloadImage(optimizeImageUrl(imgUrl));
+            preloadImage(optimizeImageUrl(imgUrl, imageSize));
           }
         });
       } catch (error) {
@@ -76,10 +107,27 @@ export default function Hero() {
     }
 
     fetchSlides()
-  }, [])
+  }, [imageSize])
+
+  // Мемоизация оптимизированных слайдов
+  const optimizedSlides = useMemo(() => {
+    return slides.map(slide => {
+      const img = slide.image[0]?.formats?.large?.url ||
+        slide.image[0]?.formats?.medium?.url ||
+        slide.image[0]?.url ||
+        ''
+      
+      return {
+        ...slide,
+        optimizedImage: img ? optimizeImageUrl(img, imageSize) : ''
+      }
+    })
+  }, [slides, imageSize])
 
   if (loading) {
-    return <div className={styles.hero}></div>
+    return <div className={styles.skeletonHero}>
+      <div className={styles.skeletonSlide} />
+    </div>
   }
 
   return (
@@ -99,33 +147,22 @@ export default function Hero() {
         }}
         className={styles.swiper}
       >
-        {slides.map((slide) => {
-          const img =
-            slide.image[0]?.formats?.large?.url ||
-            slide.image[0]?.formats?.medium?.url ||
-            slide.image[0]?.url ||
-            ''
-          
-          // Оптимизируем URL изображения
-          const bgUrl = img ? optimizeImageUrl(img) : undefined
-
-          return (
-            <SwiperSlide key={slide.id} className={styles.swiperSlide}>
-              <div
-                className={styles.slide}
-                style={bgUrl ? { backgroundImage: `url(${bgUrl})` } : undefined}
-              >
-                <div className={styles.content}>
-                  <h2 className={styles.title}>{slide.title}</h2>
-                  <p className={styles.description}>{slide.description}</p>
-                  <Link to={slide.buttonLink} className={styles.button} title={slide.buttonText}>
-                    {slide.buttonText}
-                  </Link>
-                </div>
+        {optimizedSlides.map((slide) => (
+          <SwiperSlide key={slide.id} className={styles.swiperSlide}>
+            <div
+              className={styles.slide}
+              style={slide.optimizedImage ? { backgroundImage: `url(${slide.optimizedImage})` } : undefined}
+            >
+              <div className={styles.content}>
+                <h2 className={styles.title}>{slide.title}</h2>
+                <p className={styles.description}>{slide.description}</p>
+                <Link to={slide.buttonLink} className={styles.button} title={slide.buttonText}>
+                  {slide.buttonText}
+                </Link>
               </div>
-            </SwiperSlide>
-          )
-        })}
+            </div>
+          </SwiperSlide>
+        ))}
         <div className="swiper-pagination"></div>
       </Swiper>
     </div>
