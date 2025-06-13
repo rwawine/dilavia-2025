@@ -15,7 +15,10 @@ export default function Home() {
 
     useEffect(() => {
         const hasVisited = sessionStorage.getItem('hasVisited');
-        if (!hasVisited) {
+        // Проверяем, является ли устройство мобильным
+        const isMobile = window.innerWidth <= 1200;
+        
+        if (!hasVisited && !isMobile) {
             setShowLoader(true);
             sessionStorage.setItem('hasVisited', 'true');
         }
